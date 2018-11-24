@@ -1,0 +1,21 @@
+{
+  "name": "json-validator",
+  "version": "1.0.0",
+  "description": "json validator",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "jest"
+  },
+  "keywords": [
+    "json",
+    "validator"
+  ],
+  "author": "oussamahamdaoui@live.fr",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^23.6.0",
+    "mocha": "^5.2.0",
+    "npm-watch": "^0.4.0"
+  }
+}
