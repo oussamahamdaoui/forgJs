@@ -1,5 +1,5 @@
 {
-  "name": "json-validator",
+  "name": "js-object-validator",
   "version": "1.0.0",
   "description": "json validator",
   "main": "index.js",
@@ -13,6 +13,10 @@
   ],
   "author": "oussamahamdaoui@live.fr",
   "license": "ISC",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/oussamahamdaoui/js-object-validator"
+  },
   "devDependencies": {
     "eslint": "^5.9.0",
     "eslint-config-airbnb-base": "^13.1.0",

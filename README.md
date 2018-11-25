@@ -1,1 +1,2 @@
-[![NPM version](https://badge.fury.io/js/badge-list.svg)](http://badge.fury.io/js/badge-list)
+[![NPM version](https://badge.fury.io/gh/oussamahamdaoui%2Fjs-object-validator.svg)](http://badge.fury.io/js/badge-list)
+
