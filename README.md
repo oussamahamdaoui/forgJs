@@ -1,3 +1,4 @@
+![forgJs logo](./logo.png?raw=true)
 # forgJs
 [![GitHub version](https://badge.fury.io/gh/oussamahamdaoui%2Fforgjs.svg)](https://badge.fury.io/gh/oussamahamdaoui%2Fforgjs) [![npm version](https://badge.fury.io/js/%40cesium133%2Fforgjs.svg)](https://badge.fury.io/js/%40cesium133%2Fforgjs)
 
