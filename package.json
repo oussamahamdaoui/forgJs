@@ -1,5 +1,5 @@
 {
-  "name": "js-object-validator",
+  "name": "@cesium133/js-object-validator",
   "version": "1.0.0",
   "description": "json validator",
   "main": "index.js",
@@ -13,10 +13,12 @@
   ],
   "author": "oussamahamdaoui@live.fr",
   "license": "ISC",
+  "env": "node",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/oussamahamdaoui/js-object-validator"
+    "type": "git",
+    "url": "git+https://github.com/oussamahamdaoui/js-object-validator.git"
   },
+  "dependencies": {},
   "devDependencies": {
     "eslint": "^5.9.0",
     "eslint-config-airbnb-base": "^13.1.0",
@@ -25,5 +27,12 @@
     "jest": "^23.6.0",
     "mocha": "^5.2.0",
     "npm-watch": "^0.4.0"
+  },
+  "bugs": {
+    "url": "https://github.com/oussamahamdaoui/js-object-validator/issues"
+  },
+  "homepage": "https://github.com/oussamahamdaoui/js-object-validator#readme",
+  "directories": {
+    "test": "test"
   }
 }

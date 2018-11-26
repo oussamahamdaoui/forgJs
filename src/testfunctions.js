@@ -1,4 +1,6 @@
 const CUSTOM = (val, f, obj) => f(val, obj);
+const OPTIONAL = (val, state) => val === undefined && state === true;
+
 
 const TEST_FUNCTIONS = {
   int: {
@@ -50,6 +52,7 @@ const TEST_FUNCTIONS = {
 
 Object.keys(TEST_FUNCTIONS).forEach((key) => {
   TEST_FUNCTIONS[key].custom = CUSTOM;
+  TEST_FUNCTIONS[key].optional = OPTIONAL;
 });
 
-module.exports = { TEST_FUNCTIONS };
+module.exports = { TEST_FUNCTIONS, OPTIONAL };

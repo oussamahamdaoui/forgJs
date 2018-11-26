@@ -1,11 +1,13 @@
 const { Rule } = require('../src');
 
 test('throws error when test doesn\'t exist', () => {
-  const dateRule = new Rule({
-    type: 'date',
-    dummyTest: /^The/g,
-  }, null);
-  expect(() => { dateRule.test('the quick brown fox'); }).toThrow();
+  expect(() => {
+    const rule = new Rule({
+      type: 'date',
+      dummyTest: /^The/g,
+    }, null);
+    rule.test();
+  }).toThrow();
 });
 
 

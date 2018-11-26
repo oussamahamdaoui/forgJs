@@ -1,29 +1,54 @@
-const { TEST_FUNCTIONS } = require('./testfunctions');
+const { TEST_FUNCTIONS, OPTIONAL } = require('./testfunctions');
 
 class Rule {
   constructor(obj, hole) {
-    this.rule = obj;
+    if (obj === 'string' || obj instanceof String) {
+      this.rule = { type: obj };
+    } else {
+      this.rule = obj;
+    }
     this.hole = hole;
+    this.testEntryObject();
   }
 
   test(val, obj) {
-    let ret = true;
-    Object.keys(this.rule).forEach((key) => {
+    if (Rule.TEST_FUNCTIONS[this.rule.type].optional(val, this.rule.optional, obj) === true) {
+      return true;
+    }
+
+    const keys = Object.keys(this.rule);
+    for (let i = 0; i < keys.length; i += 1) {
+      const key = keys[i];
+      const testFunction = Rule.TEST_FUNCTIONS[this.rule.type][key];
+
+      if (testFunction(val, this.rule[key], obj) === false && testFunction !== OPTIONAL) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  testEntryObject() {
+    const keys = Object.keys(this.rule);
+    if (!this.rule.type) {
+      throw Error('`type` is required');
+    }
+    for (let i = 0; i < keys.length; i += 1) {
+      const key = keys[i];
       if (!Rule.TEST_FUNCTIONS[this.rule.type]) {
-        throw Error(`The ${this.rule.type} type doesn't exist`);
+        throw Error(`The \`${this.rule.type}\` type doesn't exist`);
       }
       if (!Rule.TEST_FUNCTIONS[this.rule.type][key]) {
-        throw new Error(`${this.rule.type} doesn't have "${key}" test!`);
+        throw new Error(`\`${this.rule.type}\` doesn't have "${key}" test!`);
       }
-      if (Rule.TEST_FUNCTIONS[this.rule.type][key](val, this.rule[key], obj) === false) {
-        ret = false;
-      }
-    });
-    return ret;
+    }
   }
 
   static addCustom(name, rule) {
     Rule.TEST_FUNCTIONS[name] = rule;
+    if (!rule.optional) {
+      Rule.TEST_FUNCTIONS[name].optional = OPTIONAL;
+    }
   }
 }
 
