@@ -27,7 +27,7 @@
     "light"
   ],
   "author": "Oussama Hamdaoui <oussamahamdaoui@live.fr>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/oussamahamdaoui/forgJs/issues"
   },
