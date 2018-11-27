@@ -42,13 +42,13 @@ A `Rule` object validates a single value, it can be used like this:
 
 > You can make a rule by simply passing a string if you only need to check the type : `new Rule("int");`
 
-## int Rule
+## int type
 
 * min (int)
 * max (int)
 * equal (int)
 
-## string Rule
+## string type
 
 * minLength (int)
 * maxLength (int)
@@ -56,20 +56,20 @@ A `Rule` object validates a single value, it can be used like this:
 * match: (regex)
 * notEmpty (bool)
 
-## date Rule 
+## date type 
 
 * after (date)
 * before (date)
 * between (Array of dates like this [date, date])
 * equal (date)
 
-## float Rule
+## float type
 
 * min (Number)
 * max (Number)
 * equal (float)
 
-## array Rule
+## array type
 
 * of (Rule)
 * notEmpty (bool)
@@ -79,7 +79,7 @@ The `of` rule checks every element of the array against the rule.
 
 ## Common properties:
 
-Every type has: 
+Every type has these properties: 
 * optional
 * custom
 
