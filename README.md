@@ -8,7 +8,7 @@ forgJs is a javascript lightweight object validator. Go check the Quick start se
 
 # Quick start
 
-install it via npm by runing `npm i @cesium133/forgjs`
+Install it via npm by runing `npm i @cesium133/forgjs`
 
 ## Your first validator:
 
@@ -26,7 +26,7 @@ install it via npm by runing `npm i @cesium133/forgjs`
   }); /// returns true
 
   ```
-# Rule object
+# Rules
 
 A `Rule` object validates a single value, it can be used like this: 
 
@@ -38,15 +38,17 @@ A `Rule` object validates a single value, it can be used like this:
 
   floatRule.test(2.001); /// returns true;
 ```
-> **The only required value is `type`!**
+**The only required value is `type`!**
 
-## `int` Rule
+> You can make a rule by simply passing a string if you only need to check the type : `new Rule("int");`
+
+## int Rule
 
 * min (int)
 * max (int)
 * equal (int)
 
-## `string` Rule
+## string Rule
 
 * minLength (int)
 * maxLength (int)
@@ -54,14 +56,14 @@ A `Rule` object validates a single value, it can be used like this:
 * match: (regex)
 * notEmpty (bool)
 
-## `date` Rule 
+## date Rule 
 
 * after (date)
 * before (date)
 * between (Array of dates like this [date, date])
 * equal (date)
 
-## `float` Rule
+## float Rule
 
 * min (Number)
 * max (Number)
@@ -81,7 +83,7 @@ Every type has:
 * optional
 * custom
 
-### `optional`
+### optional
 
 If optional is set to `true` the element is optional and an `undefined` value is considered correct.
 Exemple:
@@ -93,7 +95,7 @@ const intRule = new Rule({
   }, null);
 intRule.test(); // returns true
 ```
-### `custom`
+### custom
 
 Custom allaws you to write your own rule, an exemple is better than a long explenation:
 
@@ -119,3 +121,31 @@ Custom allaws you to write your own rule, an exemple is better than a long exple
   }); // returns true
 
 ```
+# Make a new type:
+
+Creating a new type is done using the Rule class like this:
+
+```javascript
+  Rule.addCustom('customInteger', {
+    min: (val, min) => val - min > 0,
+    max: (val, max) => val - max < 0,
+    equal: (val, equal) => val === equal,
+    type: val => Number.isInteger(val) && val > 0 && val < 100,
+  });
+
+  const customInteger = new Rule({
+    type: 'customInteger',
+    min: 10,
+  }, null);
+
+  customInteger.test(11) // returns true
+
+  customInteger.test(200) // returns false
+
+```
+
+# Left TO DO
+
+* Add function type
+* Add more error managment
+
