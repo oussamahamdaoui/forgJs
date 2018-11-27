@@ -4,7 +4,7 @@
 ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
 
 
-forgJs is a javascript lightweight object validator. Go check the Quick start section and start coding with love :heart:
+ForgJs is a javascript lightweight object validator. Go check the Quick start section and start coding with love :heart:
 
 # Quick start
 
@@ -147,5 +147,5 @@ Creating a new type is done using the Rule class like this:
 # Left TO DO
 
 * Add function type
-* Add more error managment
+* Add error managment
 
