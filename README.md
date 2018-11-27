@@ -147,5 +147,5 @@ Creating a new type is done using the Rule class like this:
 # Left TO DO
 
 * [ ] Add function type
-* [ ]Add error managment
+* [ ] Add error managment
 
