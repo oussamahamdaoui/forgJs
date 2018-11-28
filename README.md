@@ -13,6 +13,8 @@ Install it via npm by runing `npm i @cesium133/forgjs`
 ## Your first validator:
 
 ```javascript 
+  const { Validator, Rule } = require('@cesium133/forgjs');
+  
   const vComplexe = new Validator({
     age: new Rule({ type: 'int', min: 18, max: 99 }),
     dateOfBirth: new Rule({ type: 'date' }),
@@ -31,6 +33,7 @@ Install it via npm by runing `npm i @cesium133/forgjs`
 A `Rule` object validates a single value, it can be used like this: 
 
 ```javascript
+  const { Validator, Rule } = require('@cesium133/forgjs');
   const floatRule = new Rule({
     type: 'float',
     min: 100,
@@ -89,6 +92,8 @@ If optional is set to `true` the element is optional and an `undefined` value is
 Exemple:
 
 ```javascript
+const { Validator, Rule } = require('@cesium133/forgjs');
+
 const intRule = new Rule({
     type: 'int',
     optional: true,
@@ -100,7 +105,8 @@ intRule.test(); // returns true
 Custom allaws you to write your own rule, an exemple is better than a long explenation:
 
 ```javascript
-
+  const { Validator, Rule } = require('@cesium133/forgjs');
+  
   function isCorrectAge(age, object) {
     if (age === Math.floor((new Date() - object.dateOfBirth) / 1000 / 60 / 60 / 24 / 30 / 12)) {
       return true;
@@ -126,6 +132,8 @@ Custom allaws you to write your own rule, an exemple is better than a long exple
 Creating a new type is done using the Rule class like this:
 
 ```javascript
+  const { Validator, Rule } = require('@cesium133/forgjs'); 
+  
   Rule.addCustom('customInteger', {
     min: (val, min) => val - min > 0,
     max: (val, max) => val - max < 0,
