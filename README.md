@@ -1,7 +1,7 @@
 # ![forgJs logo](./logo.png?raw=true)
 
 [![GitHub version](https://badge.fury.io/gh/oussamahamdaoui%2Fforgjs.svg)](https://badge.fury.io/gh/oussamahamdaoui%2Fforgjs)
-[![npm](https://img.shields.io/npm/v/@cesium133/forgjs.svg]( https://img.shields.io/npm/v/@cesium133/forgjs.svg)
+[![npm](https://img.shields.io/npm/v/@cesium133/forgjs.svg)]( https://img.shields.io/npm/v/@cesium133/forgjs.svg)
 ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
 [![CircleCI (all branches)](https://img.shields.io/circleci/project/github/oussamahamdaoui/forgJs.svg)](https://img.shields.io/circleci/project/github/oussamahamdaoui/forgJs.svg)
 
