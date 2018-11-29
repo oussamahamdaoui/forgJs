@@ -1,7 +1,7 @@
 # ![forgJs logo](./logo.png?raw=true)
 
 [![GitHub version](https://badge.fury.io/gh/oussamahamdaoui%2Fforgjs.svg)](https://badge.fury.io/gh/oussamahamdaoui%2Fforgjs) [![npm version](https://badge.fury.io/js/%40cesium133%2Fforgjs.svg)](https://badge.fury.io/js/%40cesium133%2Fforgjs)
-![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
+![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)[![CircleCI](https://circleci.com/gh/oussamahamdaoui/forgJs/tree/master.svg?style=svg)](https://circleci.com/gh/oussamahamdaoui/forgJs/tree/master)
 
 
 ForgJs is a javascript lightweight object validator. Go check the Quick start section and start coding with love :heart:
