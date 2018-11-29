@@ -15,7 +15,8 @@
     "jest": "^23.6.0"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "lint": "./node_modules/.bin/eslint */*.js"
   },
   "repository": {
     "type": "git",
