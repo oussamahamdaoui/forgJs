@@ -1,4 +1,4 @@
-const { Rule } = require('../src');
+const { Rule, Validator } = require('../src');
 
 test('returns true when its an array', () => {
   const arrayRule = new Rule({
