@@ -76,7 +76,7 @@ A `Rule` object validates a single value, it can be used like this:
 
 ## array type
 
-* of (Rule)
+* of (Rule or Validator object)
 * notEmpty (bool)
 * length (int)
 
