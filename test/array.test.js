@@ -1,4 +1,4 @@
-const { Rule } = require('../src');
+const { Rule, Validator } = require('../src');
 
 test('returns true when its an array', () => {
   const arrayRule = new Rule({
@@ -43,4 +43,17 @@ test('returns true when array contains 3 elems', () => {
     length: 3,
   }, null);
   expect(arrayRule.test(['1', '2', '1'])).toBe(true);
+});
+
+test('returns true when elements verify the validator', () => {
+  const users = new Validator({
+    name: new Rule('string'),
+    age: new Rule('int'),
+  });
+
+  const arrayRule = new Rule({
+    type: 'array',
+    of: users,
+  });
+  expect(arrayRule.test([{ name: 'Me', age: 23 }])).toBe(true);
 });
