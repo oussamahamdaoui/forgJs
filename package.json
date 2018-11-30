@@ -17,8 +17,9 @@
     "jest-junit": "^5.2.0"
   },
   "scripts": {
-    "test": "jest && codecov",
-    "lint": "./node_modules/.bin/eslint */*.js --format junit -o reports/junit/js-lint-results.xml"
+    "test": "jest",
+    "lint": "./node_modules/.bin/eslint */*.js --format junit -o reports/junit/js-lint-results.xml",
+    "codecov":"codecov"
   },
   "repository": {
     "type": "git",

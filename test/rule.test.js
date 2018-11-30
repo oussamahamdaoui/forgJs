@@ -17,3 +17,24 @@ test('adding a custom rule', () => {
 
   expect(customInteger.test(200)).toBe(false);
 });
+
+test('throwing when type not exist', () => {
+  expect(() => {
+    const customInteger = new Rule({
+      type: 'something',
+      min: 10,
+    }, null);
+
+    customInteger.test(11);
+  }).toThrow();
+});
+
+test('throwing when type is undefined', () => {
+  expect(() => {
+    const customInteger = new Rule({
+      min: 10,
+    }, null);
+
+    customInteger.test(11);
+  }).toThrow();
+});
