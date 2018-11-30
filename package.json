@@ -8,6 +8,7 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "codecov": "^3.1.0",
     "eslint": "^5.9.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
@@ -16,8 +17,8 @@
     "jest-junit": "^5.2.0"
   },
   "scripts": {
-    "test": "jest",
-    "lint": "./node_modules/.bin/eslint */*.js"
+    "test": "jest && codecov",
+    "lint": "./node_modules/.bin/eslint */*.js --format junit -o reports/junit/js-lint-results.xml"
   },
   "repository": {
     "type": "git",

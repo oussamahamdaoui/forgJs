@@ -52,3 +52,14 @@ test('returns true when date is between two dates', () => {
 
   expect(dateRule.test(test)).toBe(true);
 });
+
+
+test('returns true when two dates are equal', () => {
+  const date1 = new Date(2018, 11, 3);
+  const dateRule = new Rule({
+    type: 'date',
+    equal: date1,
+  }, null);
+
+  expect(dateRule.test(date1)).toBe(true);
+});

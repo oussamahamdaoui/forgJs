@@ -34,3 +34,17 @@ test('test custom', () => {
     array: ['1'],
   })).toBe(true);
 });
+
+test('test ', () => {
+  const vComplexe = new Validator({
+    age: new Rule({ type: 'int', min: 18, max: 99 }),
+    dateOfBirth: new Rule({ type: 'date' }),
+    array: new Rule({ type: 'array', of: new Rule({ type: 'string' }) }),
+  });
+
+  expect(vComplexe.test({
+    age: 26,
+    dateOfBirth: new Date(1995, 10, 3),
+    array: ['1'],
+  })).toBe(true);
+});

@@ -1,43 +1,5 @@
-<testsuites name="jest tests" tests="39" failures="0" time="7.156">
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2018-11-30T21:42:35" time="3.678" tests="7">
-    <testcase classname=" type string returns true when a string" name=" type string returns true when a string" time="0.016">
-    </testcase>
-    <testcase classname=" type string returns false when not string" name=" type string returns false when not string" time="0">
-    </testcase>
-    <testcase classname=" type string returns true when matches a REGEX" name=" type string returns true when matches a REGEX" time="0">
-    </testcase>
-    <testcase classname=" type string returns false when doesen&apos;t matches a REGEX" name=" type string returns false when doesen&apos;t matches a REGEX" time="0">
-    </testcase>
-    <testcase classname=" throws error when test doesn&apos;t exist" name=" throws error when test doesn&apos;t exist" time="0">
-    </testcase>
-    <testcase classname=" type string returns true when string not empty" name=" type string returns true when string not empty" time="0">
-    </testcase>
-    <testcase classname=" type string returns false when string empty" name=" type string returns false when string empty" time="0">
-    </testcase>
-  </testsuite>
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2018-11-30T21:42:39" time="0.097" tests="1">
-    <testcase classname=" adding a custom rule" name=" adding a custom rule" time="0">
-    </testcase>
-  </testsuite>
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2018-11-30T21:42:35" time="3.858" tests="5">
-    <testcase classname=" throws error when test doesn&apos;t exist" name=" throws error when test doesn&apos;t exist" time="0">
-    </testcase>
-    <testcase classname=" returns false when not date" name=" returns false when not date" time="0">
-    </testcase>
-    <testcase classname=" returns true when date is after a specific date" name=" returns true when date is after a specific date" time="0">
-    </testcase>
-    <testcase classname=" returns true when date is before a specific date" name=" returns true when date is before a specific date" time="0">
-    </testcase>
-    <testcase classname=" returns true when date is between two dates" name=" returns true when date is between two dates" time="0.015">
-    </testcase>
-  </testsuite>
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2018-11-30T21:42:35" time="3.827" tests="2">
-    <testcase classname=" test the hole object" name=" test the hole object" time="0.031">
-    </testcase>
-    <testcase classname=" test custom" name=" test custom" time="0">
-    </testcase>
-  </testsuite>
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2018-11-30T21:42:39" time="0.187" tests="5">
+<testsuites name="jest tests" tests="29" failures="0" time="6.097">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2018-11-30T23:23:12" time="1.665" tests="6">
     <testcase classname=" returns true when its an array" name=" returns true when its an array" time="0.016">
     </testcase>
     <testcase classname=" returns true when aray is not empty" name=" returns true when aray is not empty" time="0">
@@ -46,49 +8,63 @@
     </testcase>
     <testcase classname=" returns true when array contains 3 elems" name=" returns true when array contains 3 elems" time="0">
     </testcase>
+    <testcase classname=" returns false when array contains elements that dont match" name=" returns false when array contains elements that dont match" time="0">
+    </testcase>
     <testcase classname=" returns true when elements verify the validator" name=" returns true when elements verify the validator" time="0">
     </testcase>
   </testsuite>
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2018-11-30T21:42:39" time="0.141" tests="4">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2018-11-30T23:23:12" time="1.683" tests="9">
+    <testcase classname=" type string returns true when a string" name=" type string returns true when a string" time="0.025">
+    </testcase>
+    <testcase classname=" type string returns false when not string" name=" type string returns false when not string" time="0">
+    </testcase>
+    <testcase classname=" type string returns true when matches a REGEX" name=" type string returns true when matches a REGEX" time="0.001">
+    </testcase>
+    <testcase classname=" type string returns false when doesen&apos;t matches a REGEX" name=" type string returns false when doesen&apos;t matches a REGEX" time="0.001">
+    </testcase>
+    <testcase classname=" throws error when test doesn&apos;t exist" name=" throws error when test doesn&apos;t exist" time="0.001">
+    </testcase>
+    <testcase classname=" type string returns true when string not empty" name=" type string returns true when string not empty" time="0">
+    </testcase>
+    <testcase classname=" type string returns false when string empty" name=" type string returns false when string empty" time="0">
+    </testcase>
+    <testcase classname=" type string returns true when two strings are equal" name=" type string returns true when two strings are equal" time="0.001">
+    </testcase>
+    <testcase classname=" type string returns true when string minLength" name=" type string returns true when string minLength" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2018-11-30T23:23:13" time="0.781" tests="5">
     <testcase classname=" type float returns true when float" name=" type float returns true when float" time="0">
     </testcase>
     <testcase classname=" type float returns false when int" name=" type float returns false when int" time="0">
     </testcase>
-    <testcase classname=" type float returns true when bigger than 100" name=" type float returns true when bigger than 100" time="0">
+    <testcase classname=" type float returns true when bigger than 100" name=" type float returns true when bigger than 100" time="0.016">
     </testcase>
     <testcase classname=" type float returns true when smaller than 100" name=" type float returns true when smaller than 100" time="0">
     </testcase>
+    <testcase classname=" type float returns true when two floats are equal" name=" type float returns true when two floats are equal" time="0">
+    </testcase>
   </testsuite>
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2018-11-30T21:42:39" time="0.163" tests="15">
-    <testcase classname=" type test not int is false" name=" type test not int is false" time="0.002">
-    </testcase>
-    <testcase classname=" type test" name=" type test" time="0.001">
-    </testcase>
-    <testcase classname=" max is true if &lt; 100" name=" max is true if &lt; 100" time="0">
-    </testcase>
-    <testcase classname=" max is false if  &gt; 100" name=" max is false if  &gt; 100" time="0.001">
-    </testcase>
-    <testcase classname=" equal returns true if 100" name=" equal returns true if 100" time="0">
-    </testcase>
-    <testcase classname=" custom rulle should return true" name=" custom rulle should return true" time="0">
-    </testcase>
-    <testcase classname=" custom rulle should return false" name=" custom rulle should return false" time="0.001">
-    </testcase>
-    <testcase classname=" mixng rulles returns true" name=" mixng rulles returns true" time="0">
-    </testcase>
-    <testcase classname=" mixng rulles returns false" name=" mixng rulles returns false" time="0.001">
-    </testcase>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2018-11-30T23:23:13" time="0.781" tests="6">
     <testcase classname=" throws error when test doesn&apos;t exist" name=" throws error when test doesn&apos;t exist" time="0">
     </testcase>
-    <testcase classname=" returns true if optional set to true and patram undefined" name=" returns true if optional set to true and patram undefined" time="0.001">
+    <testcase classname=" returns false when not date" name=" returns false when not date" time="0">
     </testcase>
-    <testcase classname=" returns false if optional set to true and patram dont match" name=" returns false if optional set to true and patram dont match" time="0">
+    <testcase classname=" returns true when date is after a specific date" name=" returns true when date is after a specific date" time="0">
     </testcase>
-    <testcase classname=" returns true if optional set to true and patram match" name=" returns true if optional set to true and patram match" time="0">
+    <testcase classname=" returns true when date is before a specific date" name=" returns true when date is before a specific date" time="0">
     </testcase>
-    <testcase classname=" returns true if optional set to false and patram match" name=" returns true if optional set to false and patram match" time="0.001">
+    <testcase classname=" returns true when date is between two dates" name=" returns true when date is between two dates" time="0">
     </testcase>
-    <testcase classname=" returns false if optional set to false and patram dont match" name=" returns false if optional set to false and patram dont match" time="0">
+    <testcase classname=" returns true when two dates are equal" name=" returns true when two dates are equal" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2018-11-30T23:23:14" time="0.662" tests="3">
+    <testcase classname=" test the hole object" name=" test the hole object" time="0.016">
+    </testcase>
+    <testcase classname=" test custom" name=" test custom" time="0">
+    </testcase>
+    <testcase classname=" test " name=" test " time="0">
     </testcase>
   </testsuite>
 </testsuites>

@@ -29,3 +29,11 @@ test('type float returns true when smaller than 100', () => {
   }, null);
   expect(floatRule.test(99.3)).toBe(true);
 });
+
+test('type float returns true when two floats are equal', () => {
+  const floatRule = new Rule({
+    type: 'float',
+    equal: 100.1,
+  }, null);
+  expect(floatRule.test(100.1)).toBe(true);
+});

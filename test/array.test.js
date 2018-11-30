@@ -45,6 +45,14 @@ test('returns true when array contains 3 elems', () => {
   expect(arrayRule.test(['1', '2', '1'])).toBe(true);
 });
 
+test('returns false when array contains elements that dont match', () => {
+  const arrayRule = new Rule({
+    type: 'array',
+    of: new Rule('int'),
+  }, null);
+  expect(arrayRule.test(['1', '2', '1'])).toBe(false);
+});
+
 test('returns true when elements verify the validator', () => {
   const users = new Validator({
     name: new Rule('string'),
