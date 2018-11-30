@@ -156,6 +156,8 @@ Creating a new type is done using the Rule class like this:
 
 # Left TO DO
 
-- [x] Add function type
+- [ ] Add function type
 - [ ] Add error managment
+- [ ] Add webpack
+- [ ] Type managment on props
 
