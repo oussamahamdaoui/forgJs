@@ -57,4 +57,3 @@ test('returns true when elements verify the validator', () => {
   });
   expect(arrayRule.test([{ name: 'Me', age: 23 }])).toBe(true);
 });
-
