@@ -2,7 +2,7 @@ const { TEST_FUNCTIONS, OPTIONAL } = require('./testfunctions');
 
 class Rule {
   constructor(obj, hole) {
-    if (obj === 'string' || obj instanceof String) {
+    if (typeof obj === 'string' || obj instanceof String) {
       this.rule = { type: obj };
     } else {
       this.rule = obj;
