@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\src\index.js">
+<testcase time="0" name="C:\Users\oussama\Documents\forgJs\src\index.js" />
+</testsuite>
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\src\Rule.js">
+<testcase time="0" name="C:\Users\oussama\Documents\forgJs\src\Rule.js" />
+</testsuite>
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\src\testfunctions.js">
+<testcase time="0" name="C:\Users\oussama\Documents\forgJs\src\testfunctions.js" />
+</testsuite>
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\src\Validator.js">
+<testcase time="0" name="C:\Users\oussama\Documents\forgJs\src\Validator.js" />
+</testsuite>
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\test\array.test.js">
+<testcase time="0" name="C:\Users\oussama\Documents\forgJs\test\array.test.js" />
+</testsuite>
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\test\date.test.js">
+<testcase time="0" name="C:\Users\oussama\Documents\forgJs\test\date.test.js" />
+</testsuite>
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\test\float.test.js">
+<testcase time="0" name="C:\Users\oussama\Documents\forgJs\test\float.test.js" />
+</testsuite>
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\test\int.test.js">
+<testcase time="0" name="C:\Users\oussama\Documents\forgJs\test\int.test.js" />
+</testsuite>
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\test\rule.test.js">
+<testcase time="0" name="C:\Users\oussama\Documents\forgJs\test\rule.test.js" />
+</testsuite>
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\test\string.test.js">
+<testcase time="0" name="C:\Users\oussama\Documents\forgJs\test\string.test.js" />
+</testsuite>
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\test\Validator.test.js">
+<testcase time="0" name="C:\Users\oussama\Documents\forgJs\test\Validator.test.js" />
+</testsuite>
+</testsuites>
