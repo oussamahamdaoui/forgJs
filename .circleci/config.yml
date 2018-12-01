@@ -30,9 +30,7 @@ jobs:
           path: reports/junit
       - store_artifacts:
           path: reports/junit
-
       -run: npm codcov
-
       - save_cache:
           paths:
             - node_modules
