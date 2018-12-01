@@ -51,6 +51,8 @@ typings/
 # Output of 'npm pack'
 *.tgz
 
+junit.xml
+
 # Yarn Integrity file
 .yarn-integrity
 
