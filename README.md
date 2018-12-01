@@ -4,6 +4,7 @@
 [![npm](https://img.shields.io/npm/v/@cesium133/forgjs.svg)]( https://www.npmjs.com/package/@cesium133/forgjs)
 ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
 [![CircleCI (all branches)](https://img.shields.io/circleci/project/github/oussamahamdaoui/forgJs.svg)](https://circleci.com/gh/oussamahamdaoui/forgJs)
+[![codecov](https://codecov.io/gh/oussamahamdaoui/forgJs/branch/master/graph/badge.svg)](https://codecov.io/gh/oussamahamdaoui/forgJs)
 
 
 ForgJs is a javascript lightweight object validator. Go check the Quick start section and start coding with love :heart:
@@ -158,6 +159,5 @@ Creating a new type is done using the Rule class like this:
 
 - [ ] Add function type
 - [ ] Add error managment
-- [ ] Add webpack
 - [ ] Type managment on props
 
