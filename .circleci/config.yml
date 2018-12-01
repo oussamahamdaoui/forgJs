@@ -31,7 +31,7 @@ jobs:
       - store_artifacts:
           path: reports/junit
 
-      - run: npm run codcov
+      - run: npm run codecov
 
       - save_cache:
           paths:
