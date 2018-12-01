@@ -179,3 +179,5 @@ Creating a new type is done using the Rule class like this:
 - [ ] Add function type
 - [x] Add error managment
 - [ ] Type managment on props
+
+# Contact
