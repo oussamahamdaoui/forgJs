@@ -1,4 +1,4 @@
-const { Rule } = require('../src');
+const { Rule } = require('../../src');
 
 test('adding a custom rule', () => {
   Rule.addCustom('customInteger', {

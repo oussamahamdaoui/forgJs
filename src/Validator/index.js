@@ -7,12 +7,22 @@ class Validator {
 
   test(o) {
     let ret = true;
-    traverse(this.rules, (val, path) => {
-      if (val.test(getValFromPath(path, o), o) === false) {
+    traverse(this.rules, (rule, path) => {
+      if (rule.test(getValFromPath(path, o), o) === false) {
         ret = false;
       }
     });
     return ret;
+  }
+
+  getErrors(o) {
+    const errors = [];
+    traverse(this.rules, (rule, path) => {
+      if (rule.test(getValFromPath(path, o), o) === false) {
+        errors.push(rule.getError());
+      }
+    });
+    return errors;
   }
 }
 

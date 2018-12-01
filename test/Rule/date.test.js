@@ -1,4 +1,4 @@
-const { Rule } = require('../src');
+const { Rule } = require('../../src');
 
 test('throws error when test doesn\'t exist', () => {
   expect(() => {

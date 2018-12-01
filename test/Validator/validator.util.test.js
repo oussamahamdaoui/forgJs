@@ -1,4 +1,4 @@
-const { traverse, getValFromPath } = require('../src/Validator/util');
+const { traverse, getValFromPath } = require('../../src/Validator/util');
 
 test('test getValFromPath returns 5 path is correct', () => {
   const obj = {

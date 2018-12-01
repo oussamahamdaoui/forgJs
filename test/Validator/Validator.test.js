@@ -1,4 +1,4 @@
-const { Rule, Validator } = require('../src');
+const { Rule, Validator } = require('../../src');
 
 test('test the hole object to be true', () => {
   const vComplexe = new Validator({
@@ -47,4 +47,19 @@ test('test custom', () => {
     dateOfBirth: new Date(1995, 10, 3),
     array: ['1'],
   })).toBe(true);
+});
+
+
+test('test getErrors must return an array of errors', () => {
+  const vComplexe = new Validator({
+    age: new Rule({
+      type: 'int', min: 18, max: 99,
+    }, 'age must be integer and between 18 and 99'),
+    dateOfBirth: new Rule({ type: 'date' }, 'date must be a date'),
+  });
+
+  expect(vComplexe.getErrors({
+    age: 16,
+    dateOfBirth: new Date(),
+  })).toEqual(['age must be integer and between 18 and 99']);
 });

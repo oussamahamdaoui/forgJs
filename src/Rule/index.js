@@ -1,13 +1,13 @@
 const { TEST_FUNCTIONS, OPTIONAL } = require('../testFunctions');
 
 class Rule {
-  constructor(obj, hole) {
+  constructor(obj, error) {
     if (typeof obj === 'string' || obj instanceof String) {
       this.rule = { type: obj };
     } else {
       this.rule = obj;
     }
-    this.hole = hole;
+    this.error = error;
     this.testEntryObject();
   }
 
@@ -42,6 +42,10 @@ class Rule {
         throw new Error(`\`${this.rule.type}\` doesn't have "${key}" test!`);
       }
     }
+  }
+
+  getError() {
+    return this.error;
   }
 
   static addCustom(name, rule) {

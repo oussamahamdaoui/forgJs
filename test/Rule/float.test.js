@@ -1,4 +1,4 @@
-const { Rule } = require('../src');
+const { Rule } = require('../../src');
 
 test('type float returns true when float', () => {
   const floatRule = new Rule({

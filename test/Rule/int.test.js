@@ -1,4 +1,4 @@
-const { Rule } = require('../src');
+const { Rule } = require('../../src');
 
 test('type test not int is false', () => {
   const intRule = new Rule({

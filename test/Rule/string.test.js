@@ -1,4 +1,4 @@
-const { Rule } = require('../src');
+const { Rule } = require('../../src');
 
 test('type string returns true when a string', () => {
   const strRule = new Rule({
