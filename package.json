@@ -18,7 +18,7 @@
   },
   "scripts": {
     "test": "jest",
-    "lint": "./node_modules/.bin/eslint */*.js --format junit -o reports/junit/js-lint-results.xml",
+    "lint": "./node_modules/.bin/eslint src/** test/** --format junit -o reports/junit/js-lint-results.xml",
     "codecov":"codecov"
   },
   "repository": {

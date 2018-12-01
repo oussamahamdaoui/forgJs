@@ -1,4 +1,4 @@
-const { TEST_FUNCTIONS, OPTIONAL } = require('./testfunctions');
+const { TEST_FUNCTIONS, OPTIONAL } = require('../testFunctions');
 
 class Rule {
   constructor(obj, hole) {
@@ -46,9 +46,7 @@ class Rule {
 
   static addCustom(name, rule) {
     Rule.TEST_FUNCTIONS[name] = rule;
-    if (!rule.optional) {
-      Rule.TEST_FUNCTIONS[name].optional = OPTIONAL;
-    }
+    Rule.TEST_FUNCTIONS[name].optional = OPTIONAL;
   }
 }
 

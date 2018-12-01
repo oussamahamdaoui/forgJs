@@ -3,14 +3,17 @@
 <testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\src\index.js">
 <testcase time="0" name="C:\Users\oussama\Documents\forgJs\src\index.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\src\Rule.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\src\Rule.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\src\Rule\index.js">
+<testcase time="0" name="C:\Users\oussama\Documents\forgJs\src\Rule\index.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\src\testfunctions.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\src\testfunctions.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\src\testFunctions\index.js">
+<testcase time="0" name="C:\Users\oussama\Documents\forgJs\src\testFunctions\index.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\src\Validator.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\src\Validator.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\src\Validator\index.js">
+<testcase time="0" name="C:\Users\oussama\Documents\forgJs\src\Validator\index.js" />
+</testsuite>
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\src\Validator\util.js">
+<testcase time="0" name="C:\Users\oussama\Documents\forgJs\src\Validator\util.js" />
 </testsuite>
 <testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\test\array.test.js">
 <testcase time="0" name="C:\Users\oussama\Documents\forgJs\test\array.test.js" />
