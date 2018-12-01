@@ -31,6 +31,25 @@ Install it via npm by runing `npm i @cesium133/forgjs`
   }); /// returns true
 
   ```
+## Error handeling
+
+You can get custom message errors by doing this:
+
+```javascript 
+const vComplexe = new Validator({
+    age: new Rule({
+      type: 'int', min: 18, max: 99,
+    }, 'age must be integer and between 18 and 99'),
+    dateOfBirth: new Rule({ type: 'date' }, 'date must be a date'),
+  });
+
+  vComplexe.getErrors({
+    age: 16,
+    dateOfBirth: 123,
+  }); // ['age must be integer and between 18 and 99', 'date must be a date']
+
+```
+
 # Rules
 
 A `Rule` object validates a single value, it can be used like this: 
@@ -158,6 +177,5 @@ Creating a new type is done using the Rule class like this:
 # Left TO DO
 
 - [ ] Add function type
-- [ ] Add error managment
+- [x] Add error managment
 - [ ] Type managment on props
-
