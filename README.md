@@ -205,6 +205,7 @@ Creating a new type is done using the Rule class like this:
 - [x] Add error managment
 - [x] Add multiple types possible
 - [ ] Add multiple custom functions
+- [ ] Add oneOf to primitif types
 
 # Contact
 
