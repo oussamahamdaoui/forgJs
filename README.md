@@ -102,6 +102,31 @@ A `Rule` object validates a single value, it can be used like this:
 
 The `of` rule checks every element of the array against the rule.
 
+## function type
+
+* result
+
+To explain resut prop what etter than an example:
+
+```javascript 
+  const { Validator, Rule } = require('@cesium133/forgjs');
+
+  function someFunctionThatReturnsAnInt(int) {
+    return int * 5;
+  }
+
+  const functionTest = new Rule({
+    type: 'function',
+    result: {
+      of: 5,
+      toBe: new Rule('int'),
+    },
+  }, null);
+
+  functionTest.test(someFunctionThatReturnsAnInt); /// returns true;
+
+  ```
+
 ## Common properties:
 
 Every type has these properties: 
@@ -174,10 +199,13 @@ Creating a new type is done using the Rule class like this:
 
 ```
 
-# Left TO DO
+# Left TO DO for next relese
 
-- [ ] Add function type
+- [x] Add function type
 - [x] Add error managment
 - [ ] Type managment on props
+- [x] Add multiple types possible
 
 # Contact
+
+Folow me on twitter at [@forg_js](https://twitter.com/forg_js "@forg_js")

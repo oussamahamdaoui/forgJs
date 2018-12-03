@@ -34,6 +34,13 @@ const TEST_FUNCTIONS = {
     type: val => Number(val) === val && val % 1 !== 0,
   },
 
+  number: {
+    min: (val, min) => val - min > 0,
+    max: (val, max) => val - max < 0,
+    equal: (val, equal) => val === equal,
+    type: val => Number(val) === val,
+  },
+
   array: {
     of: (arr, rule) => {
       let ret = true;
@@ -47,6 +54,11 @@ const TEST_FUNCTIONS = {
     notEmpty: val => val.length !== 0,
     length: (val, len) => val.length === len,
     type: val => val instanceof Array,
+  },
+
+  function: {
+    type: val => val && {}.toString.call(val) === '[object Function]',
+    result: (val, obj) => obj.toBe.test(val(obj.of)),
   },
 };
 
