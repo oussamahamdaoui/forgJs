@@ -199,14 +199,14 @@ Creating a new type is done using the Rule class like this:
 
 ```
 
-# Left TO DO for next relese
+# Left TO DO for next release
 
 - [x] Add function type
 - [x] Add error managment
 - [x] Add multiple types possible
 - [ ] Add multiple custom functions
 - [ ] Add oneOf to primitif types
-- [ ] Add twitter bot for releses
+- [ ] Add twitter bot for releases
 
 # Contact
 
