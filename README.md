@@ -7,7 +7,7 @@
 [![codecov](https://codecov.io/gh/oussamahamdaoui/forgJs/branch/master/graph/badge.svg)](https://codecov.io/gh/oussamahamdaoui/forgJs)
 
 
-ForgJs is a javascript lightweight object validator. Go check the Quick start section and start coding with love :heart:
+ForgJs is a JavaScript lightweight object validator. Go check the Quick start section and start coding with love :heart:
 
 # Quick start
 
@@ -106,7 +106,7 @@ The `of` rule checks every element of the array against the rule.
 
 * result
 
-To explain resut prop what etter than an example:
+To explain result, what's better than an example:
 
 ```javascript 
   const { Validator, Rule } = require('@cesium133/forgjs');
@@ -149,7 +149,7 @@ intRule.test(); // returns true
 ```
 ### custom
 
-Custom allaws you to write your own rule, an exemple is better than a long explenation:
+Custom allows you to write your own rule, an example is better than a long explanation:
 
 ```javascript
   const { Validator, Rule } = require('@cesium133/forgjs');
