@@ -126,6 +126,26 @@ To explain resut prop what etter than an example:
   functionTest.test(someFunctionThatReturnsAnInt); /// returns true;
 
   ```
+## Multiple types:
+
+You can check for multiple types with `OR` or `AND` operators like this:
+
+```javascript
+  const intRule = new Rule({
+    type: 'int|float|number',
+  }, null);
+
+  intRule.test(2) // returns true
+```
+This means the test should verify the `int`, `float` or `number` rule
+
+```javascript
+  const intRule = new Rule({
+    type: 'int&number',
+  }, null);
+  intRule.test(2.1); // returns false
+```
+The result doesn't match the `int` rule
 
 ## Common properties:
 

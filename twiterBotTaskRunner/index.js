@@ -12,10 +12,10 @@ const json = require('../package.json');
 
 const message = `Hey there! The new release ${json.version} of ForgJs is available on #github and #npm.
 Have fun and code with love ❤
-P.S. Im a robot`;
+P.S. Im a robot running on @circleci`;
 
 T.post('statuses/update', { status: message }, (err) => {
   if (!err) {
-    console.log('Grate job');
+    console.log('Grate job'); // eslint-disable-line
   }
 });
