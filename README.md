@@ -31,7 +31,7 @@ Install it via npm by runing `npm i @cesium133/forgjs`
   }); /// returns true
 
   ```
-## Error handleing
+## Error handling
 
 You can get custom message errors by doing this:
 
