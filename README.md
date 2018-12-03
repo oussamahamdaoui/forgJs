@@ -11,7 +11,7 @@ ForgJs is a JavaScript lightweight object validator. Go check the Quick start se
 
 # Quick start
 
-Install it via npm by runing `npm i @cesium133/forgjs`
+Install it via npm by running `npm i @cesium133/forgjs`
 
 ## Your first validator:
 
@@ -33,7 +33,7 @@ Install it via npm by runing `npm i @cesium133/forgjs`
   ```
 ## Error handling
 
-You can get custom message errors by doing this:
+You can get custom error messages by doing this:
 
 ```javascript 
 const vComplexe = new Validator({
@@ -156,7 +156,7 @@ Every type has these properties:
 ### optional
 
 If optional is set to `true` the element is optional and an `undefined` value is considered correct.
-Exemple:
+Example:
 
 ```javascript
 const { Validator, Rule } = require('@cesium133/forgjs');
