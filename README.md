@@ -222,12 +222,12 @@ Creating a new type is done using the Rule class like this:
 # Left TO DO for next release
 
 - [x] Add function type
-- [x] Add error managment
+- [x] Add error management
 - [x] Add multiple types possible
 - [ ] Add multiple custom functions
-- [ ] Add oneOf to primitif types
+- [ ] Add oneOf to primitive types
 - [ ] Add twitter bot for releases
 
 # Contact
 
-Folow me on twitter at [@forg_js](https://twitter.com/forg_js "@forg_js")
+Follow me on twitter at [@forg_js](https://twitter.com/forg_js "@forg_js")
