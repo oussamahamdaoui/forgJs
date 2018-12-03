@@ -231,3 +231,4 @@ Creating a new type is done using the Rule class like this:
 # Contact
 
 Folow me on twitter at [@forg_js](https://twitter.com/forg_js "@forg_js")
+
