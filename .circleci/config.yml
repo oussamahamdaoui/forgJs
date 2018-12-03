@@ -52,6 +52,9 @@ jobs:
       - run:
           name: Publish package
           command: npm publish --public
+      - run:
+          name: Tweet
+          command: npm run tweet
             
 workflows:
   version: 2

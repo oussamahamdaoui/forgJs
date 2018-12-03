@@ -14,12 +14,14 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jest": "^22.1.0",
     "jest": "^23.6.0",
-    "jest-junit": "^5.2.0"
+    "jest-junit": "^5.2.0",
+    "twit": "^2.2.11"
   },
   "scripts": {
     "test": "jest",
     "lint": "./node_modules/.bin/eslint src/** test/** --format junit -o reports/junit/js-lint-results.xml",
-    "codecov": "codecov"
+    "codecov": "codecov",
+    "tweet":"node twiterBotTaskRunner"
   },
   "repository": {
     "type": "git",
