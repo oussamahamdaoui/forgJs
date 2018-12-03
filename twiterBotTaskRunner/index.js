@@ -10,7 +10,7 @@ const T = new Twit({
 });
 const json = require('../package.json');
 
-const message = `Hey there! The new relese ${json.version} of ForgJs is available on #github and #npm.
+const message = `Hey there! The new release ${json.version} of ForgJs is available on #github and #npm.
 Have fun and code with love ❤
 P.S. Im a robot`;
 
