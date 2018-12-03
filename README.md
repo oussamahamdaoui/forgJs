@@ -204,6 +204,7 @@ Creating a new type is done using the Rule class like this:
 - [x] Add function type
 - [x] Add error managment
 - [x] Add multiple types possible
+- [ ] Add multiple custom functions
 
 # Contact
 
