@@ -122,6 +122,7 @@ To explain result, what's better than an example:
       toBe: new Rule('int'),
     },
   }, null);
+  
 
   functionTest.test(someFunctionThatReturnsAnInt); /// returns true;
 
