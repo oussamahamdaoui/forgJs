@@ -218,15 +218,47 @@ Creating a new type is done using the Rule class like this:
   customInteger.test(200) // returns false
 
 ```
+# How to contribute
+
+Thank you everyone for contributing to make this code better, if you have suggestions or ideas to improuve the code please feel free to leave a comment here #29.
+Rulles:
+
+### 1 Please use this template wich will help developers to test and better understend your request:
+
+```javascript 
+const someRule= new Rule({
+    type: 'yourType',
+    prop1: val1,
+    prop2: val2, ...
+  }, null);
+
+  someRule.test(validValue) // returns true
+  someRule.test(invalidValue) // returns false
+```
+
+### 2 Please if you think a comment is a good feature to be added like the coment insted of creating a  new one.
+
+### 3 Before submitting a new comment check if the same comment is not allready present
+
+### 4 If you submit a PR (pull request) and you only change the Readme plese add `[ci skip]` to your commit message
+
+### 5 If you have any questions ask them in the FAQ
+
+# 6 Please have fun, and if you feel like not following the rulles then don't  follow them
+
+code with love :heart: 
 
 # Left TO DO for next release
 
 - [x] Add function type
 - [x] Add error management
 - [x] Add multiple types possible
-- [ ] Add multiple custom functions
 - [ ] Add oneOf to primitive types
 - [ ] Add twitter bot for releases
+- [ ] Add password type
+- [ ] Add Email type
+- [ ] Add Link type
+
 
 # Contact
 
