@@ -1,22 +1,48 @@
 const CUSTOM = (val, f, obj) => f(val, obj);
 const OPTIONAL = (val, state) => val === undefined && state === true;
 
+const NUMBER = {
+  min: (val, min) => val - min > 0,
+  max: (val, max) => val - max < 0,
+  equal: (val, equal) => val === equal,
+  type: val => Number(val) === val,
+};
+
+const STRING = {
+  minLength: (val, min) => val.length - min > 0,
+  maxLength: (val, max) => val.length - max < 0,
+  equal: (val, equal) => val === equal,
+  match: (val, regex) => regex.test(val),
+  notEmpty: val => val !== '',
+  type: val => typeof val === 'string' || val instanceof String,
+};
 
 const TEST_FUNCTIONS = {
   int: {
-    min: (val, min) => val - min > 0,
-    max: (val, max) => val - max < 0,
-    equal: (val, equal) => val === equal,
+    ...NUMBER,
     type: val => Number.isInteger(val),
   },
 
+  float: {
+    ...NUMBER,
+    type: val => Number(val) === val && val % 1 !== 0,
+  },
+
+  number: {
+    ...NUMBER,
+  },
+
   string: {
-    minLength: (val, min) => val.length - min > 0,
-    maxLength: (val, max) => val.length - max < 0,
-    equal: (val, equal) => val === equal,
-    match: (val, regex) => regex.test(val),
-    notEmpty: val => val !== '',
-    type: val => typeof val === 'string' || val instanceof String,
+    ...STRING,
+  },
+
+  password: {
+    ...STRING,
+    numbers: (val, number) => val.match(/(\d)/g) && val.match(/(\d)/g).length >= number,
+    uppercase: (val, number) => val.match(/([A-Z])/g) && val.match(/([A-Z])/g).length >= number,
+    specialChars: (val, number) => val.match(/([^a-zA-Z])/g) && val.match(/([^a-zA-Z])/g).length >= number,
+    matcesOnOf: (val, array) => true,
+    matchesAllOf: (val, arr) => true,
   },
 
   date: {
@@ -27,19 +53,6 @@ const TEST_FUNCTIONS = {
     type: val => val instanceof Date,
   },
 
-  float: {
-    min: (val, min) => val - min > 0,
-    max: (val, max) => val - max < 0,
-    equal: (val, equal) => val === equal,
-    type: val => Number(val) === val && val % 1 !== 0,
-  },
-
-  number: {
-    min: (val, min) => val - min > 0,
-    max: (val, max) => val - max < 0,
-    equal: (val, equal) => val === equal,
-    type: val => Number(val) === val,
-  },
 
   array: {
     of: (arr, rule) => {
