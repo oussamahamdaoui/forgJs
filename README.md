@@ -6,16 +6,15 @@
 [![CircleCI (all branches)](https://img.shields.io/circleci/project/github/oussamahamdaoui/forgJs.svg)](https://circleci.com/gh/oussamahamdaoui/forgJs)
 [![codecov](https://codecov.io/gh/oussamahamdaoui/forgJs/branch/master/graph/badge.svg)](https://codecov.io/gh/oussamahamdaoui/forgJs)
 
-
 ForgJs is a JavaScript lightweight object validator. Go check the Quick start section and start coding with love :heart:
 
 # Quick start
 
 Install it via npm by running `npm i @cesium133/forgjs`
 
-## Your first validator:
+## Your first validator
 
-```javascript 
+```javascript
   const { Validator, Rule } = require('@cesium133/forgjs');
 
   const emailRule = new Rule({
@@ -49,11 +48,12 @@ Install it via npm by running `npm i @cesium133/forgjs`
   }); /// returns true
 
   ```
+
 ## Error handling
 
 You can get custom error messages by doing this:
 
-```javascript 
+```javascript
 const vComplexe = new Validator({
     age: new Rule({
       type: 'int', min: 18, max: 99,
@@ -81,6 +81,7 @@ A `Rule` object validates a single value, it can be used like this:
 
   floatRule.test(2.001); /// returns true;
 ```
+
 **The only required value is `type`!**
 
 > You can make a rule by simply passing a string if you only need to check the type : `new Rule("int");`
@@ -106,8 +107,8 @@ A `Rule` object validates a single value, it can be used like this:
 * equal (int)
 * match: (regex)
 * notEmpty (bool)
-* user
-* domain
+* user (`function(user)`)
+* domain (`function(domain)`)
 
 ```javascript
   const emailRule = new Rule({
@@ -143,7 +144,27 @@ A `Rule` object validates a single value, it can be used like this:
   passwordRule.test('@_-bddcd6A'); // returns true
 ```
 
-## date type 
+## url
+
+* minLength (int)
+* maxLength (int)
+* equal (int)
+* match: (regex)
+* notEmpty (bool)
+* protocol (`function(protocol)`)
+* domain (`function(domain)`)
+
+```javascript
+  const urlRule = new Rule({
+    type: 'url',
+    protocol: prot => prot === 'https',
+    domain: domain => domain === 'google.fr',
+  }, null);
+
+  urlRule.test('https://google.fr'); // returns true
+```
+
+## date type
 
 * after (date)
 * before (date)
@@ -170,7 +191,7 @@ The `of` rule checks every element of the array against the rule.
 
 To explain result, what's better than an example:
 
-```javascript 
+```javascript
   const { Validator, Rule } = require('@cesium133/forgjs');
 
   function someFunctionThatReturnsAnInt(int) {
@@ -188,7 +209,8 @@ To explain result, what's better than an example:
   functionTest.test(someFunctionThatReturnsAnInt); /// returns true;
 
   ```
-## Multiple types:
+
+## Multiple types
 
 You can check for multiple types with `OR` or `AND` operators like this:
 
@@ -199,6 +221,7 @@ You can check for multiple types with `OR` or `AND` operators like this:
 
   intRule.test(2) // returns true
 ```
+
 This means the test should verify the `int`, `float` or `number` rule
 
 ```javascript
@@ -207,11 +230,13 @@ This means the test should verify the `int`, `float` or `number` rule
   }, null);
   intRule.test(2.1); // returns false
 ```
+
 The result doesn't match the `int` rule
 
-## Common properties:
+## Common properties
 
-Every type has these properties: 
+Every type has these properties:
+
 * optional
 * custom
 
@@ -229,6 +254,7 @@ const intRule = new Rule({
   }, null);
 intRule.test(); // returns true
 ```
+
 ### custom
 
 Custom allows you to write your own rule, an example is better than a long explanation:
@@ -256,7 +282,8 @@ Custom allows you to write your own rule, an example is better than a long expla
   }); // returns true
 
 ```
-# Make a new type:
+
+# Make a new type
 
 Creating a new type is done using the Rule class like this:
 
@@ -280,14 +307,15 @@ Creating a new type is done using the Rule class like this:
   customInteger.test(200) // returns false
 
 ```
+
 # How to contribute
 
 Thank you everyone for contributing to make this code better, if you have suggestions or ideas to improve the code please feel free to leave a comment here #29.
 Rules:
 
-### 1 Please use this template which will help developers to test and better understand your request:
+### 1 Please use this template which will help developers to test and better understand your request
 
-```javascript 
+```javascript
 const someRule= new Rule({
     type: 'yourType',
     prop1: val1,
@@ -308,19 +336,18 @@ const someRule= new Rule({
 
 # 6 Please have fun, and if you feel like not following the rules then don't follow them
 
-code with love :heart: 
+code with love :heart:
 
 # Left TO DO for next release
 
-- [x] Add function type
-- [x] Add error management
-- [x] Add multiple types possible
-- [ ] Add oneOf to primitive types
-- [ ] Add twitter bot for releases
-- [x] Add password type
-- [x] Add Email type
-- [ ] Add Link type
-
+* [x] Add function type
+* [x] Add error management
+* [x] Add multiple types possible
+* [ ] Add oneOf to primitive types
+* [ ] Add twitter bot for releases
+* [x] Add password type
+* [x] Add Email type
+* [x] Add Link type
 
 # Contact
 
