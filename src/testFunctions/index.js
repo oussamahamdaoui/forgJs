@@ -38,11 +38,33 @@ const TEST_FUNCTIONS = {
 
   password: {
     ...STRING,
-    numbers: (val, number) => val.match(/(\d)/g) && val.match(/(\d)/g).length >= number,
-    uppercase: (val, number) => val.match(/([A-Z])/g) && val.match(/([A-Z])/g).length >= number,
-    specialChars: (val, number) => val.match(/([^a-zA-Z])/g) && val.match(/([^a-zA-Z])/g).length >= number,
-    matcesOnOf: (val, array) => true,
-    matchesAllOf: (val, arr) => true,
+    numbers: (val, number) => !!val.match(/(\d)/g) && val.match(/(\d)/g).length >= number,
+    uppercase: (val, number) => !!val.match(/([A-Z])/g) && val.match(/([A-Z])/g).length >= number,
+    specialChars: (val, number) => !!val.match(/([^a-zA-Z])/g) && val.match(/([^a-zA-Z])/g).length >= number,
+    matcesOneOf: (val, arr) => {
+      for (let i = 0; i < arr.length; i += 1) {
+        if (val.indexOf(arr[i]) !== -1) {
+          return true;
+        }
+      }
+      return false;
+    },
+    matchesAllOf: (val, arr) => {
+      for (let i = 0; i < arr.length; i += 1) {
+        if (val.indexOf(arr[i]) === -1) {
+          return false;
+        }
+      }
+      return true;
+    },
+  },
+
+  email: {
+    ...STRING,
+    type: val => (typeof val === 'string' || val instanceof String) && /\S+@\S+\.\S+/.test(val),
+    user: (val, f) => f(val.match(/(\S+)@\S+\.\S+/)[1]),
+    domain: (val, f) => f(val.match(/\S+@(\S+)\.\S+/)[1]),
+
   },
 
   date: {
