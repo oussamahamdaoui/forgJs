@@ -31,7 +31,7 @@ test('uppercase', () => {
 test('matcesOneOf', () => {
   const passwordRule = new Rule({
     type: 'password',
-    matcesOneOf: ['@', '_', '-'],
+    matchesOneOf: ['@', '_', '-'],
   }, null);
 
   expect(passwordRule.test('AAbd_AdcdAA')).toBe(true);
@@ -40,7 +40,7 @@ test('matcesOneOf', () => {
 test('matcesOneOf without mach', () => {
   const passwordRule = new Rule({
     type: 'password',
-    matcesOneOf: ['@', '_', '-'],
+    matchesOneOf: ['@', '_', '-'],
   }, null);
 
   expect(passwordRule.test('AAbdAdcdAA')).toBe(false);
@@ -79,7 +79,7 @@ test('good password', () => {
     minLength: 8,
     uppercase: 1,
     numbers: 1,
-    matcesOneOf: ['@', '_', '-', '.', '!'],
+    matchesOneOf: ['@', '_', '-', '.', '!'],
   }, null);
 
   expect(passwordRule.test('@_-bddcd6A')).toBe(true);

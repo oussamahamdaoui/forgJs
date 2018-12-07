@@ -81,6 +81,50 @@ A `Rule` object validates a single value, it can be used like this:
 * match: (regex)
 * notEmpty (bool)
 
+## email
+
+* minLength (int)
+* maxLength (int)
+* equal (int)
+* match: (regex)
+* notEmpty (bool)
+* user
+* domain
+
+```javascript
+  const emailRule = new Rule({
+    type: 'email',
+    user: user => user === 'dedede',
+    domain: domain => ['outlook', 'gmail', 'yahoo'].indexOf(domain) !== -1,
+  }, null);
+
+  emailRule.test('dedede@gmail.fr'); // returns true
+```
+
+## password
+
+* minLength (int)
+* maxLength (int)
+* equal (int)
+* match: (regex)
+* notEmpty (bool)
+* uppercase (int)
+* number (int)
+* mathesOneOf (Array)
+* matchesAllOf (Array)
+
+```javascript
+  const passwordRule = new Rule({
+    type: 'password',
+    minLength: 8,
+    uppercase: 1,
+    numbers: 1,
+    matchesOneOf: ['@', '_', '-', '.', '!'],
+  }, null);
+
+  passwordRule.test('@_-bddcd6A'); // returns true
+```
+
 ## date type 
 
 * after (date)
@@ -255,8 +299,8 @@ code with love :heart:
 - [x] Add multiple types possible
 - [ ] Add oneOf to primitive types
 - [ ] Add twitter bot for releases
-- [ ] Add password type
-- [ ] Add Email type
+- [x] Add password type
+- [x] Add Email type
 - [ ] Add Link type
 
 
