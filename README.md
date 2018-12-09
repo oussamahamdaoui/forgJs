@@ -86,17 +86,17 @@ A `Rule` object validates a single value, it can be used like this:
 
 > You can make a rule by simply passing a string if you only need to check the type : `new Rule("int");`
 
-## int type
+## int
 
 * min (int)
 * max (int)
 * equal (int)
 
-## boolean type
+## boolean
 
 * toBe (boolean)
 
-## string type
+## string
 
 * minLength (int)
 * maxLength (int)
@@ -168,20 +168,20 @@ A `Rule` object validates a single value, it can be used like this:
   urlRule.test('https://google.fr'); // returns true
 ```
 
-## date type
+## date
 
 * after (date)
 * before (date)
 * between (Array of dates like this [date, date])
 * equal (date)
 
-## float type
+## float
 
 * min (Number)
 * max (Number)
 * equal (float)
 
-## array type
+## array
 
 * of (Rule or Validator object)
 * notEmpty (bool)
@@ -189,7 +189,7 @@ A `Rule` object validates a single value, it can be used like this:
 
 The `of` rule checks every element of the array against the rule.
 
-## function type
+## function
 
 * result
 
@@ -362,8 +362,8 @@ code with love :heart:
 * [ ] Add twitter bot for releases
 * [x] Add password type
 * [x] Add Email type
-* [x] Add Link type
-
+* [x] Add link type
+* [x] Add boolean type
 # Contact
 
 Follow me on twitter at [@forg_js](https://twitter.com/forg_js "@forg_js")
