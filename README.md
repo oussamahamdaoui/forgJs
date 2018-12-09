@@ -5,6 +5,7 @@
 ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
 [![CircleCI (all branches)](https://img.shields.io/circleci/project/github/oussamahamdaoui/forgJs.svg)](https://circleci.com/gh/oussamahamdaoui/forgJs)
 [![codecov](https://codecov.io/gh/oussamahamdaoui/forgJs/branch/master/graph/badge.svg)](https://codecov.io/gh/oussamahamdaoui/forgJs)
+[![Maintainability](https://api.codeclimate.com/v1/badges/7bb3657e4e4111f22f2f/maintainability)](https://codeclimate.com/github/oussamahamdaoui/forgJs/maintainability)
 
 ForgJs is a JavaScript lightweight object validator. Go check the Quick start section and start coding with love :heart:
 
