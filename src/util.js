@@ -11,26 +11,28 @@ const OR = (v1, v2) => v1 || v2;
 
 const looseEqual = (a, b) => {
   if (a === b) return true;
+
   const isObjectA = isObject(a);
   const isObjectB = isObject(b);
   const isArrayA = isArray(a);
   const isArrayB = isArray(b);
+  let ret = false;
 
   if (isArrayA && isArrayB) {
-    return a.length === b.length && a.every((e, i) => looseEqual(e, b[i]));
+    ret = a.length === b.length && a.every((e, i) => looseEqual(e, b[i]));
   }
 
   if (a instanceof Date && b instanceof Date) {
-    return a.getTime() === b.getTime();
+    ret = a.getTime() === b.getTime();
   }
 
   if (isObjectA && isObjectB) {
     const keysA = Object.keys(a);
     const keysB = Object.keys(b);
-    return keysA.length === keysB.length && keysA.every(key => looseEqual(a[key], b[key]));
+    ret = keysA.length === keysB.length && keysA.every(key => looseEqual(a[key], b[key]));
   }
 
-  return false;
+  return ret;
 };
 
 
