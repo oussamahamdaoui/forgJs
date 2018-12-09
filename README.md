@@ -92,6 +92,10 @@ A `Rule` object validates a single value, it can be used like this:
 * max (int)
 * equal (int)
 
+## boolean type
+
+* toBe (boolean)
+
 ## string type
 
 * minLength (int)
