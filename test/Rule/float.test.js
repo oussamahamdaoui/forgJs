@@ -37,3 +37,19 @@ test('type float returns true when two floats are equal', () => {
   }, null);
   expect(floatRule.test(100.1)).toBe(true);
 });
+
+test('type float returns true when is one of array', () => {
+  const floatRule = new Rule({
+    type: 'float',
+    oneOf: [3.5, 100.1, 7.2, 0.1],
+  }, null);
+  expect(floatRule.test(100.1)).toBe(true);
+});
+
+test('type float returns false when is not one of array', () => {
+  const floatRule = new Rule({
+    type: 'float',
+    oneOf: [100.01, 7.2, 0.1],
+  }, null);
+  expect(floatRule.test(100.1)).toBe(false);
+});

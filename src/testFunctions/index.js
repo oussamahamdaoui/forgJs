@@ -1,3 +1,10 @@
+const {
+  isString,
+  isArray,
+  looseEqual,
+  URL_REGEX,
+} = require('../util');
+
 const CUSTOM = (val, f, obj) => f(val, obj);
 const OPTIONAL = (val, state) => val === undefined && state === true;
 
@@ -14,10 +21,17 @@ const STRING = {
   equal: (val, equal) => val === equal,
   match: (val, regex) => regex.test(val),
   notEmpty: val => val !== '',
-  type: val => typeof val === 'string' || val instanceof String,
+  type: isString,
 };
 
-const URL_REGEX = /^\(?(?:(http|https|ftp):\/\/)?(?:((?:[^\W\s]|\.|-|[:]{1})+)@{1})?((?:www.)?(?:[^\W\s]|\.|-)+[\.][^\W\s]{2,4}|localhost(?=\/)|\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})(?::(\d*))?([\/]?[^\s\?]*[\/]{1})*(?:\/?([^\s\n\?\[\]\{\}\#]*(?:(?=\.)){1}|[^\s\n\?\[\]\{\}\.\#]*)?([\.]{1}[^\s\?\#]*)?)?(?:\?{1}([^\s\n\#\[\]]*))?([\#][^\s\n]*)?\)?/; // eslint-disable-line
+const oneOf = (val, array) => {
+  for (let i = 0; i < array.length; i += 1) {
+    if (looseEqual(array[i], val)) {
+      return true;
+    }
+  }
+  return false;
+};
 
 const TEST_FUNCTIONS = {
   int: {
@@ -63,7 +77,7 @@ const TEST_FUNCTIONS = {
 
   email: {
     ...STRING,
-    type: val => (typeof val === 'string' || val instanceof String) && /\S+@\S+\.\S+/.test(val),
+    type: val => isString(val) && /\S+@\S+\.\S+/.test(val),
     user: (val, f) => f(val.match(/(\S+)@\S+\.\S+/)[1]),
     domain: (val, f) => f(val.match(/\S+@(\S+)\.\S+/)[1]),
 
@@ -71,7 +85,7 @@ const TEST_FUNCTIONS = {
 
   url: {
     ...STRING,
-    type: val => (typeof val === 'string' || val instanceof String) && URL_REGEX.test(val),
+    type: val => isString(val) && URL_REGEX.test(val),
     domain: (val, f) => f(val.match(URL_REGEX)[3]),
     protocol: (val, f) => f(val.match(URL_REGEX)[1]),
   },
@@ -97,7 +111,7 @@ const TEST_FUNCTIONS = {
     },
     notEmpty: val => val.length !== 0,
     length: (val, len) => val.length === len,
-    type: val => val instanceof Array,
+    type: isArray,
   },
 
   function: {
@@ -109,6 +123,7 @@ const TEST_FUNCTIONS = {
 Object.keys(TEST_FUNCTIONS).forEach((key) => {
   TEST_FUNCTIONS[key].custom = CUSTOM;
   TEST_FUNCTIONS[key].optional = OPTIONAL;
+  TEST_FUNCTIONS[key].oneOf = oneOf;
 });
 
 module.exports = { TEST_FUNCTIONS, OPTIONAL };

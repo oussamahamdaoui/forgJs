@@ -1,8 +1,9 @@
 const { TEST_FUNCTIONS, OPTIONAL } = require('../testFunctions');
+const { AND, OR } = require('./../util');
 
 const OPERATORS = {
-  '&': (v1, v2) => v1 && v2,
-  '|': (v1, v2) => v1 || v2,
+  '&': AND,
+  '|': OR,
 };
 
 class Rule {
