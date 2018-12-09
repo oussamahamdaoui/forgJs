@@ -27,3 +27,17 @@ test('looseEqual object true', () => {
 
   expect(looseEqual(a, b)).toBe(true);
 });
+
+test('looseEqual object and array fals', () => {
+  const a = {
+    a: 'hello',
+    b: 'cccc',
+  };
+
+  const b = [
+    'hello',
+    'cccc',
+  ];
+
+  expect(looseEqual(a, b)).toBe(false);
+});

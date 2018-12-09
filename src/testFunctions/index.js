@@ -24,6 +24,11 @@ const STRING = {
   type: isString,
 };
 
+const BOOLEAN = {
+  type: val => val === true || val === false,
+  toBe: (val, bool) => val === bool,
+};
+
 const oneOf = (val, array) => {
   for (let i = 0; i < array.length; i += 1) {
     if (looseEqual(array[i], val)) {
@@ -50,6 +55,10 @@ const TEST_FUNCTIONS = {
 
   string: {
     ...STRING,
+  },
+
+  boolean: {
+    ...BOOLEAN,
   },
 
   password: {
