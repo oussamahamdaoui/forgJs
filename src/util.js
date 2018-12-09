@@ -13,19 +13,23 @@ const looseEqual = (a, b) => {
   if (a === b) return true;
   const isObjectA = isObject(a);
   const isObjectB = isObject(b);
-  if (isObjectA && isObjectB) {
-    const isArrayA = isArray(a);
-    const isArrayB = isArray(b);
-    if (isArrayA && isArrayB) {
-      return a.length === b.length && a.every((e, i) => looseEqual(e, b[i]));
-    } if (a instanceof Date && b instanceof Date) {
-      return a.getTime() === b.getTime();
-    } if (!isArrayA && !isArrayB) {
-      const keysA = Object.keys(a);
-      const keysB = Object.keys(b);
-      return keysA.length === keysB.length && keysA.every(key => looseEqual(a[key], b[key]));
-    }
+  const isArrayA = isArray(a);
+  const isArrayB = isArray(b);
+
+  if (isArrayA && isArrayB) {
+    return a.length === b.length && a.every((e, i) => looseEqual(e, b[i]));
   }
+
+  if (a instanceof Date && b instanceof Date) {
+    return a.getTime() === b.getTime();
+  }
+
+  if (isObjectA && isObjectB) {
+    const keysA = Object.keys(a);
+    const keysB = Object.keys(b);
+    return keysA.length === keysB.length && keysA.every(key => looseEqual(a[key], b[key]));
+  }
+
   return false;
 };
 
