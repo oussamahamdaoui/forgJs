@@ -239,6 +239,7 @@ Every type has these properties:
 
 * optional
 * custom
+* oneOf
 
 ### optional
 
@@ -281,6 +282,16 @@ Custom allows you to write your own rule, an example is better than a long expla
     array: ['1'],
   }); // returns true
 
+```
+### oneOf
+
+One of checks if the element is in a array
+```javascript
+  const floatRule = new Rule({
+    type: 'float',
+    oneOf: [3.5, 100.1, 7.2, 0.1],
+  }, null);
+  floatRule.test(100.1); // returns true
 ```
 
 # Make a new type
@@ -343,7 +354,7 @@ code with love :heart:
 * [x] Add function type
 * [x] Add error management
 * [x] Add multiple types possible
-* [ ] Add oneOf to primitive types
+* [x] Add oneOf to primitive types
 * [ ] Add twitter bot for releases
 * [x] Add password type
 * [x] Add Email type

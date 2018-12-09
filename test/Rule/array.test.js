@@ -65,3 +65,11 @@ test('returns true when elements verify the validator', () => {
   });
   expect(arrayRule.test([{ name: 'Meee', age: 23 }])).toBe(true);
 });
+
+test('returns true when array is one of validator', () => {
+  const arrayRule = new Rule({
+    type: 'array',
+    oneOf: [[{ name: 'Meee', age: 23 }], [{ name: 'haaa', age: 27 }]],
+  });
+  expect(arrayRule.test([{ name: 'Meee', age: 23 }])).toBe(true);
+});

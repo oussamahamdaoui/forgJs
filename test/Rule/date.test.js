@@ -63,3 +63,13 @@ test('returns true when two dates are equal', () => {
 
   expect(dateRule.test(date1)).toBe(true);
 });
+
+test('returns true when date is one of array', () => {
+  const date1 = new Date(2018, 11, 3);
+  const dateRule = new Rule({
+    type: 'date',
+    oneOf: [new Date(2018, 11, 3), new Date()],
+  }, null);
+
+  expect(dateRule.test(date1)).toBe(true);
+});
