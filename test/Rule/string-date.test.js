@@ -5,7 +5,7 @@ test('type test not valid string is false', () => {
     type: 'string-date',
   }, null);
 
-  expect(stringDate.test([])).toBe(false);
+  expect(stringDate.test(new Date(2018, 11, 1))).toBe(false);
 });
 
 

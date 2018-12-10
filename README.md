@@ -85,7 +85,7 @@ A `Rule` object validates a single value, it can be used like this:
 
 **The only required value is `type`!**
 
-> You can make a rule by simply passing a string if you only need to check the type : `new Rule("int");`
+> You can make a rule by simply passing a string if you only need to check the type : `new Rule('int');`
 
 ## int
 
@@ -214,6 +214,49 @@ To explain result, what's better than an example:
   functionTest.test(someFunctionThatReturnsAnInt); /// returns true;
 
   ```
+## string-int, string-float, string-date, string-boolean
+
+These types 'inherit' from string, they have both the properties, here are some examples:
+
+### string-int
+
+```javascript
+const stringInt = new Rule({
+  type: 'string-int',
+  minLength: 2,
+  min: 5,
+}, null);
+
+stringInt.test(2) // returns false 2 is not a string
+stringInt.test('2a') // returns false '2a' is not a int
+stringInt.test('2.1') // returns false '2.1' is not a int
+stringInt.test('5') // returns false lenght of '5' is smaller than 2
+stringInt.test('50') // returns true
+```
+### string-boolean
+
+```javascript
+const stringBoolean = new Rule({
+  type: 'string-boolean',
+  toBe: true
+}, null);
+
+stringBoolean.test(true) // returns false true is not a boolean
+stringBoolean.test('false') // returns false 'false' is not true
+stringBoolean.test('true') // returns true
+
+```
+
+```javascript
+const stringDate = new Rule({
+  type: 'string-date',
+  after: new Date(2019, 11, 1),
+}, null);
+
+stringDate.test(new Date(2018, 11, 1)) // returns false new Date(2018, 11, 1) is not a string
+stringDate.test('some string') // returns false 'some string' is not a valid date
+stringDate.test('2018-12-17') // returns false '2018-12-17' is not after new Date(2019, 11, 1)
+```
 
 ## Multiple types
 
@@ -356,15 +399,6 @@ code with love :heart:
 
 # Left TO DO for next release
 
-* [x] Add function type
-* [x] Add error management
-* [x] Add multiple types possible
-* [x] Add oneOf to primitive types
-* [ ] Add twitter bot for releases
-* [x] Add password type
-* [x] Add Email type
-* [x] Add link type
-* [x] Add boolean type
 # Contact
 
 Follow me on twitter at [@forg_js](https://twitter.com/forg_js "@forg_js")
