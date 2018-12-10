@@ -270,10 +270,14 @@ const stringDate = new Rule({
 }, null);
 
 stringDate.test('2019-11-01') // returns false
+stringDate.test('2019-11-01T00:00') // returns true
+
 
 // this is because:
 
 new Date(2019, 10, 1) - new Date('2019-11-01') // equals  3600000 thats exactly 1 hour
+
+new Date(2019, 10, 1) - new Date('2019-11-01T00:00') // equals 0
 
 ```
 
