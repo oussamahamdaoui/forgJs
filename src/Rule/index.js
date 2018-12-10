@@ -6,8 +6,6 @@ const OPERATORS = {
   '|': OR,
 };
 
-TEST_FUNCTIONS['string-int'];
-
 class Rule {
   constructor(obj, error) {
     if (typeof obj === 'string' || obj instanceof String) {
