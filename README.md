@@ -256,6 +256,25 @@ const stringDate = new Rule({
 stringDate.test(new Date(2018, 11, 1)) // returns false new Date(2018, 11, 1) is not a string
 stringDate.test('some string') // returns false 'some string' is not a valid date
 stringDate.test('2018-12-17') // returns false '2018-12-17' is not after new Date(2019, 11, 1)
+stringDate.test('2020-01-01') // returns true
+```
+
+**Forgjs tryes to cast the value to the right type before passing it to the validation function please be creful !**
+
+Here is an exemple where Javascript behaviour makes the test wrong:
+
+```javascript
+const stringDate = new Rule({
+  type: 'string-date',
+  equal: new Date(2019, 10, 1), // month in js strart at 0
+}, null);
+
+stringDate.test('2019-11-01') // returns false
+
+// this is because:
+
+new Date(2019, 10, 1) - new Date('2019-11-01') // equals  3600000 thats exactly 1 hour
+
 ```
 
 ## Multiple types
