@@ -2,6 +2,8 @@ const isArray = arr => Array.isArray(arr);
 
 const isString = str => typeof str === 'string' || str instanceof String;
 
+const isInt = val => Number.isInteger(val);
+
 const URL_REGEX = /^\(?(?:(http|https|ftp):\/\/)?(?:((?:[^\W\s]|\.|-|[:]{1})+)@{1})?((?:www.)?(?:[^\W\s]|\.|-)+[\.][^\W\s]{2,4}|localhost(?=\/)|\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})(?::(\d*))?([\/]?[^\s\?]*[\/]{1})*(?:\/?([^\s\n\?\[\]\{\}\#]*(?:(?=\.)){1}|[^\s\n\?\[\]\{\}\.\#]*)?([\.]{1}[^\s\?\#]*)?)?(?:\?{1}([^\s\n\#\[\]]*))?([\#][^\s\n]*)?\)?/; // eslint-disable-line
 
 const isObject = obj => obj !== null && typeof obj === 'object';
@@ -36,6 +38,27 @@ const looseEqual = (a, b) => {
 };
 
 
+function mapFirstArgument(f, map) {
+  return (...args) => {
+    const arg = args;
+    arg[0] = map(arg[0]);
+    return f(...arg);
+  };
+}
+
+function mergeRule(rule1, rule2, mapFunction) {
+  const keys = Object.keys(rule2);
+  const mappedCopy = {};
+  keys.forEach((key) => {
+    mappedCopy[key] = mapFirstArgument(rule2[key], mapFunction);
+  });
+  return {
+    ...rule1,
+    ...mappedCopy,
+    type: val => rule1.type(val) && rule2.type(mapFunction(val)),
+  };
+}
+
 module.exports = {
   isArray,
   isString,
@@ -43,4 +66,7 @@ module.exports = {
   looseEqual,
   AND,
   OR,
+  isInt,
+  mapFirstArgument,
+  mergeRule,
 };
