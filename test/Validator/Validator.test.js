@@ -63,3 +63,31 @@ test('test getErrors must return an array of errors', () => {
     dateOfBirth: new Date(),
   })).toEqual(['age must be integer and between 18 and 99']);
 });
+
+test('test test over an array of values', () => {
+  const vComplexe = new Validator({
+    age: new Rule({
+      type: 'int', min: 18, max: 99,
+    }),
+  });
+
+  expect(vComplexe.testAll([{
+    age: 19,
+  }, {
+    age: 16,
+  }])).toBe(1);
+});
+
+test('test over multiple values and return -1', () => {
+  const vComplexe = new Validator({
+    age: new Rule({
+      type: 'int', min: 18, max: 99,
+    }),
+  });
+
+  expect(vComplexe.testAll([{
+    age: 19,
+  }, {
+    age: 20,
+  }])).toBe(-1);
+});

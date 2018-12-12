@@ -7,6 +7,8 @@
 [![codecov](https://codecov.io/gh/oussamahamdaoui/forgJs/branch/master/graph/badge.svg)](https://codecov.io/gh/oussamahamdaoui/forgJs)
 [![Maintainability](https://api.codeclimate.com/v1/badges/7bb3657e4e4111f22f2f/maintainability)](https://codeclimate.com/github/oussamahamdaoui/forgJs/maintainability)
 
+[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social?style=flat-square)](https://twitter.com/forg_js)
+
 ForgJs is a JavaScript lightweight object validator. Go check the Quick start section and start coding with love :heart:
 
 # Quick start
@@ -67,6 +69,23 @@ const vComplexe = new Validator({
     dateOfBirth: 123,
   }); // ['age must be integer and between 18 and 99', 'date must be a date']
 
+```
+## Test over an array
+
+You can test over multiple arrays using this method:
+
+```javascript
+const vComplexe = new Validator({
+    age: new Rule({
+      type: 'int', min: 18, max: 99,
+    }),
+  });
+
+  vComplexe.testAll([{
+    age: 19,
+  }, {
+    age: 16,
+  }]);  // returns 1
 ```
 
 # Rules
