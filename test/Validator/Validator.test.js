@@ -56,12 +56,14 @@ test('test getErrors must return an array of errors', () => {
       type: 'int', min: 18, max: 99,
     }, 'age must be integer and between 18 and 99'),
     dateOfBirth: new Rule({ type: 'date' }, 'date must be a date'),
+    name: new Rule({ type: 'string' }, (key, value) => `${key} must be a string, ${value} is not a string`),
   });
 
   expect(vComplexe.getErrors({
     age: 16,
     dateOfBirth: new Date(),
-  })).toEqual(['age must be integer and between 18 and 99']);
+    name: 1,
+  })).toEqual(['age must be integer and between 18 and 99', 'name must be a string, 1 is not a string']);
 });
 
 test('test test over an array of values', () => {

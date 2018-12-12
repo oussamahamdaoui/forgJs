@@ -1,5 +1,5 @@
 const { TEST_FUNCTIONS, OPTIONAL } = require('../testFunctions');
-const { AND, OR } = require('./../util');
+const { AND, OR, isFunction } = require('./../util');
 
 const OPERATORS = {
   '&': AND,
@@ -81,7 +81,10 @@ class Rule {
     }
   }
 
-  getError() {
+  getError(path, value) {
+    if (isFunction(this.error)) {
+      return this.error(path, value);
+    }
     return this.error;
   }
 

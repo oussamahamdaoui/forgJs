@@ -4,6 +4,8 @@ const isString = str => typeof str === 'string' || str instanceof String;
 
 const isInt = val => Number.isInteger(val);
 
+const isFunction = func => func !== null && typeof func === 'function';
+
 const URL_REGEX = /^\(?(?:(http|https|ftp):\/\/)?(?:((?:[^\W\s]|\.|-|[:]{1})+)@{1})?((?:www.)?(?:[^\W\s]|\.|-)+[\.][^\W\s]{2,4}|localhost(?=\/)|\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})(?::(\d*))?([\/]?[^\s\?]*[\/]{1})*(?:\/?([^\s\n\?\[\]\{\}\#]*(?:(?=\.)){1}|[^\s\n\?\[\]\{\}\.\#]*)?([\.]{1}[^\s\?\#]*)?)?(?:\?{1}([^\s\n\#\[\]]*))?([\#][^\s\n]*)?\)?/; // eslint-disable-line
 
 const isObject = obj => obj !== null && typeof obj === 'object';
@@ -62,6 +64,7 @@ function mergeRule(rule1, rule2, mapFunction) {
 module.exports = {
   isArray,
   isString,
+  isFunction,
   URL_REGEX,
   looseEqual,
   AND,
