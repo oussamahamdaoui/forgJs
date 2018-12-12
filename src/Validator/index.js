@@ -15,6 +15,15 @@ class Validator {
     return ret;
   }
 
+  testAll(arr) {
+    for (let i = 0; i < arr.length; i += 1) {
+      if (this.test(arr[i]) === false) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
   getErrors(o) {
     const errors = [];
     traverse(this.rules, (rule, path) => {
