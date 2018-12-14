@@ -1,5 +1,7 @@
+const ErrorCollector = require('./ErrorCollector');
+const { getErrorFromObject, getErrorFromFunctionOrString } = require('./util');
 const { TEST_FUNCTIONS, OPTIONAL } = require('../testFunctions');
-const { AND, OR, isFunction } = require('./../util');
+const { AND, OR, isObject } = require('./../util');
 
 const OPERATORS = {
   '&': AND,
@@ -14,17 +16,19 @@ class Rule {
       this.rule = obj;
     }
     this.error = error;
+    this.errorCollector = new ErrorCollector();
     this.testEntryObject();
   }
 
-  test(val, obj) {
+  test(val, obj, path) {
+    this.errorCollector.clear();
     const types = this.getTypes();
     const operators = this.getRuleOperators();
-    let ret = this.testOneRule(val, obj, types[0]);
+    let ret = this.testOneRule(val, obj, types[0], path);
 
     for (let i = 1; i < types.length; i += 1) {
       const operator = operators[i] || operators[i - 1];
-      ret = operator(ret, this.testOneRule(val, obj, types[i]));
+      ret = operator(ret, this.testOneRule(val, obj, types[i], path));
     }
     return ret;
   }
@@ -42,7 +46,7 @@ class Rule {
     return ret;
   }
 
-  testOneRule(val, obj, type) {
+  testOneRule(val, obj, type, path) {
     if (Rule.TEST_FUNCTIONS[type].optional(val, this.rule.optional, obj) === true) {
       return true;
     }
@@ -52,6 +56,7 @@ class Rule {
       const testFunction = Rule.TEST_FUNCTIONS[type][key];
 
       if (testFunction(val, this.rule[key], obj) === false && testFunction !== OPTIONAL) {
+        this.errorCollector.collect(this.getError(path, val));
         return false;
       }
     }
@@ -82,10 +87,10 @@ class Rule {
   }
 
   getError(path, value) {
-    if (isFunction(this.error)) {
-      return this.error(path, value);
+    if (isObject(this.error)) {
+      return getErrorFromObject(this.error, path, value);
     }
-    return this.error;
+    return getErrorFromFunctionOrString(this.error, path, value);
   }
 
   static addCustom(name, rule) {

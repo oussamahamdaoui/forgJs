@@ -65,6 +65,7 @@ module.exports = {
   isArray,
   isString,
   isFunction,
+  isObject,
   URL_REGEX,
   looseEqual,
   AND,
