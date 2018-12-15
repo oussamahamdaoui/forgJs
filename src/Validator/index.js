@@ -25,10 +25,13 @@ class Validator {
   }
 
   getErrors(o) {
-    const errors = [];
+    let errors = [];
     traverse(this.rules, (rule, path) => {
-      if (rule.test(getValFromPath(path, o), o) === false) {
-        errors.push(rule.getError());
+      if (rule.test(getValFromPath(path, o), o, path) === false) {
+        errors = [
+          ...errors,
+          ...rule.errorCollector.get(),
+        ];
       }
     });
     return errors;

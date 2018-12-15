@@ -4,6 +4,7 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.idea
 
 # Runtime data
 pids
@@ -77,5 +78,5 @@ junit.xml
 # FuseBox cache
 .fusebox/
 
-#DynamoDB Local files 
-.dynamodb/ 
+#DynamoDB Local files
+.dynamodb/
