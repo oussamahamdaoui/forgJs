@@ -5,9 +5,6 @@ class ErrorCollector {
   }
 
   collect(error) {
-    if (this.errors.indexOf(error) >= 0) {
-      return;
-    }
     this.errors.push(error);
   }
 
@@ -16,7 +13,7 @@ class ErrorCollector {
   }
 
   get() {
-    return this.errors;
+    return this.errors.filter(error => error !== null);
   }
 }
 

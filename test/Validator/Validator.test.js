@@ -66,6 +66,41 @@ test('test getErrors must return an array of errors', () => {
   })).toEqual(['age must be integer and between 18 and 99', 'name must be a string, 1 is not a string']);
 });
 
+test('test getErrors return array of errors even with object as rule error', () => {
+  const vComplexe = new Validator({
+    age: new Rule({
+      type: 'int', min: 18, max: 99,
+    }, {
+      type: 'age must be an integer.',
+      min: (key, value) => `age must be greater then 18, ${value} is not enough.`,
+    }),
+    dataOfBirth: new Rule({ type: 'date' }, 'date must be a date'),
+  });
+
+  expect(vComplexe.getErrors({
+    age: 16,
+    dateOfBirth: 1,
+  })).toEqual([
+    'age must be greater then 18, 16 is not enough.',
+    'date must be a date',
+  ]);
+
+  expect(vComplexe.getErrors({
+    age: '16',
+    dateOfBirth: 1,
+  })).toEqual([
+    'age must be an integer.',
+    'date must be a date',
+  ]);
+
+  expect(vComplexe.getErrors({
+    age: 102, // there is no error definition for this key
+    dateOfBirth: 1,
+  })).toEqual([
+    'date must be a date',
+  ]);
+});
+
 test('test test over an array of values', () => {
   const vComplexe = new Validator({
     age: new Rule({

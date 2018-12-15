@@ -56,7 +56,7 @@ class Rule {
       const testFunction = Rule.TEST_FUNCTIONS[type][key];
 
       if (testFunction(val, this.rule[key], obj) === false && testFunction !== OPTIONAL) {
-        this.errorCollector.collect(this.getError(path, val));
+        this.errorCollector.collect(this.getError(path, val, key));
         return false;
       }
     }
@@ -86,9 +86,9 @@ class Rule {
     }
   }
 
-  getError(path, value) {
+  getError(path, value, key) {
     if (isObject(this.error)) {
-      return getErrorFromObject(this.error, path, value);
+      return getErrorFromObject(this.error, path, value, key);
     }
     return getErrorFromFunctionOrString(this.error, path, value);
   }

@@ -7,11 +7,11 @@ function getErrorFromFunctionOrString(error, path, value) {
   return error;
 }
 
-function getErrorFromObject(error, path, value) {
-  if (!Object.prototype.hasOwnProperty.call(error, path)) {
+function getErrorFromObject(error, path, value, key) {
+  if (!Object.prototype.hasOwnProperty.call(error, key)) {
     return null; // Here should be the default error message.
   }
-  return getErrorFromFunctionOrString(error, path, value);
+  return getErrorFromFunctionOrString(error[key], path, value);
 }
 
 module.exports = { getErrorFromObject, getErrorFromFunctionOrString };
