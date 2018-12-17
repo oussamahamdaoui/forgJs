@@ -120,7 +120,7 @@ A `Rule` object validates a single value, it can be used like this:
 
 * minLength (int)
 * maxLength (int)
-* equal (int)
+* equal (string)
 * match: (regex)
 * notEmpty (bool)
 
@@ -128,7 +128,7 @@ A `Rule` object validates a single value, it can be used like this:
 
 * minLength (int)
 * maxLength (int)
-* equal (int)
+* equal (string)
 * match: (regex)
 * notEmpty (bool)
 * user (`function(user)`)
@@ -148,7 +148,7 @@ A `Rule` object validates a single value, it can be used like this:
 
 * minLength (int)
 * maxLength (int)
-* equal (int)
+* equal (string)
 * match: (regex)
 * notEmpty (bool)
 * uppercase (int)
@@ -172,7 +172,7 @@ A `Rule` object validates a single value, it can be used like this:
 
 * minLength (int)
 * maxLength (int)
-* equal (int)
+* equal (string)
 * match: (regex)
 * notEmpty (bool)
 * protocol (`function(protocol)`)
