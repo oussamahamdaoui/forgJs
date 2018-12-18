@@ -3,6 +3,7 @@
   "version": "1.1.7",
   "description": "forgJs is a javascript lightweight object validator. Go check the Quick start section and start coding with love",
   "main": "index.js",
+  "typings": "./index.d.ts",
   "directories": {
     "test": "test"
   },
