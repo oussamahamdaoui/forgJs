@@ -188,7 +188,7 @@ type ruleType = intRule
                 |stringDateRule
                 |stringBooleanRule;
 
-declare class Rule {
+export declare class Rule {
     public constructor (rule: ruleType|string, error?: string|null|undefined);
 
     public static addCustom(name: string, rules: {[key: string]: (val: any, arg?: any) => boolean}): void;
@@ -196,7 +196,7 @@ declare class Rule {
     public test(value: any): boolean;
 }
 
-declare class Validator {
+export declare class Validator {
     public constructor (fields: {[key: string]: Rule});
 
     public test(object: {[key: string]: any}): boolean;
