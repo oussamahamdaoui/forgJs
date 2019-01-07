@@ -14,6 +14,21 @@ test('test the hole object to be true', () => {
   })).toBe(true);
 });
 
+test('test the hole object to be false extra values', () => {
+  const vComplexe = new Validator({
+    age: new Rule({ type: 'int', min: 18, max: 99 }),
+    dateOfBirth: new Rule({ type: 'date' }),
+    array: new Rule({ type: 'array', of: new Rule({ type: 'string' }) }),
+  });
+
+  expect(vComplexe.test({
+    age: 26,
+    dateOfBirth: new Date(1995, 10, 3),
+    array: ['1'],
+    extraValue: '',
+  })).toBe(false);
+});
+
 test('test the hole object to be false', () => {
   const vComplexe = new Validator({
     age: new Rule({ type: 'int', min: 18, max: 99 }),
@@ -45,7 +60,6 @@ test('test custom', () => {
   expect(vComplexe.test({
     age: 23,
     dateOfBirth: new Date(1995, 10, 3),
-    array: ['1'],
   })).toBe(true);
 });
 

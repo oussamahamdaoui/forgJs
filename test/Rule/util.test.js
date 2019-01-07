@@ -1,4 +1,4 @@
-const { looseEqual } = require('../../src/util');
+const { looseEqual, flattenObject } = require('../../src/util');
 
 test('looseEqual object false', () => {
   const a = {
@@ -40,4 +40,15 @@ test('looseEqual object and array fals', () => {
   ];
 
   expect(looseEqual(a, b)).toBe(false);
+});
+
+
+test('flatten Object', () => {
+  const a = {
+    a: 'hello',
+    b: {
+      d: 'dazda',
+    },
+  };
+  expect(flattenObject(a)).toEqual({ a: 'hello', 'b.d': 'dazda' });
 });
