@@ -1,4 +1,10 @@
-const { traverse, getValFromPath } = require('./util');
+const {
+  traverse, getValFromPath,
+} = require('./util');
+
+const {
+  flattenObject, arrayContainsAll,
+} = require('../util');
 
 class Validator {
   constructor(o) {
@@ -7,6 +13,13 @@ class Validator {
 
   test(o) {
     let ret = true;
+    const keysOfRules = Object.keys(flattenObject(this.rules));
+    const keysOfObject = Object.keys(flattenObject(o));
+
+    if (!arrayContainsAll(keysOfObject, keysOfRules)) {
+      return false;
+    }
+
     traverse(this.rules, (rule, path) => {
       if (rule.test(getValFromPath(path, o), o) === false) {
         ret = false;
