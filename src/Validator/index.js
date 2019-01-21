@@ -2,6 +2,7 @@ const {
   traverse, getValFromPath,
 } = require('./util');
 
+const { unexpectedFiled } = require('../const');
 const {
   flattenObject, arrayContainsAll,
 } = require('../util');
@@ -39,6 +40,15 @@ class Validator {
 
   getErrors(o) {
     let errors = [];
+    const keysOfRules = Object.keys(flattenObject(this.rules));
+    const keysOfObject = Object.keys(flattenObject(o));
+
+    if (!arrayContainsAll(keysOfObject, keysOfRules)) {
+      let undeclaredFiledes = keysOfObject.filter(i => keysOfRules.indexOf(i) < 0);
+      undeclaredFiledes = undeclaredFiledes.map(unexpectedFiled);
+      errors = [...errors, ...undeclaredFiledes];
+    }
+
     traverse(this.rules, (rule, path) => {
       if (rule.test(getValFromPath(path, o), o, path) === false) {
         errors = [

@@ -95,6 +95,7 @@ test('test getErrors return array of errors even with object as rule error', () 
     age: 16,
     dateOfBirth: 1,
   })).toEqual([
+    'dateOfBirth is unexpcted',
     'age must be greater then 18, 16 is not enough.',
     'date must be a date',
   ]);
@@ -103,6 +104,7 @@ test('test getErrors return array of errors even with object as rule error', () 
     age: '16',
     dateOfBirth: 1,
   })).toEqual([
+    'dateOfBirth is unexpcted',
     'age must be an integer.',
     'date must be a date',
   ]);
@@ -111,6 +113,7 @@ test('test getErrors return array of errors even with object as rule error', () 
     age: 102, // there is no error definition for this key
     dateOfBirth: 1,
   })).toEqual([
+    'dateOfBirth is unexpcted',
     'date must be a date',
   ]);
 });
