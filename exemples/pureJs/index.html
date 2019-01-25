@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/atom-one-dark.min.css"
+    />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.6.0/dist/highlightjs-line-numbers.min.js"></script>
+  </head>
+  <body>
+    <div id="menu">
+      <a href="https://github.com/oussamahamdaoui/forgJs">GitHub</a>
+      <a href="https://www.npmjs.com/package/@cesium133/forgjs">npm</a>
+      <a href="https://twitter.com/forg_js">Twitter</a>
+    </div>
+    <div class="header">
+    </div>
+    <div class="container">
+      <div>
+        <h2>Email rule:</h2>
+        <div class="content">
+          <input data-type="email" placeholder="email" />
+        </div>
+        <div class="code">
+          <pre><code class="javascript">
+  const email = new Rule({
+    type: 'email',
+    domain: d => ['hotmail', 'outlook', 'gmail'].indexOf(d) !== -1,
+  });
+        </code></pre>
+        </div>
+      </div>
+      <div>
+        <h2>Custom rule:</h2>
+        <div class="content">
+          <input data-type="url" placeholder="phone number" />
+        </div>
+        <div class="code">
+          <pre><code class="javascript">
+  const PhoneNumber = new Rule({
+    type: 'string-int',
+    minLength: 10,
+    maxLength: 10,
+    match: /0(7|6).*/,
+  });
+        </code></pre>
+        </div>
+      </div>
+      <div>
+        <h2>Password rule:</h2>
+        <div class="content">
+          <input data-type="password" placeholder="password" />
+        </div>
+        <div class="code">
+          <pre><code class="javascript">
+  const PassWord = new Rule({
+      type: 'password',
+      minLength: 8,
+      maxLength: 10,
+      matchesOneOf: ['@', '_', '-', '.', '?', '$'],
+      numbers: 1,
+      uppercase: 1,
+    });
+        </code></pre>
+        </div>
+      </div>
+      <div>
+        <h2>Url rule:</h2>
+        <div class="content"><input data-type="url" placeholder="url" /></div>
+        <div class="code">
+          <pre><code class="javascript">
+  const url = new Rule({
+    type: 'url',
+    domain: domain => domain === 'github.com',
+    protocol: protocol => protocol === 'https',
+  });
+        </code></pre>
+        </div>
+      </div>
+      <div>
+        <h2>Multiple rules:</h2>
+        <div class="content">
+          <input data-type="street-number" placeholder="Street Number" />
+          <input data-type="street" placeholder="Street" />
+          <input data-type="zipcode" placeholder="Zip Code" />
+          <input data-type="country" placeholder="Country" />
+        </div>
+        <div class="code">
+          <pre><code class="javascript">
+  const country = new Rule({
+    type: 'string',
+    oneOf: ['FR', 'US', 'EN'],
+  });
+  const zipcode = new Rule({
+    type: 'string-int',
+    minLength: 5,
+    maxLength: 5,
+  });
+
+  const street = new Rule({
+    type: 'string',
+    notEmpty: true,
+  });
+
+  const streetNumber = new Rule({
+    type: 'string-int',
+  });
+        </code></pre>
+        </div>
+      </div>
+    </div>
+    <script src="./build.js"></script>
+  </body>
+</html>
