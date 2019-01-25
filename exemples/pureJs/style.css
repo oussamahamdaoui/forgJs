@@ -15,6 +15,14 @@ body{
   color:#091919;
   font-family: radinka;
 }
+
+h1{
+  max-width: 1200px;
+  margin: auto;
+  margin-top: 20px;
+  padding-left:10px; 
+  margin-bottom: 20px;
+}
 .container{
   max-width: 1200px;
   margin: auto;
@@ -55,7 +63,7 @@ input{
   border-bottom: 2px solid #091919;
   outline: none;
   display: block;
-  margin: 15px;
+  padding-left: 10px;
 }
 .header{
   width: 1200px;
