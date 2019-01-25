@@ -11,6 +11,8 @@
 
 ForgJs is a JavaScript lightweight object validator. Go check the Quick start section and start coding with love :heart:
 
+See some exemples here: [exemples](https://oussamahamdaoui.github.io/forgJs/exemples/pureJs/)
+
 # Quick start
 
 Install it via npm by running `npm i @cesium133/forgjs`
