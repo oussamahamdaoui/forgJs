@@ -11,7 +11,7 @@
 
 ForgJs is a JavaScript lightweight object validator. Go check the Quick start section and start coding with love :heart:
 
-See some exemples here: [exemples](https://oussamahamdaoui.github.io/forgJs/exemples/pureJs/)
+ See some live examples [here](https://oussamahamdaoui.github.io/forgjs-examples/)
 
 # Quick start
 
@@ -36,7 +36,7 @@ const passwordRule = new Rule({
     matchesOneOf: ['@', '_', '-', '.', '!'],
 }, null);
 
-const vComplexe = new Validator({
+const vComplex = new Validator({
     age: new Rule({ type: 'int', min: 18, max: 99 }),
     dateOfBirth: new Rule({ type: 'date' }),
     array: new Rule({ type: 'array', of: new Rule({ type: 'string' }) }),
@@ -44,7 +44,7 @@ const vComplexe = new Validator({
     password: passwordRule
 });
 
-vComplexe.test({
+vComplex.test({
     age: 26,
     dateOfBirth: new Date(1995, 10, 3),
     array: ['1'],
@@ -281,7 +281,7 @@ stringDate.test('2020-01-01') // returns true
 
 **Forgjs tries to cast the value to the right type before passing it to the validation function please be careful!**
 
-Here is an exemple where Javascript behaviour makes the test wrong:
+Here is an example where Javascript behaviour makes the test wrong:
 
 ```javascript
 const stringDate = new Rule({
