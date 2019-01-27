@@ -1,4 +1,4 @@
-# ![forgJs logo](./logo.png?raw=true)
+# ![forgJs logo](./media/logo.png?raw=true)
 
 [![GitHub version](https://badge.fury.io/gh/oussamahamdaoui%2Fforgjs.svg)](https://badge.fury.io/gh/oussamahamdaoui%2Fforgjs)
 [![npm](https://img.shields.io/npm/v/@cesium133/forgjs.svg)]( https://www.npmjs.com/package/@cesium133/forgjs)
@@ -11,7 +11,15 @@
 
 ForgJs is a JavaScript lightweight object validator. Go check the Quick start section and start coding with love :heart:
 
- See some live examples [here](https://oussamahamdaoui.github.io/forgjs-examples/)
+![email](./media/email.gif?raw=true)
+
+![password](./media/password.gif?raw=true)
+
+![number](./media/number.gif?raw=true)
+
+![url](./media/url.gif?raw=true)
+
+See more live examples [here](https://oussamahamdaoui.github.io/forgjs-examples/)
 
 # Quick start
 
