@@ -7,9 +7,7 @@
   "directories": {
     "test": "test"
   },
-  "dependencies": {
-    "browserify": "^16.2.3"
-  },
+  "dependencies": {},
   "devDependencies": {
     "codecov": "^3.1.0",
     "eslint": "^5.9.0",
@@ -18,15 +16,13 @@
     "eslint-plugin-jest": "^22.1.0",
     "jest": "^23.6.0",
     "jest-junit": "^5.2.0",
-    "twit": "^2.2.11",
-    "watchify": "^3.11.0"
+    "twit": "^2.2.11"
   },
   "scripts": {
     "test": "jest",
     "lint": "./node_modules/.bin/eslint src/** test/** --format junit -o reports/junit/js-lint-results.xml",
     "codecov": "codecov",
-    "tweet": "node twiterBotTaskRunner",
-    "build-exemples": "npx watchify exemples/purejs/index.js -o exemples/purejs/build.js"
+    "tweet": "node twiterBotTaskRunner"
   },
   "repository": {
     "type": "git",
