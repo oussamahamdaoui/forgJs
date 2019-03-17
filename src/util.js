@@ -65,7 +65,7 @@ function flattenObject(ob) {
   const toReturn = {};
   /* eslint-disable */
   for (const i in ob) {
-    if (ob[i].constructor === Object) {
+    if (ob[i] && ob[i].constructor === Object) {
       const flatObject = flattenObject(ob[i]);
       for (const x in flatObject) {
         toReturn[`${i}.${x}`] = flatObject[x];
