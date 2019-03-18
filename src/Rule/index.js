@@ -52,7 +52,9 @@ class Rule {
     }
 
     const keys = Object.keys(this.rule);
-    keys.sort(key => key === 'type' ? -1 : 0);
+    keys.sort(key => {
+      if (key === 'type') return -1;
+    });
 
     for (let i = 0; i < keys.length; i += 1) {
       const key = keys[i];
