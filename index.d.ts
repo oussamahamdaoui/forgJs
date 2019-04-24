@@ -50,6 +50,7 @@ interface passwordRule {
     match?: RegExp,
     notEmpty?: boolean,
     uppercase?: number,
+    specialChars?: number,
     numbers?: number,
     matchesOneOf?: Array<string|number>,
     matchesAllOf?: Array<string|number>,
