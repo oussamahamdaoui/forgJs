@@ -66,7 +66,7 @@ interface urlRule {
     equal?: string,
     match?: RegExp,
     notEmpty?: boolean,
-    usprotocoler?: (protocol: any) => boolean,
+    protocol?: (protocol: any) => boolean,
     domain?: (domain: any) => boolean,
     optional?: boolean,
     oneOf?: Array<string>,
