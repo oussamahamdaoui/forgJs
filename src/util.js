@@ -61,6 +61,38 @@ function mergeRule(rule1, rule2, mapFunction) {
   };
 }
 
+function flattenObject(ob) {
+  const toReturn = {};
+  /* eslint-disable */
+  for (const i in ob) {
+    if (ob[i] && ob[i].constructor === Object) {
+      const flatObject = flattenObject(ob[i]);
+      for (const x in flatObject) {
+        toReturn[`${i}.${x}`] = flatObject[x];
+      }
+    } else {
+      toReturn[i] = ob[i];
+    }
+  }
+  /* eslint-enable */
+  return toReturn;
+}
+
+function arrayContainsAll(a, b) {
+  for (let i = 0; i < a.length; i += 1) {
+    let contains = false;
+    for (let j = 0; j < b.length; j += 1) {
+      if (a[i] === b[j]) {
+        contains = true;
+      }
+    }
+    if (contains === false) {
+      return false;
+    }
+  }
+  return true;
+}
+
 module.exports = {
   isArray,
   isString,
@@ -73,4 +105,6 @@ module.exports = {
   isInt,
   mapFirstArgument,
   mergeRule,
+  flattenObject,
+  arrayContainsAll,
 };

@@ -50,7 +50,13 @@ class Rule {
     if (Rule.TEST_FUNCTIONS[type].optional(val, this.rule.optional, obj) === true) {
       return true;
     }
+
     const keys = Object.keys(this.rule);
+    keys.sort((key) => {
+      if (key === 'type') return -1;
+      return 0;
+    });
+
     for (let i = 0; i < keys.length; i += 1) {
       const key = keys[i];
       const testFunction = Rule.TEST_FUNCTIONS[type][key];

@@ -1,4 +1,4 @@
-# ![forgJs logo](./logo.png?raw=true)
+# ![forgJs logo](./media/logo.png?raw=true)
 
 [![GitHub version](https://badge.fury.io/gh/oussamahamdaoui%2Fforgjs.svg)](https://badge.fury.io/gh/oussamahamdaoui%2Fforgjs)
 [![npm](https://img.shields.io/npm/v/@cesium133/forgjs.svg)]( https://www.npmjs.com/package/@cesium133/forgjs)
@@ -11,6 +11,16 @@
 
 ForgJs is a JavaScript lightweight object validator. Go check the Quick start section and start coding with love :heart:
 
+![email](./media/email.gif?raw=true)
+
+![password](./media/password.gif?raw=true)
+
+![number](./media/number.gif?raw=true)
+
+![url](./media/url.gif?raw=true)
+
+See more live examples [here](https://oussamahamdaoui.github.io/forgjs-examples/)
+
 # Quick start
 
 Install it via npm by running `npm i @cesium133/forgjs`
@@ -20,36 +30,35 @@ Install it via npm by running `npm i @cesium133/forgjs`
 ```javascript
   const { Validator, Rule } = require('@cesium133/forgjs');
 
-  const emailRule = new Rule({
+const emailRule = new Rule({
     type: 'email',
     user: user => user === 'dedede',
     domain: domain => ['outlook', 'gmail', 'yahoo'].indexOf(domain) !== -1,
-  }, null);
-  
-  const passwordRule = new Rule({
+}, null);
+
+const passwordRule = new Rule({
     type: 'password',
     minLength: 8,
     uppercase: 1,
     numbers: 1,
     matchesOneOf: ['@', '_', '-', '.', '!'],
-  }, null);
+}, null);
 
-  const vComplexe = new Validator({
+const vComplex = new Validator({
     age: new Rule({ type: 'int', min: 18, max: 99 }),
     dateOfBirth: new Rule({ type: 'date' }),
     array: new Rule({ type: 'array', of: new Rule({ type: 'string' }) }),
-    email: emailRule
-    pasword: passwordRule
-  });
+    email: emailRule,
+    password: passwordRule
+});
 
-  vComplexe.test({
+vComplex.test({
     age: 26,
     dateOfBirth: new Date(1995, 10, 3),
     array: ['1'],
-    email: 'my-email@yahoo.fr;',
+    email: 'dedede@yahoo.fr;',
     password: 'ad1_A@@Axs',
-  }); /// returns true
-
+}); /// returns true
   ```
 
 ## Error handling
@@ -280,7 +289,7 @@ stringDate.test('2020-01-01') // returns true
 
 **Forgjs tries to cast the value to the right type before passing it to the validation function please be careful!**
 
-Here is an exemple where Javascript behaviour makes the test wrong:
+Here is an example where Javascript behaviour makes the test wrong:
 
 ```javascript
 const stringDate = new Rule({
