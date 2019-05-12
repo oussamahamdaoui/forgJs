@@ -1,173 +1,117 @@
-interface intRule {
-    type: 'int',
+// abstract interfaces for extending
+interface basicRule<T> {
+    type: string,
+    optional?: boolean,
+    oneOf?: Array<T>,
+    custom?: (arg: any, object: this) => boolean,
+}
+
+interface basicNumberRule extends basicRule<number> {
     min?: number,
     max?: number,
     equal?: number,
-    optional?: boolean,
-    oneOf?: Array<number>,
-    custom?: (arg: any, object: this) => boolean,
 }
 
-interface booleanRule {
+interface basicStringRule extends basicRule<string> {
+    minLength?: number,
+    maxLength?: number,
+    match?: RegExp,
+    notEmpty?: boolean,
+}
+
+interface simpleStringRule extends basicStringRule {
+    equal?: string,
+}
+
+interface complexStringRule<T> extends basicStringRule {
+    equal?: T,
+}
+
+
+// interfaces for implementation
+interface intRule extends basicNumberRule {
+    type: 'int',
+}
+
+interface booleanRule extends basicRule<boolean> {
     type: 'boolean',
     toBe?: boolean,
-    optional?: boolean,
-    oneOf?: Array<boolean>,
-    custom?: (arg: any, object: this) => boolean,
 }
 
-interface stringRule {
+interface stringRule extends simpleStringRule {
     type: 'string',
-    minLength?: number,
-    maxLength?: number,
-    equal?: string,
-    match?: RegExp,
-    notEmpty?: boolean,
-    optional?: boolean,
-    oneOf?: Array<string>,
-    custom?: (arg: any, object: this) => boolean,
 }
 
-interface emailRule {
+interface emailRule extends simpleStringRule {
     type: 'email',
-    minLength?: number,
-    maxLength?: number,
-    equal?: string,
-    match?: RegExp,
-    notEmpty?: boolean,
-    user?: (user: any) => boolean,
-    domain?: (domain: any) => boolean,
-    optional?: boolean,
-    oneOf?: Array<string>,
-    custom?: (arg: any, object: this) => boolean,
+    user?: (user: string) => boolean,
+    domain?: (domain: string) => boolean,
 }
 
-interface passwordRule {
+interface passwordRule extends simpleStringRule {
     type: 'password',
-    minLength?: number,
-    maxLength?: number,
-    equal?: string,
-    match?: RegExp,
-    notEmpty?: boolean,
     uppercase?: number,
-    number?: number,
-    mathesOneOf?: Array<string|number>,
-    mathesAllOf?: Array<string|number>,
-    optional?: boolean,
-    oneOf?: Array<string>,
-    custom?: (arg: any, object: this) => boolean,
+    specialChars?: number,
+    numbers?: number,
+    matchesOneOf?: Array<string|number>,
+    matchesAllOf?: Array<string|number>,
 }
 
-interface urlRule {
+interface urlRule extends simpleStringRule {
     type: 'url',
-    minLength?: number,
-    maxLength?: number,
-    equal?: string,
-    match?: RegExp,
-    notEmpty?: boolean,
-    usprotocoler?: (protocol: any) => boolean,
-    domain?: (domain: any) => boolean,
-    optional?: boolean,
-    oneOf?: Array<string>,
-    custom?: (arg: any, object: this) => boolean,
+    protocol?: (protocol: string) => boolean,
+    domain?: (domain: string) => boolean,
 }
 
-interface dateRule {
+interface dateRule extends basicRule<Date> {
     type: 'date',
     after?: Date,
     before?: Date,
-    between?: Array<Date>,
+    between?: [Date, Date],
     equal?: Date,
-    optional?: boolean,
-    oneOf?: Array<Date>,
-    custom?: (arg: any, object: this) => boolean,
 }
 
-interface floatRule {
+interface floatRule extends basicNumberRule {
     type: 'float',
-    min?: number,
-    max?: number,
-    equal?: number,
-    optional?: boolean,
-    oneOf?: Array<number>,
-    custom?: (arg: any, object: this) => boolean,
 }
 
-interface arrayRule{
+interface arrayRule extends basicRule<any> {
     type: 'array',
     of?: Rule,
     notEmpty?: boolean,
     length?: number,
-    optional?: boolean,
-    oneOf?: Array<any>,
-    custom?: (arg: any, object: this) => boolean,
 }
 
-interface functionRule {
+interface functionRule extends basicRule<Function> {
     type: 'function',
     result?: {
         of: any,
         toBe: Rule,
     },
-    optional?: boolean,
-    oneOf?: Array<any>,
-    custom?: (arg: any, object: this) => boolean,
 }
 
-interface stringIntRule {
+interface stringIntRule extends complexStringRule<number> {
     type: 'string-int',
     min?: number,
     max?: number,
-    minLength?: number,
-    maxLength?: number,
-    equal?: number,
-    match?: RegExp,
-    notEmpty?: boolean,
-    optional?: boolean,
-    oneOf?: Array<string>,
-    custom?: (arg: any, object: this) => boolean,
 }
 
-interface stringFloatRule {
+interface stringFloatRule extends complexStringRule<number> {
     type: 'string-float',
     min?: number,
     max?: number,
-    minLength?: number,
-    maxLength?: number,
-    equal?: number,
-    match?: RegExp,
-    notEmpty?: boolean,
-    optional?: boolean,
-    oneOf?: Array<string>,
-    custom?: (arg: any, object: this) => boolean,
 }
 
-interface stringDateRule {
+interface stringDateRule extends complexStringRule<Date> {
     type: 'string-date',
-    minLength?: number,
-    maxLength?: number,
-    equal?: Date,
-    match?: RegExp,
-    notEmpty?: boolean,
     after?: Date,
     before?: Date,
-    between?: Array<Date>,
-    optional?: boolean,
-    oneOf?: Array<string>,
-    custom?: (arg: any, object: this) => boolean,
+    between?: [Date, Date],
 }
 
-interface stringBooleanRule {
+interface stringBooleanRule extends complexStringRule<boolean> {
     type: 'string-boolean',
     toBe?: boolean,
-    minLength?: number,
-    maxLength?: number,
-    equal?: boolean,
-    match?: RegExp,
-    notEmpty?: boolean,
-    optional?: boolean,
-    oneOf?: Array<string>,
-    custom?: (arg: any, object: this) => boolean,
 }
 
 // There is no regex-validated string type, so make multipleRule is not easy
