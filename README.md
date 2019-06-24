@@ -258,7 +258,7 @@ const stringInt = new Rule({
 stringInt.test(2) // returns false 2 is not a string
 stringInt.test('2a') // returns false '2a' is not a int
 stringInt.test('2.1') // returns false '2.1' is not a int
-stringInt.test('5') // returns false lenght of '5' is smaller than 2
+stringInt.test('5') // returns false length of '5' is smaller than 2
 stringInt.test('50') // returns true
 ```
 ### string-boolean
