@@ -45,7 +45,8 @@ test('test the hole object to be false', () => {
 
 test('test custom', () => {
   function f(age, object) {
-    if (age === Math.floor((new Date() - object.dateOfBirth) / 1000 / 60 / 60 / 24 / 30 / 12)) {
+    const expectedAge = Math.floor((new Date() - object.dateOfBirth) / 3.154e+10);
+    if (age === expectedAge) {
       return true;
     }
     return false;
@@ -57,8 +58,10 @@ test('test custom', () => {
     dateOfBirth: new Rule({ type: 'date' }),
   });
 
+  const age = Math.floor((new Date() - new Date(1995, 10, 3)) / 3.154e+10);
+
   expect(vComplexe.test({
-    age: 23,
+    age,
     dateOfBirth: new Date(1995, 10, 3),
   })).toBe(true);
 });
