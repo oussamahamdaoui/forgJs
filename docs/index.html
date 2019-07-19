@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl">
+  <title data-ice="title">Home | @cesium133/forgjs</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="forgJs is a javascript lightweight object validator. Go check the Quick start section and start coding with love"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@cesium133/forgjs"><meta property="twitter:description" content="forgJs is a javascript lightweight object validator. Go check the Quick start section and start coding with love"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/oussamahamdaoui/forgJs"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-unexpectedFiled">unexpectedFiled</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AND">AND</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-OR">OR</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-arrayContainsAll">arrayContainsAll</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-flattenObject">flattenObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isArray">isArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isFunction">isFunction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isInt">isInt</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isObject">isObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isString">isString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-looseEqual">looseEqual</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mapFirstArgument">mapFirstArgument</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mergeRule">mergeRule</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-URL_REGEX">URL_REGEX</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#rule">Rule</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Rule/ErrorCollector.js~ErrorCollector.html">ErrorCollector</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Rule/index.js~Rule.html">Rule</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getErrorFromFunctionOrString">getErrorFromFunctionOrString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getErrorFromObject">getErrorFromObject</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#validator">Validator</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Validator/index.js~Validator.html">Validator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getValFromPath">getValFromPath</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-traverse">traverse</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#testfunctions">testFunctions</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-OPTIONAL">OPTIONAL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TEST_FUNCTIONS">TEST_FUNCTIONS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BOOLEAN">BOOLEAN</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-NUMBER">NUMBER</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-STRING">STRING</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#testfunctions-types">testFunctions/types</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-array">array</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-boolean">boolean</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-date">date</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-email">email</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-float">float</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-fn">fn</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-int">int</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-number">number</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-password">password</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-string">string</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-url">url</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="-img-src----media-logo-png-raw-true--alt--forgjs-logo--"><img src="./media/logo.png?raw=true" alt="forgJs logo"></h1><p><a href="https://badge.fury.io/gh/oussamahamdaoui%2Fforgjs"><img src="https://badge.fury.io/gh/oussamahamdaoui%2Fforgjs.svg" alt="GitHub version"></a>
+<a href="https://www.npmjs.com/package/@cesium133/forgjs"><img src="https://img.shields.io/npm/v/@cesium133/forgjs.svg" alt="npm"></a>
+<img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="GitHub">
+<a href="https://circleci.com/gh/oussamahamdaoui/forgJs"><img src="https://img.shields.io/circleci/project/github/oussamahamdaoui/forgJs.svg" alt="CircleCI (all branches)"></a>
+<a href="https://codecov.io/gh/oussamahamdaoui/forgJs"><img src="https://codecov.io/gh/oussamahamdaoui/forgJs/branch/master/graph/badge.svg" alt="codecov"></a>
+<a href="https://codeclimate.com/github/oussamahamdaoui/forgJs/maintainability"><img src="https://api.codeclimate.com/v1/badges/7bb3657e4e4111f22f2f/maintainability" alt="Maintainability"></a></p>
+<p><a href="https://twitter.com/forg_js"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social?style=flat-square" alt></a></p>
+<p>ForgJs is a JavaScript lightweight object validator. Go check the Quick start section and start coding with love :heart:</p>
+<p><img src="./media/email.gif?raw=true" alt="email"></p>
+<p><img src="./media/password.gif?raw=true" alt="password"></p>
+<p><img src="./media/number.gif?raw=true" alt="number"></p>
+<p><img src="./media/url.gif?raw=true" alt="url"></p>
+<p>See more live examples <a href="https://oussamahamdaoui.github.io/forgjs-examples/">here</a></p>
+<h1 id="quick-start">Quick start</h1><p>Install it via npm by running <code>npm i @cesium133/forgjs</code></p>
+<h2 id="your-first-validator">Your first validator</h2><pre><code class="lang-javascript"><code class="source-code prettyprint">  const { Validator, Rule } = require(&apos;@cesium133/forgjs&apos;);
+
+const emailRule = new Rule({
+    type: &apos;email&apos;,
+    user: user =&gt; user === &apos;dedede&apos;,
+    domain: domain =&gt; [&apos;outlook&apos;, &apos;gmail&apos;, &apos;yahoo&apos;].indexOf(domain) !== -1,
+}, null);
+
+const passwordRule = new Rule({
+    type: &apos;password&apos;,
+    minLength: 8,
+    uppercase: 1,
+    numbers: 1,
+    matchesOneOf: [&apos;@&apos;, &apos;_&apos;, &apos;-&apos;, &apos;.&apos;, &apos;!&apos;],
+}, null);
+
+const vComplex = new Validator({
+    age: new Rule({ type: &apos;int&apos;, min: 18, max: 99 }),
+    dateOfBirth: new Rule({ type: &apos;date&apos; }),
+    array: new Rule({ type: &apos;array&apos;, of: new Rule({ type: &apos;string&apos; }) }),
+    email: emailRule,
+    password: passwordRule
+});
+
+vComplex.test({
+    age: 26,
+    dateOfBirth: new Date(1995, 10, 3),
+    array: [&apos;1&apos;],
+    email: &apos;dedede@yahoo.fr;&apos;,
+    password: &apos;ad1_A@@Axs&apos;,
+}); /// returns true</code>
+</code></pre>
+<h2 id="error-handling">Error handling</h2><p>You can get custom error messages by doing this:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">const vComplexe = new Validator({
+    age: new Rule({
+      type: &apos;int&apos;, min: 18, max: 99,
+    }, &apos;age must be integer and between 18 and 99&apos;),
+    dateOfBirth: new Rule({ type: &apos;date&apos; }, &apos;date must be a date&apos;),
+  });
+
+  vComplexe.getErrors({
+    age: 16,
+    dateOfBirth: 123,
+  }); // [&apos;age must be integer and between 18 and 99&apos;, &apos;date must be a date&apos;]
+</code>
+</code></pre>
+<h2 id="test-over-an-array">Test over an array</h2><p>You can test over multiple arrays using this method:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">const vComplexe = new Validator({
+    age: new Rule({
+      type: &apos;int&apos;, min: 18, max: 99,
+    }),
+  });
+
+  vComplexe.testAll([{
+    age: 19,
+  }, {
+    age: 16,
+  }]);  // returns 1</code>
+</code></pre>
+<h1 id="rules">Rules</h1><p>A <code>Rule</code> object validates a single value, it can be used like this: </p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">  const { Validator, Rule } = require(&apos;@cesium133/forgjs&apos;);
+  const floatRule = new Rule({
+    type: &apos;float&apos;,
+    min: 100,
+  }, null);
+
+  floatRule.test(2.001); /// returns true;</code>
+</code></pre>
+<p><strong>The only required value is <code>type</code>!</strong></p>
+<blockquote>
+<p>You can make a rule by simply passing a string if you only need to check the type : <code>new Rule(&apos;int&apos;);</code></p>
+</blockquote>
+<h2 id="int">int</h2><ul>
+<li>min (int)</li>
+<li>max (int)</li>
+<li>equal (int)</li>
+</ul>
+<h2 id="boolean">boolean</h2><ul>
+<li>toBe (boolean)</li>
+</ul>
+<h2 id="string">string</h2><ul>
+<li>minLength (int)</li>
+<li>maxLength (int)</li>
+<li>equal (string)</li>
+<li>match: (regex)</li>
+<li>notEmpty (bool)</li>
+</ul>
+<h2 id="email">email</h2><ul>
+<li>minLength (int)</li>
+<li>maxLength (int)</li>
+<li>equal (string)</li>
+<li>match: (regex)</li>
+<li>notEmpty (bool)</li>
+<li>user (<code>function(user)</code>)</li>
+<li>domain (<code>function(domain)</code>)</li>
+</ul>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">  const emailRule = new Rule({
+    type: &apos;email&apos;,
+    user: user =&gt; user === &apos;dedede&apos;,
+    domain: domain =&gt; [&apos;outlook&apos;, &apos;gmail&apos;, &apos;yahoo&apos;].indexOf(domain) !== -1,
+  }, null);
+
+  emailRule.test(&apos;dedede@gmail.fr&apos;); // returns true</code>
+</code></pre>
+<h2 id="password">password</h2><ul>
+<li>minLength (int)</li>
+<li>maxLength (int)</li>
+<li>equal (string)</li>
+<li>match: (regex)</li>
+<li>notEmpty (bool)</li>
+<li>uppercase (int)</li>
+<li>number (int)</li>
+<li>mathesOneOf (Array)</li>
+<li>matchesAllOf (Array)</li>
+</ul>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">  const passwordRule = new Rule({
+    type: &apos;password&apos;,
+    minLength: 8,
+    uppercase: 1,
+    numbers: 1,
+    matchesOneOf: [&apos;@&apos;, &apos;_&apos;, &apos;-&apos;, &apos;.&apos;, &apos;!&apos;],
+  }, null);
+
+  passwordRule.test(&apos;@_-bddcd6A&apos;); // returns true</code>
+</code></pre>
+<h2 id="url">url</h2><ul>
+<li>minLength (int)</li>
+<li>maxLength (int)</li>
+<li>equal (string)</li>
+<li>match: (regex)</li>
+<li>notEmpty (bool)</li>
+<li>protocol (<code>function(protocol)</code>)</li>
+<li>domain (<code>function(domain)</code>)</li>
+</ul>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">  const urlRule = new Rule({
+    type: &apos;url&apos;,
+    protocol: prot =&gt; prot === &apos;https&apos;,
+    domain: domain =&gt; domain === &apos;google.fr&apos;,
+  }, null);
+
+  urlRule.test(&apos;https://google.fr&apos;); // returns true</code>
+</code></pre>
+<h2 id="date">date</h2><ul>
+<li>after (date)</li>
+<li>before (date)</li>
+<li>between (Array of dates like this [date, date])</li>
+<li>equal (date)</li>
+</ul>
+<h2 id="float">float</h2><ul>
+<li>min (Number)</li>
+<li>max (Number)</li>
+<li>equal (float)</li>
+</ul>
+<h2 id="array">array</h2><ul>
+<li>of (Rule or Validator object)</li>
+<li>notEmpty (bool)</li>
+<li>length (int)</li>
+</ul>
+<p>The <code>of</code> rule checks every element of the array against the rule.</p>
+<h2 id="function">function</h2><ul>
+<li>result</li>
+</ul>
+<p>To explain result, what&apos;s better than an example:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">  const { Validator, Rule } = require(&apos;@cesium133/forgjs&apos;);
+
+  function someFunctionThatReturnsAnInt(int) {
+    return int * 5;
+  }
+
+  const functionTest = new Rule({
+    type: &apos;function&apos;,
+    result: {
+      of: 5,
+      toBe: new Rule(&apos;int&apos;),
+    },
+  }, null);
+
+  functionTest.test(someFunctionThatReturnsAnInt); /// returns true;
+</code>
+</code></pre>
+<h2 id="string-int--string-float--string-date--string-boolean">string-int, string-float, string-date, string-boolean</h2><p>These types &apos;inherit&apos; from string, they have both the properties, here are some examples:</p>
+<h3 id="string-int">string-int</h3><pre><code class="lang-javascript"><code class="source-code prettyprint">const stringInt = new Rule({
+  type: &apos;string-int&apos;,
+  minLength: 2,
+  min: 5,
+}, null);
+
+stringInt.test(2) // returns false 2 is not a string
+stringInt.test(&apos;2a&apos;) // returns false &apos;2a&apos; is not a int
+stringInt.test(&apos;2.1&apos;) // returns false &apos;2.1&apos; is not a int
+stringInt.test(&apos;5&apos;) // returns false length of &apos;5&apos; is smaller than 2
+stringInt.test(&apos;50&apos;) // returns true</code>
+</code></pre>
+<h3 id="string-boolean">string-boolean</h3><pre><code class="lang-javascript"><code class="source-code prettyprint">const stringBoolean = new Rule({
+  type: &apos;string-boolean&apos;,
+  toBe: true
+}, null);
+
+stringBoolean.test(true) // returns false true is not a boolean
+stringBoolean.test(&apos;false&apos;) // returns false &apos;false&apos; is not true
+stringBoolean.test(&apos;true&apos;) // returns true
+</code>
+</code></pre>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">const stringDate = new Rule({
+  type: &apos;string-date&apos;,
+  after: new Date(2019, 11, 1),
+}, null);
+
+stringDate.test(new Date(2018, 11, 1)) // returns false new Date(2018, 11, 1) is not a string
+stringDate.test(&apos;some string&apos;) // returns false &apos;some string&apos; is not a valid date
+stringDate.test(&apos;2018-12-17&apos;) // returns false &apos;2018-12-17&apos; is not after new Date(2019, 11, 1)
+stringDate.test(&apos;2020-01-01&apos;) // returns true</code>
+</code></pre>
+<p><strong>Forgjs tries to cast the value to the right type before passing it to the validation function please be careful!</strong></p>
+<p>Here is an example where Javascript behaviour makes the test wrong:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">const stringDate = new Rule({
+  type: &apos;string-date&apos;,
+  equal: new Date(2019, 10, 1), // month in js strart at 0
+}, null);
+
+stringDate.test(&apos;2019-11-01&apos;) // returns false
+stringDate.test(&apos;2019-11-01T00:00&apos;) // returns true
+
+
+// this is because:
+
+new Date(2019, 10, 1) - new Date(&apos;2019-11-01&apos;) // equals  3600000 thats exactly 1 hour
+
+new Date(2019, 10, 1) - new Date(&apos;2019-11-01T00:00&apos;) // equals 0
+</code>
+</code></pre>
+<h2 id="multiple-types">Multiple types</h2><p>You can check for multiple types with <code>OR</code> or <code>AND</code> operators like this:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">  const intRule = new Rule({
+    type: &apos;int|float|number&apos;,
+  }, null);
+
+  intRule.test(2) // returns true</code>
+</code></pre>
+<p>This means the test should verify the <code>int</code>, <code>float</code> or <code>number</code> rule</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">  const intRule = new Rule({
+    type: &apos;int&amp;number&apos;,
+  }, null);
+  intRule.test(2.1); // returns false</code>
+</code></pre>
+<p>The result doesn&apos;t match the <code>int</code> rule</p>
+<h2 id="common-properties">Common properties</h2><p>Every type has these properties:</p>
+<ul>
+<li>optional</li>
+<li>custom</li>
+<li>oneOf</li>
+</ul>
+<h3 id="optional">optional</h3><p>If optional is set to <code>true</code> the element is optional and an <code>undefined</code> value is considered correct.
+Example:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">const { Validator, Rule } = require(&apos;@cesium133/forgjs&apos;);
+
+const intRule = new Rule({
+    type: &apos;int&apos;,
+    optional: true,
+  }, null);
+intRule.test(); // returns true</code>
+</code></pre>
+<h3 id="custom">custom</h3><p>Custom allows you to write your own rule, an example is better than a long explanation:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">  const { Validator, Rule } = require(&apos;@cesium133/forgjs&apos;);
+
+  function isCorrectAge(age, object) {
+    if (age === Math.floor((new Date() - object.dateOfBirth) / 1000 / 60 / 60 / 24 / 30 / 12)) {
+      return true;
+    }
+    return false;
+  }
+  const vComplexe = new Validator({
+    age: new Rule({
+      type: &apos;int&apos;, min: 18, max: 99, custom: isCorrectAge,
+    }),
+    dateOfBirth: new Rule({ type: &apos;date&apos; }),
+  });
+
+  vComplexe.test({
+    age: 23,
+    dateOfBirth: new Date(1995, 10, 3),
+    array: [&apos;1&apos;],
+  }); // returns true
+</code>
+</code></pre>
+<h3 id="oneof">oneOf</h3><p>One of checks if the element is in a array</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">  const floatRule = new Rule({
+    type: &apos;float&apos;,
+    oneOf: [3.5, 100.1, 7.2, 0.1],
+  }, null);
+  floatRule.test(100.1); // returns true</code>
+</code></pre>
+<h1 id="make-a-new-type">Make a new type</h1><p>Creating a new type is done using the Rule class like this:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">  const { Validator, Rule } = require(&apos;@cesium133/forgjs&apos;); 
+
+  Rule.addCustom(&apos;customInteger&apos;, {
+    min: (val, min) =&gt; val - min &gt; 0,
+    max: (val, max) =&gt; val - max &lt; 0,
+    equal: (val, equal) =&gt; val === equal,
+    type: val =&gt; Number.isInteger(val) &amp;&amp; val &gt; 0 &amp;&amp; val &lt; 100,
+  });
+
+  const customInteger = new Rule({
+    type: &apos;customInteger&apos;,
+    min: 10,
+  }, null);
+
+  customInteger.test(11) // returns true
+
+  customInteger.test(200) // returns false
+</code>
+</code></pre>
+<h1 id="how-to-contribute">How to contribute</h1><p>Thank you everyone for contributing to make this code better, if you have suggestions or ideas to improve the code please feel free to leave a comment here #29.
+Rules:</p>
+<h3 id="1-please-use-this-template-which-will-help-developers-to-test-and-better-understand-your-request">1 Please use this template which will help developers to test and better understand your request</h3><pre><code class="lang-javascript"><code class="source-code prettyprint">const someRule= new Rule({
+    type: &apos;yourType&apos;,
+    prop1: val1,
+    prop2: val2, ...
+  }, null);
+
+  someRule.test(validValue) // returns true
+  someRule.test(invalidValue) // returns false</code>
+</code></pre>
+<h2 id="2-please-if-you-think-a-comment-is-a-good-feature-to-be-added-like-the-comment-instead-of-creating-a-new-one-">2 Please if you think a comment is a good feature to be added like the comment instead of creating a new one.</h2><h2 id="3-before-submitting-a-new-comment-check-if-the-same-comment-is-not-already-present">3 Before submitting a new comment check if the same comment is not already present</h2><h2 id="4-if-you-submit-a-pr--pull-request--and-you-only-change-the-readme-please-add--code--ci-skip---code--to-your-commit-message">4 If you submit a PR (pull request) and you only change the Readme please add <code>[ci skip]</code> to your commit message</h2><h2 id="5-if-you-have-any-questions-ask-them-in-the-faq">5 If you have any questions ask them in the FAQ</h2><h2 id="6-please-have-fun--and-if-you-feel-like-not-following-the-rules-then-don--39-t-follow-them">6 Please have fun, and if you feel like not following the rules then don&apos;t follow them</h2><p>code with love &#x2764;&#xFE0F;</p>
+<h1 id="left-to-do-for-next-release">Left TO DO for next release</h1><h1 id="contact">Contact</h1><p>Follow me on twitter at <a href="https://twitter.com/forg_js" title="@forg_js">@forg_js</a></p>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

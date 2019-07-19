@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/Rule/index.js | @cesium133/forgjs</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="forgJs is a javascript lightweight object validator. Go check the Quick start section and start coding with love"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@cesium133/forgjs"><meta property="twitter:description" content="forgJs is a javascript lightweight object validator. Go check the Quick start section and start coding with love"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/oussamahamdaoui/forgJs"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-unexpectedFiled">unexpectedFiled</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AND">AND</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-OR">OR</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-arrayContainsAll">arrayContainsAll</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-flattenObject">flattenObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isArray">isArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isFunction">isFunction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isInt">isInt</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isObject">isObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isString">isString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-looseEqual">looseEqual</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mapFirstArgument">mapFirstArgument</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mergeRule">mergeRule</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-URL_REGEX">URL_REGEX</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#rule">Rule</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Rule/ErrorCollector.js~ErrorCollector.html">ErrorCollector</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Rule/index.js~Rule.html">Rule</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getErrorFromFunctionOrString">getErrorFromFunctionOrString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getErrorFromObject">getErrorFromObject</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#validator">Validator</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Validator/index.js~Validator.html">Validator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getValFromPath">getValFromPath</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-traverse">traverse</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#testfunctions">testFunctions</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-OPTIONAL">OPTIONAL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TEST_FUNCTIONS">TEST_FUNCTIONS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BOOLEAN">BOOLEAN</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-NUMBER">NUMBER</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-STRING">STRING</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#testfunctions-types">testFunctions/types</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-array">array</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-boolean">boolean</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-date">date</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-email">email</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-float">float</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-fn">fn</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-int">int</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-number">number</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-password">password</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-string">string</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-url">url</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/Rule/index.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const ErrorCollector = require(&apos;./ErrorCollector&apos;);
+const { getErrorFromObject, getErrorFromFunctionOrString } = require(&apos;./util&apos;);
+const { TEST_FUNCTIONS, OPTIONAL } = require(&apos;../testFunctions&apos;);
+const { AND, OR, isObject } = require(&apos;./../util&apos;);
+
+const OPERATORS = {
+  &apos;&amp;&apos;: AND,
+  &apos;|&apos;: OR,
+};
+
+/**
+ * The Rule class validates only one value
+ * once a rule is created it can be used multiple times
+ */
+class Rule {
+  /**
+   *
+   * @param {String|Object} obj the rule object it describes a the test that are ran by the Rule
+   * @param {String} error the error returned when the tested input is not correct
+   */
+  constructor(obj, error) {
+    if (typeof obj === &apos;string&apos; || obj instanceof String) {
+      this.rule = { type: obj };
+    } else {
+      this.rule = obj;
+    }
+    this.error = error;
+    this.errorCollector = new ErrorCollector();
+    this.testEntryObject();
+  }
+
+  /**
+   *
+   * @param {any} val the value to be tested
+   * @param {Object|String} obj the error object or string thats showed on error
+   * @param {String} path the path to the tested value this is used when
+   * using validator to keep track of the prop value ex: obj.min
+   *
+   * @return {boolean}
+   */
+
+  test(val, obj, path) {
+    this.errorCollector.clear();
+    const types = this.getTypes();
+    const operators = this.getRuleOperators();
+    let ret = this.testOneRule(val, obj, types[0], path);
+
+    for (let i = 1; i &lt; types.length; i += 1) {
+      const operator = operators[i] || operators[i - 1];
+      ret = operator(ret, this.testOneRule(val, obj, types[i], path));
+    }
+    return ret;
+  }
+
+  /**
+   * converts array from string if multiple types given in type
+   * its the case for exemple int|float
+   * @private
+   * @return {[String]}
+   */
+
+  getTypes() {
+    return this.rule.type.split(/[&amp;|]/);
+  }
+
+  /**
+   * Returns a list of the operators when multiple types given
+   * its the case for example int|float
+   * @private
+   * @returns {[String]}
+   */
+  getRuleOperators() {
+    const ret = [];
+    const operators = this.rule.type.match(/[&amp;|]/g) || &apos;&amp;&apos;;
+    for (let i = 0; i &lt; operators.length; i += 1) {
+      ret.push(OPERATORS[operators[i]]);
+    }
+    return ret;
+  }
+
+  /**
+   * @private
+   * @param val value to be tested
+   * @param {Object} obj error object
+   * @param {String} type the type from getTypes()
+   * @param {String} path the path to the value if Validator is used
+   *
+   * @returns {boolean}
+   */
+  testOneRule(val, obj, type, path) {
+    if (Rule.TEST_FUNCTIONS[type].optional(val, this.rule.optional, obj) === true) {
+      return true;
+    }
+
+    const keys = Object.keys(this.rule);
+    keys.sort((key) =&gt; {
+      if (key === &apos;type&apos;) return -1;
+      return 0;
+    });
+
+    for (let i = 0; i &lt; keys.length; i += 1) {
+      const key = keys[i];
+      const testFunction = Rule.TEST_FUNCTIONS[type][key];
+
+      if (testFunction(val, this.rule[key], obj) === false &amp;&amp; testFunction !== OPTIONAL) {
+        this.errorCollector.collect(this.getError(path, val, key));
+        return false;
+      }
+    }
+    return true;
+  }
+
+  /**
+   * Tests the validity of the constructor object
+   * thows an error if the object is invalid
+   */
+
+  testEntryObject() {
+    if (!this.rule.type) {
+      throw Error(&apos;`type` is required&apos;);
+    }
+    const types = this.getTypes();
+    types.forEach((type) =&gt; {
+      this.testEntryObjectOneType(type);
+    });
+  }
+
+  /**
+   * Tests the validity of the constructor object
+   * thows an error if the object is invalid
+   * tests if all the keys are valid
+   */
+
+  testEntryObjectOneType(type) {
+    const keys = Object.keys(this.rule);
+    for (let i = 0; i &lt; keys.length; i += 1) {
+      const key = keys[i];
+      if (!Rule.TEST_FUNCTIONS[type]) {
+        throw Error(`The \`${type}\` type doesn&apos;t exist`);
+      }
+      if (!Rule.TEST_FUNCTIONS[type][key]) {
+        throw new Error(`\`${type}\` doesn&apos;t have &quot;${key}&quot; test!`);
+      }
+    }
+  }
+
+  /**
+   * returns a list of errors if they are present
+   * @return {[String]}
+   */
+
+  getError(path, value, key) {
+    if (isObject(this.error)) {
+      return getErrorFromObject(this.error, path, value, key);
+    }
+    return getErrorFromFunctionOrString(this.error, path, value);
+  }
+
+  /**
+   * Add custom rule to the Rule class
+   * @param {String} name the name of the rule
+   * @param {Function} rule the validation function
+   */
+  static addCustom(name, rule) {
+    Rule.TEST_FUNCTIONS[name] = rule;
+    Rule.TEST_FUNCTIONS[name].optional = OPTIONAL;
+  }
+}
+
+Rule.TEST_FUNCTIONS = TEST_FUNCTIONS;
+
+module.exports = Rule;
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

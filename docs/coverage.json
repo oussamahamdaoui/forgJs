@@ -1,0 +1,177 @@
+{
+  "coverage": "28.57%",
+  "expectCount": 63,
+  "actualCount": 18,
+  "files": {
+    "src/Rule/ErrorCollector.js": {
+      "expectCount": 6,
+      "actualCount": 0,
+      "undocumentLines": [
+        2,
+        3,
+        4,
+        7,
+        11,
+        15
+      ]
+    },
+    "src/Rule/index.js": {
+      "expectCount": 14,
+      "actualCount": 10,
+      "undocumentLines": [
+        6,
+        23,
+        27,
+        28
+      ]
+    },
+    "src/Rule/util.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        10,
+        3
+      ]
+    },
+    "src/Validator/index.js": {
+      "expectCount": 6,
+      "actualCount": 0,
+      "undocumentLines": [
+        10,
+        11,
+        12,
+        15,
+        32,
+        41
+      ]
+    },
+    "src/Validator/util.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        17,
+        3
+      ]
+    },
+    "src/const.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        1
+      ]
+    },
+    "src/testFunctions/index.js": {
+      "expectCount": 4,
+      "actualCount": 3,
+      "undocumentLines": [
+        38
+      ]
+    },
+    "src/testFunctions/primitives.js": {
+      "expectCount": 3,
+      "actualCount": 3,
+      "undocumentLines": []
+    },
+    "src/testFunctions/types/array.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "src/testFunctions/types/boolean.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "src/testFunctions/types/date.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        1
+      ]
+    },
+    "src/testFunctions/types/email.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        4
+      ]
+    },
+    "src/testFunctions/types/float.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "src/testFunctions/types/function.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        1
+      ]
+    },
+    "src/testFunctions/types/int.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        4
+      ]
+    },
+    "src/testFunctions/types/number.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "src/testFunctions/types/password.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "src/testFunctions/types/string-boolean.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        5
+      ]
+    },
+    "src/testFunctions/types/string.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "src/testFunctions/types/url.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        5
+      ]
+    },
+    "src/util.js": {
+      "expectCount": 13,
+      "actualCount": 2,
+      "undocumentLines": [
+        1,
+        3,
+        7,
+        14,
+        16,
+        17,
+        5,
+        53,
+        61,
+        74,
+        91
+      ]
+    }
+  }
+}
