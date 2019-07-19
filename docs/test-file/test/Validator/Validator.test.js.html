@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">test/Validator/Validator.test.js | @cesium133/forgjs</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="forgJs is a javascript lightweight object validator. Go check the Quick start section and start coding with love"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@cesium133/forgjs"><meta property="twitter:description" content="forgJs is a javascript lightweight object validator. Go check the Quick start section and start coding with love"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/oussamahamdaoui/forgJs"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-unexpectedFiled">unexpectedFiled</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AND">AND</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-OR">OR</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-arrayContainsAll">arrayContainsAll</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-flattenObject">flattenObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isArray">isArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isFunction">isFunction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isInt">isInt</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isObject">isObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isString">isString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-looseEqual">looseEqual</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mapFirstArgument">mapFirstArgument</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mergeRule">mergeRule</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-URL_REGEX">URL_REGEX</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#rule">Rule</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Rule/ErrorCollector.js~ErrorCollector.html">ErrorCollector</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Rule/index.js~Rule.html">Rule</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getErrorFromFunctionOrString">getErrorFromFunctionOrString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getErrorFromObject">getErrorFromObject</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#validator">Validator</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Validator/index.js~Validator.html">Validator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getValFromPath">getValFromPath</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-traverse">traverse</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#testfunctions">testFunctions</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-OPTIONAL">OPTIONAL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TEST_FUNCTIONS">TEST_FUNCTIONS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BOOLEAN">BOOLEAN</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-NUMBER">NUMBER</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-STRING">STRING</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#testfunctions-types">testFunctions/types</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-array">array</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-boolean">boolean</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-date">date</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-email">email</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-float">float</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-fn">fn</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-int">int</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-number">number</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-password">password</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-string">string</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-url">url</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">test/Validator/Validator.test.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const { Rule, Validator } = require(&apos;../../src&apos;);
+
+test(&apos;test the hole object to be true&apos;, () =&gt; {
+  const vComplexe = new Validator({
+    age: new Rule({ type: &apos;int&apos;, min: 18, max: 99 }),
+    dateOfBirth: new Rule({ type: &apos;date&apos; }),
+    array: new Rule({ type: &apos;array&apos;, of: new Rule({ type: &apos;string&apos; }) }),
+  });
+
+  expect(vComplexe.test({
+    age: 26,
+    dateOfBirth: new Date(1995, 10, 3),
+    array: [&apos;1&apos;],
+  })).toBe(true);
+});
+
+test(&apos;test the hole object to be false extra values&apos;, () =&gt; {
+  const vComplexe = new Validator({
+    age: new Rule({ type: &apos;int&apos;, min: 18, max: 99 }),
+    dateOfBirth: new Rule({ type: &apos;date&apos; }),
+    array: new Rule({ type: &apos;array&apos;, of: new Rule({ type: &apos;string&apos; }) }),
+  });
+
+  expect(vComplexe.test({
+    age: 26,
+    dateOfBirth: new Date(1995, 10, 3),
+    array: [&apos;1&apos;],
+    extraValue: &apos;&apos;,
+  })).toBe(false);
+});
+
+test(&apos;test the hole object to be false&apos;, () =&gt; {
+  const vComplexe = new Validator({
+    age: new Rule({ type: &apos;int&apos;, min: 18, max: 99 }),
+    dateOfBirth: new Rule({ type: &apos;date&apos; }),
+    array: new Rule({ type: &apos;array&apos;, of: new Rule({ type: &apos;string&apos; }) }),
+  });
+
+  expect(vComplexe.test({
+    age: 26,
+    dateOfBirth: new Date(1995, 10, 3),
+    array: [1],
+  })).toBe(false);
+});
+
+test(&apos;test custom&apos;, () =&gt; {
+  function f(age, object) {
+    const expectedAge = Math.floor((new Date() - object.dateOfBirth) / 3.154e+10);
+    if (age === expectedAge) {
+      return true;
+    }
+    return false;
+  }
+  const vComplexe = new Validator({
+    age: new Rule({
+      type: &apos;int&apos;, min: 18, max: 99, custom: f,
+    }),
+    dateOfBirth: new Rule({ type: &apos;date&apos; }),
+  });
+
+  const age = Math.floor((new Date() - new Date(1995, 10, 3)) / 3.154e+10);
+
+  expect(vComplexe.test({
+    age,
+    dateOfBirth: new Date(1995, 10, 3),
+  })).toBe(true);
+});
+
+
+test(&apos;test getErrors must return an array of errors&apos;, () =&gt; {
+  const vComplexe = new Validator({
+    age: new Rule({
+      type: &apos;int&apos;, min: 18, max: 99,
+    }, &apos;age must be integer and between 18 and 99&apos;),
+    dateOfBirth: new Rule({ type: &apos;date&apos; }, &apos;date must be a date&apos;),
+    name: new Rule({ type: &apos;string&apos; }, (key, value) =&gt; `${key} must be a string, ${value} is not a string`),
+  });
+
+  expect(vComplexe.getErrors({
+    age: 16,
+    dateOfBirth: new Date(),
+    name: 1,
+  })).toEqual([&apos;age must be integer and between 18 and 99&apos;, &apos;name must be a string, 1 is not a string&apos;]);
+});
+
+test(&apos;test getErrors return array of errors even with object as rule error&apos;, () =&gt; {
+  const vComplexe = new Validator({
+    age: new Rule({
+      type: &apos;int&apos;, min: 18, max: 99,
+    }, {
+      type: &apos;age must be an integer.&apos;,
+      min: (key, value) =&gt; `age must be greater then 18, ${value} is not enough.`,
+    }),
+    dataOfBirth: new Rule({ type: &apos;date&apos; }, &apos;date must be a date&apos;),
+  });
+
+  expect(vComplexe.getErrors({
+    age: 16,
+    dateOfBirth: 1,
+  })).toEqual([
+    &apos;dateOfBirth is unexpcted&apos;,
+    &apos;age must be greater then 18, 16 is not enough.&apos;,
+    &apos;date must be a date&apos;,
+  ]);
+
+  expect(vComplexe.getErrors({
+    age: &apos;16&apos;,
+    dateOfBirth: 1,
+  })).toEqual([
+    &apos;dateOfBirth is unexpcted&apos;,
+    &apos;age must be an integer.&apos;,
+    &apos;date must be a date&apos;,
+  ]);
+
+  expect(vComplexe.getErrors({
+    age: 102, // there is no error definition for this key
+    dateOfBirth: 1,
+  })).toEqual([
+    &apos;dateOfBirth is unexpcted&apos;,
+    &apos;date must be a date&apos;,
+  ]);
+});
+
+test(&apos;test test over an array of values&apos;, () =&gt; {
+  const vComplexe = new Validator({
+    age: new Rule({
+      type: &apos;int&apos;, min: 18, max: 99,
+    }),
+  });
+
+  expect(vComplexe.testAll([{
+    age: 19,
+  }, {
+    age: 16,
+  }])).toBe(1);
+});
+
+test(&apos;test over multiple values and return -1&apos;, () =&gt; {
+  const vComplexe = new Validator({
+    age: new Rule({
+      type: &apos;int&apos;, min: 18, max: 99,
+    }),
+  });
+
+  expect(vComplexe.testAll([{
+    age: 19,
+  }, {
+    age: 20,
+  }])).toBe(-1);
+});
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

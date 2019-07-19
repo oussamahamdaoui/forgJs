@@ -6,6 +6,9 @@ const isInt = val => Number.isInteger(val);
 
 const isFunction = func => func !== null && typeof func === 'function';
 
+/**
+ * Regex that validates if a string is a valid url
+ */
 const URL_REGEX = /^\(?(?:(http|https|ftp):\/\/)?(?:((?:[^\W\s]|\.|-|[:]{1})+)@{1})?((?:www.)?(?:[^\W\s]|\.|-)+[\.][^\W\s]{2,4}|localhost(?=\/)|\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})(?::(\d*))?([\/]?[^\s\?]*[\/]{1})*(?:\/?([^\s\n\?\[\]\{\}\#]*(?:(?=\.)){1}|[^\s\n\?\[\]\{\}\.\#]*)?([\.]{1}[^\s\?\#]*)?)?(?:\?{1}([^\s\n\#\[\]]*))?([\#][^\s\n]*)?\)?/; // eslint-disable-line
 
 const isObject = obj => obj !== null && typeof obj === 'object';
@@ -13,6 +16,13 @@ const isObject = obj => obj !== null && typeof obj === 'object';
 const AND = (v1, v2) => v1 && v2;
 const OR = (v1, v2) => v1 || v2;
 
+/**
+ * Checks if two bojects are loosly equal
+ * @param {any} a first object
+ * @param {any} b second object
+ *
+ * @return {boolean}
+ */
 const looseEqual = (a, b) => {
   if (a === b) return true;
 

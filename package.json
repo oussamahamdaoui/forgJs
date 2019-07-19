@@ -7,9 +7,15 @@
   "directories": {
     "test": "test"
   },
-  "dependencies": {},
+  "dependencies": {
+    "esdoc": "^1.1.0",
+    "esdoc-ecmascript-proposal-plugin": "^1.0.0",
+    "esdoc-node": "^1.0.4",
+    "esdoc-standard-plugin": "^1.0.0"
+  },
   "devDependencies": {
     "codecov": "^3.1.0",
+    "esdoc-node-require": "^1.0.4",
     "eslint": "^5.9.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
@@ -22,7 +28,8 @@
     "test": "jest",
     "lint": "./node_modules/.bin/eslint src/** test/** --format junit -o reports/junit/js-lint-results.xml",
     "codecov": "codecov",
-    "tweet": "node twiterBotTaskRunner"
+    "tweet": "node twiterBotTaskRunner",
+    "build-doc": "esdoc"
   },
   "repository": {
     "type": "git",

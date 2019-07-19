@@ -1,0 +1,28 @@
+{
+  "source": "./src",
+  "destination": "./docs",
+  "index":"README.md",
+  "plugins": [
+    {
+      "name": "esdoc-standard-plugin",
+      "option": {
+        "lint": {"enable": true},
+        "coverage": {"enable": true},
+        
+        "test": {
+          "source": "./test/",
+          "interfaces": ["test", "expect", "context", "suite", "test"],
+          "includes": ["(spec|Spec|test|Test)\\.js$"],
+          "excludes": ["\\.config\\.js$"]
+        }
+      }
+    },
+    {
+      "name": "esdoc-ecmascript-proposal-plugin",
+      "option": {
+        "all": true
+      }
+    },
+    {"name": "esdoc-node"}
+  ]
+}

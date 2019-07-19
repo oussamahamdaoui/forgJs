@@ -31,5 +31,4 @@ module.exports = {
   'string-float': stringFloat,
   'string-date': stringDate,
   'string-boolean': stringBoolean,
-
 };

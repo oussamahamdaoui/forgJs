@@ -1,6 +1,14 @@
+/**
+ * These are the basic validation functions that are common to multiple types
+ */
+
 const {
   isString,
 } = require('../util');
+
+/**
+ * This object combines all  validation functions related to numbers
+ */
 
 const NUMBER = {
   min: (val, min) => val - min >= 0,
@@ -9,6 +17,9 @@ const NUMBER = {
   type: val => Number(val) === val,
 };
 
+/**
+ * This object combines all  validation functions related to strings
+ */
 const STRING = {
   minLength: (val, min) => val.length - min >= 0,
   maxLength: (val, max) => val.length - max <= 0,
@@ -17,6 +28,10 @@ const STRING = {
   notEmpty: val => val !== '',
   type: isString,
 };
+
+/**
+ * This object combines all  validation functions related to booleans
+ */
 
 const BOOLEAN = {
   type: val => val === true || val === false,
