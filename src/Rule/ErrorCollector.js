@@ -13,7 +13,7 @@ class ErrorCollector {
 
   /**
    * Adds error to collection
-   * 
+   *
    * @param {error} error error added to collection
    */
   collect(error) {
@@ -29,7 +29,7 @@ class ErrorCollector {
 
   /**
    * Returns all collected errors
-   * 
+   *
    * @returns {array}
    */
   get() {

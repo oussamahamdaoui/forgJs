@@ -17,7 +17,7 @@ const getErrorFromFunctionOrString = (error, path, value) => {
 };
 
 /**
- * Returns error message for error. If error does not have any property 
+ * Returns error message for error. If error does not have any property
  * named key, returns default error message.
  *
  * @param {Object} error object error
