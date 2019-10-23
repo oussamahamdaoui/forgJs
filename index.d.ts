@@ -16,7 +16,7 @@ interface basicStringRule extends basicRule<string> {
     minLength?: number,
     maxLength?: number,
     match?: RegExp,
-    notEmpty?: boolean,
+    isEmpty?: boolean,
 }
 
 interface simpleStringRule extends basicStringRule {
@@ -78,7 +78,7 @@ interface floatRule extends basicNumberRule {
 interface arrayRule extends basicRule<any> {
     type: 'array',
     of?: Rule,
-    notEmpty?: boolean,
+    isEmpty?: boolean,
     length?: number,
 }
 

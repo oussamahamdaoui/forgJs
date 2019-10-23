@@ -10,7 +10,7 @@ test('returns true when its an array', () => {
   expect(arrayRule.test(new Array())).toBe(true);
 });
 
-test('returns true when aray is not empty', () => {
+test('returns true when array is empty', () => {
   const elemntsRule = new Rule({
     type: 'int',
   });
@@ -18,9 +18,9 @@ test('returns true when aray is not empty', () => {
   const arrayRule = new Rule({
     type: 'array',
     of: elemntsRule,
-    notEmpty: true,
+    isEmpty: false,
   }, null);
-  expect(arrayRule.test([])).toBe(false);
+  expect(arrayRule.test([])).toBe(true);
 });
 
 test('returns true when all elems verify the rule', () => {

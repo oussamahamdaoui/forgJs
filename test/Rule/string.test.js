@@ -43,36 +43,36 @@ test('throws error when test doesn\'t exist', () => {
   }).toThrow();
 });
 
-test('type string returns true when string not empty', () => {
-  const strRule = new Rule({
-    type: 'string',
-    notEmpty: true,
-  }, null);
-  expect(strRule.test('the quick brown fox')).toBe(true);
-});
-
 test('type string returns false when string empty', () => {
   const strRule = new Rule({
     type: 'string',
-    notEmpty: true,
+    isEmpty: false,
   }, null);
-  expect(strRule.test('')).toBe(false);
+  expect(strRule.test('the quick brown fox')).toBe(false);
 });
 
-test('type string returns true when two strings are equal', () => {
+test('type string returns true when string empty', () => {
   const strRule = new Rule({
     type: 'string',
-    notEmpty: true,
+    isEmpty: false,
+  }, null);
+  expect(strRule.test('')).toBe(true);
+});
+
+test('type string returns false when two strings are equal', () => {
+  const strRule = new Rule({
+    type: 'string',
+    isEmpty: false,
     equal: 'hello',
   }, null);
-  expect(strRule.test('hello')).toBe(true);
+  expect(strRule.test('hello')).toBe(false);
 });
 
-test('type string returns true when string minLength', () => {
+test('type string returns false when string minLength', () => {
   const strRule = new Rule({
     type: 'string',
-    notEmpty: true,
+    isEmpty: false,
     minLength: 2,
   }, null);
-  expect(strRule.test('hello')).toBe(true);
+  expect(strRule.test('hello')).toBe(false);
 });

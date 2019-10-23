@@ -10,7 +10,7 @@ const array = {
     });
     return ret;
   },
-  notEmpty: val => val.length !== 0,
+  isEmpty: val => val.length === 0,
   length: (val, len) => val.length === len,
   type: isArray,
 };

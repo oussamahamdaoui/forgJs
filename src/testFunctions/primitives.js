@@ -25,7 +25,7 @@ const STRING = {
   maxLength: (val, max) => val.length - max <= 0,
   equal: (val, equal) => val === equal,
   match: (val, regex) => regex.test(val),
-  notEmpty: val => val !== '',
+  isEmpty: val => val === '',
   type: isString,
 };
 

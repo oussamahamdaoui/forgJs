@@ -1,18 +1,13 @@
 {
-  "coverage": "28.57%",
+  "coverage": "39.68%",
   "expectCount": 63,
-  "actualCount": 18,
+  "actualCount": 25,
   "files": {
     "src/Rule/ErrorCollector.js": {
       "expectCount": 6,
-      "actualCount": 0,
+      "actualCount": 5,
       "undocumentLines": [
-        2,
-        3,
-        4,
-        7,
-        11,
-        15
+        11
       ]
     },
     "src/Rule/index.js": {
@@ -27,11 +22,8 @@
     },
     "src/Rule/util.js": {
       "expectCount": 2,
-      "actualCount": 0,
-      "undocumentLines": [
-        10,
-        3
-      ]
+      "actualCount": 2,
+      "undocumentLines": []
     },
     "src/Validator/index.js": {
       "expectCount": 6,

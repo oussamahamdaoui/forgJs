@@ -116,38 +116,38 @@ test(&apos;throws error when test doesn\&apos;t exist&apos;, () =&gt; {
   }).toThrow();
 });
 
-test(&apos;type string returns true when string not empty&apos;, () =&gt; {
-  const strRule = new Rule({
-    type: &apos;string&apos;,
-    notEmpty: true,
-  }, null);
-  expect(strRule.test(&apos;the quick brown fox&apos;)).toBe(true);
-});
-
 test(&apos;type string returns false when string empty&apos;, () =&gt; {
   const strRule = new Rule({
     type: &apos;string&apos;,
-    notEmpty: true,
+    isEmpty: false,
   }, null);
-  expect(strRule.test(&apos;&apos;)).toBe(false);
+  expect(strRule.test(&apos;the quick brown fox&apos;)).toBe(false);
 });
 
-test(&apos;type string returns true when two strings are equal&apos;, () =&gt; {
+test(&apos;type string returns true when string empty&apos;, () =&gt; {
   const strRule = new Rule({
     type: &apos;string&apos;,
-    notEmpty: true,
+    isEmpty: false,
+  }, null);
+  expect(strRule.test(&apos;&apos;)).toBe(true);
+});
+
+test(&apos;type string returns false when two strings are equal&apos;, () =&gt; {
+  const strRule = new Rule({
+    type: &apos;string&apos;,
+    isEmpty: false,
     equal: &apos;hello&apos;,
   }, null);
-  expect(strRule.test(&apos;hello&apos;)).toBe(true);
+  expect(strRule.test(&apos;hello&apos;)).toBe(false);
 });
 
-test(&apos;type string returns true when string minLength&apos;, () =&gt; {
+test(&apos;type string returns false when string minLength&apos;, () =&gt; {
   const strRule = new Rule({
     type: &apos;string&apos;,
-    notEmpty: true,
+    isEmpty: false,
     minLength: 2,
   }, null);
-  expect(strRule.test(&apos;hello&apos;)).toBe(true);
+  expect(strRule.test(&apos;hello&apos;)).toBe(false);
 });
 </code></pre>
 

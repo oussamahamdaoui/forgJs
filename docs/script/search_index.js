@@ -529,14 +529,14 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/Rule/array.test.js.html#lineNumber13",
-    "returns true when aray is not empty",
+    "test-file/test/Rule/array.test.js.html#lineNumber40",
+    "returns true when array contains 3 elems",
     "test"
   ],
   [
     "",
-    "test-file/test/Rule/array.test.js.html#lineNumber40",
-    "returns true when array contains 3 elems",
+    "test-file/test/Rule/array.test.js.html#lineNumber13",
+    "returns true when array is empty",
     "test"
   ],
   [
@@ -1363,12 +1363,6 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/Rule/int.test.js.html#lineNumber87",
-    "throws error when test doesn't exist",
-    "test"
-  ],
-  [
-    "",
     "test-file/test/Rule/string.test.js.html#lineNumber36",
     "throws error when test doesn't exist",
     "test"
@@ -1376,6 +1370,12 @@ window.esdocSearchIndex = [
   [
     "",
     "test-file/test/Rule/date.test.js.html#lineNumber3",
+    "throws error when test doesn't exist",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/Rule/int.test.js.html#lineNumber87",
     "throws error when test doesn't exist",
     "test"
   ],
@@ -1489,8 +1489,20 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/Rule/string.test.js.html#lineNumber54",
+    "test-file/test/Rule/string.test.js.html#lineNumber46",
     "type string returns false when string empty",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/Rule/string.test.js.html#lineNumber71",
+    "type string returns false when string minLength",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/Rule/string.test.js.html#lineNumber62",
+    "type string returns false when two strings are equal",
     "test"
   ],
   [
@@ -1507,31 +1519,19 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/Rule/string.test.js.html#lineNumber71",
-    "type string returns true when string minLength",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/Rule/string.test.js.html#lineNumber46",
-    "type string returns true when string not empty",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/Rule/string.test.js.html#lineNumber62",
-    "type string returns true when two strings are equal",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/Rule/int.test.js.html#lineNumber11",
-    "type test",
+    "test-file/test/Rule/string.test.js.html#lineNumber54",
+    "type string returns true when string empty",
     "test"
   ],
   [
     "",
     "test-file/test/Rule/number.test.js.html#lineNumber11",
+    "type test",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/Rule/int.test.js.html#lineNumber11",
     "type test",
     "test"
   ],
@@ -1615,6 +1615,12 @@ window.esdocSearchIndex = [
   ],
   [
     "",
+    "test-file/test/Rule/string-float.test.js.html#lineNumber3",
+    "type test not number is false",
+    "test"
+  ],
+  [
+    "",
     "test-file/test/Rule/number.test.js.html#lineNumber3",
     "type test not number is false",
     "test"
@@ -1622,12 +1628,6 @@ window.esdocSearchIndex = [
   [
     "",
     "test-file/test/Rule/string-int.test.js.html#lineNumber3",
-    "type test not number is false",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/Rule/string-float.test.js.html#lineNumber3",
     "type test not number is false",
     "test"
   ],
@@ -1657,13 +1657,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/Rule/string-int.test.js.html#lineNumber76",
+    "test-file/test/Rule/string-float.test.js.html#lineNumber76",
     "type test string-number is not equal to 5",
     "test"
   ],
   [
     "",
-    "test-file/test/Rule/string-float.test.js.html#lineNumber76",
+    "test-file/test/Rule/string-int.test.js.html#lineNumber76",
     "type test string-number is not equal to 5",
     "test"
   ],
