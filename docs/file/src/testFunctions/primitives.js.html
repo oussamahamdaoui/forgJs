@@ -98,7 +98,8 @@ const STRING = {
   maxLength: (val, max) =&gt; val.length - max &lt;= 0,
   equal: (val, equal) =&gt; val === equal,
   match: (val, regex) =&gt; regex.test(val),
-  notEmpty: val =&gt; val !== &apos;&apos;,
+  notEmpty: (val, itShouldNotBeEmpty) =&gt; (val !== &apos;&apos;) === itShouldNotBeEmpty,
+  isEmpty: (val, itShouldBeEmpty) =&gt; (val === &apos;&apos;) === itShouldBeEmpty,
   type: isString,
 };
 

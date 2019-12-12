@@ -83,7 +83,8 @@ const array = {
     });
     return ret;
   },
-  notEmpty: val =&gt; val.length !== 0,
+  notEmpty: (val, itShouldNotBeEmpty) =&gt; (val.length !== 0) === itShouldNotBeEmpty,
+  isEmpty: (val, itShouldBeEmpty) =&gt; (val. length === 0) === itShouldBeEmpty,
   length: (val, len) =&gt; val.length === len,
   type: isArray,
 };

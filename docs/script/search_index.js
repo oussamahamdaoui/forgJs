@@ -457,7 +457,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/Rule/array.test.js.html#lineNumber48",
+    "test-file/test/Rule/array.test.js.html#lineNumber49",
     "returns false when array contains elements that dont match",
     "test"
   ],
@@ -523,25 +523,25 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/Rule/array.test.js.html#lineNumber26",
+    "test-file/test/Rule/array.test.js.html#lineNumber27",
     "returns true when all elems verify the rule",
     "test"
   ],
   [
     "",
-    "test-file/test/Rule/array.test.js.html#lineNumber13",
-    "returns true when aray is not empty",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/Rule/array.test.js.html#lineNumber40",
+    "test-file/test/Rule/array.test.js.html#lineNumber41",
     "returns true when array contains 3 elems",
     "test"
   ],
   [
     "",
-    "test-file/test/Rule/array.test.js.html#lineNumber69",
+    "test-file/test/Rule/array.test.js.html#lineNumber13",
+    "returns true when array is not empty",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/Rule/array.test.js.html#lineNumber70",
     "returns true when array is one of validator",
     "test"
   ],
@@ -571,7 +571,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/Rule/array.test.js.html#lineNumber56",
+    "test-file/test/Rule/array.test.js.html#lineNumber57",
     "returns true when elements verify the validator",
     "test"
   ],
@@ -1489,7 +1489,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/Rule/string.test.js.html#lineNumber54",
+    "test-file/test/Rule/string.test.js.html#lineNumber55",
     "type string returns false when string empty",
     "test"
   ],
@@ -1507,7 +1507,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/Rule/string.test.js.html#lineNumber71",
+    "test-file/test/Rule/string.test.js.html#lineNumber74",
     "type string returns true when string minLength",
     "test"
   ],
@@ -1519,7 +1519,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/Rule/string.test.js.html#lineNumber62",
+    "test-file/test/Rule/string.test.js.html#lineNumber64",
     "type string returns true when two strings are equal",
     "test"
   ],

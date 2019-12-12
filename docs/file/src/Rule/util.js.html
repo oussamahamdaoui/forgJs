@@ -73,6 +73,15 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/Rule/util.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const { isFunction } = require(&apos;./../util&apos;);
 
+/**
+ * If the error is function, calls this function with two arguments: path and value
+ * and returns the result. If error is string, just returns it.
+ *
+ * @param {Function|String} error representation of error
+ * @param {any} path
+ * @param {any} value
+ * @returns {String}
+ */
 const getErrorFromFunctionOrString = (error, path, value) =&gt; {
   if (isFunction(error)) {
     return error(path, value);
@@ -80,6 +89,16 @@ const getErrorFromFunctionOrString = (error, path, value) =&gt; {
   return error;
 };
 
+/**
+ * Returns error message for error. If error does not have any property
+ * named key, returns default error message.
+ *
+ * @param {Object} error object error
+ * @param {any} path
+ * @param {any} value
+ * @param {String} key name of error&apos;s property which value is error message
+ * @returns {String}
+ */
 const getErrorFromObject = (error, path, value, key) =&gt; {
   if (!Object.prototype.hasOwnProperty.call(error, key)) {
     return null; // Here should be the default error message.

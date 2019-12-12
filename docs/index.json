@@ -567,9 +567,9 @@
     "__docId__": 48,
     "kind": "file",
     "name": "src/Rule/ErrorCollector.js",
-    "content": "\nclass ErrorCollector {\n  constructor() {\n    this.errors = [];\n  }\n\n  collect(error) {\n    this.errors.push(error);\n  }\n\n  clear() {\n    this.errors = [];\n  }\n\n  get() {\n    return this.errors.filter(error => error !== null);\n  }\n}\n\nmodule.exports = ErrorCollector;\n",
+    "content": "/**\n * This object collects errors into array\n * @class\n */\nclass ErrorCollector {\n  /**\n   * Initializes empty ErrorCollector\n   * @constructor\n   */\n  constructor() {\n    this.errors = [];\n  }\n\n  /**\n   * Adds error to collection\n   *\n   * @param {error} error error added to collection\n   */\n  collect(error) {\n    this.errors.push(error);\n  }\n\n  /**\n   * Removes all errors from this ErrorCollector\n   */\n  clear() {\n    this.errors = [];\n  }\n\n  /**\n   * Returns all collected errors\n   *\n   * @returns {array}\n   */\n  get() {\n    return this.errors.filter(error => error !== null);\n  }\n}\n\nmodule.exports = ErrorCollector;\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/src/Rule/ErrorCollector.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/src/Rule/ErrorCollector.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
@@ -585,9 +585,14 @@
     "export": true,
     "importPath": "@cesium133/forgjs/src/Rule/ErrorCollector.js",
     "importStyle": "ErrorCollector",
-    "description": null,
-    "lineNumber": 2,
-    "undocument": true,
+    "description": "This object collects errors into array",
+    "lineNumber": 5,
+    "unknown": [
+      {
+        "tagName": "@class",
+        "tagValue": ""
+      }
+    ],
     "interface": false
   },
   {
@@ -600,9 +605,14 @@
     "static": false,
     "longname": "src/Rule/ErrorCollector.js~ErrorCollector#constructor",
     "access": "public",
-    "description": null,
-    "lineNumber": 3,
-    "undocument": true
+    "description": "Initializes empty ErrorCollector",
+    "lineNumber": 10,
+    "unknown": [
+      {
+        "tagName": "@constructor",
+        "tagValue": ""
+      }
+    ]
   },
   {
     "__docId__": 51,
@@ -613,7 +623,7 @@
     "longname": "src/Rule/ErrorCollector.js~ErrorCollector#errors",
     "access": "public",
     "description": null,
-    "lineNumber": 4,
+    "lineNumber": 11,
     "undocument": true,
     "type": {
       "types": [
@@ -631,15 +641,18 @@
     "static": false,
     "longname": "src/Rule/ErrorCollector.js~ErrorCollector#collect",
     "access": "public",
-    "description": null,
-    "lineNumber": 7,
-    "undocument": true,
+    "description": "Adds error to collection",
+    "lineNumber": 19,
     "params": [
       {
-        "name": "error",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "error"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "error",
+        "description": "error added to collection"
       }
     ],
     "return": null
@@ -654,9 +667,8 @@
     "static": false,
     "longname": "src/Rule/ErrorCollector.js~ErrorCollector#clear",
     "access": "public",
-    "description": null,
-    "lineNumber": 11,
-    "undocument": true,
+    "description": "Removes all errors from this ErrorCollector",
+    "lineNumber": 26,
     "params": [],
     "return": null
   },
@@ -670,15 +682,23 @@
     "static": false,
     "longname": "src/Rule/ErrorCollector.js~ErrorCollector#get",
     "access": "public",
-    "description": null,
-    "lineNumber": 15,
-    "undocument": true,
-    "params": [],
+    "description": "Returns all collected errors",
+    "lineNumber": 35,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{array}"
+      }
+    ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
-    }
+        "array"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "params": []
   },
   {
     "__docId__": 56,
@@ -686,7 +706,7 @@
     "name": "src/Rule/index.js",
     "content": "const ErrorCollector = require('./ErrorCollector');\nconst { getErrorFromObject, getErrorFromFunctionOrString } = require('./util');\nconst { TEST_FUNCTIONS, OPTIONAL } = require('../testFunctions');\nconst { AND, OR, isObject } = require('./../util');\n\nconst OPERATORS = {\n  '&': AND,\n  '|': OR,\n};\n\n/**\n * The Rule class validates only one value\n * once a rule is created it can be used multiple times\n */\nclass Rule {\n  /**\n   *\n   * @param {String|Object} obj the rule object it describes a the test that are ran by the Rule\n   * @param {String} error the error returned when the tested input is not correct\n   */\n  constructor(obj, error) {\n    if (typeof obj === 'string' || obj instanceof String) {\n      this.rule = { type: obj };\n    } else {\n      this.rule = obj;\n    }\n    this.error = error;\n    this.errorCollector = new ErrorCollector();\n    this.testEntryObject();\n  }\n\n  /**\n   *\n   * @param {any} val the value to be tested\n   * @param {Object|String} obj the error object or string thats showed on error\n   * @param {String} path the path to the tested value this is used when\n   * using validator to keep track of the prop value ex: obj.min\n   *\n   * @return {boolean}\n   */\n\n  test(val, obj, path) {\n    this.errorCollector.clear();\n    const types = this.getTypes();\n    const operators = this.getRuleOperators();\n    let ret = this.testOneRule(val, obj, types[0], path);\n\n    for (let i = 1; i < types.length; i += 1) {\n      const operator = operators[i] || operators[i - 1];\n      ret = operator(ret, this.testOneRule(val, obj, types[i], path));\n    }\n    return ret;\n  }\n\n  /**\n   * converts array from string if multiple types given in type\n   * its the case for exemple int|float\n   * @private\n   * @return {[String]}\n   */\n\n  getTypes() {\n    return this.rule.type.split(/[&|]/);\n  }\n\n  /**\n   * Returns a list of the operators when multiple types given\n   * its the case for example int|float\n   * @private\n   * @returns {[String]}\n   */\n  getRuleOperators() {\n    const ret = [];\n    const operators = this.rule.type.match(/[&|]/g) || '&';\n    for (let i = 0; i < operators.length; i += 1) {\n      ret.push(OPERATORS[operators[i]]);\n    }\n    return ret;\n  }\n\n  /**\n   * @private\n   * @param val value to be tested\n   * @param {Object} obj error object\n   * @param {String} type the type from getTypes()\n   * @param {String} path the path to the value if Validator is used\n   *\n   * @returns {boolean}\n   */\n  testOneRule(val, obj, type, path) {\n    if (Rule.TEST_FUNCTIONS[type].optional(val, this.rule.optional, obj) === true) {\n      return true;\n    }\n\n    const keys = Object.keys(this.rule);\n    keys.sort((key) => {\n      if (key === 'type') return -1;\n      return 0;\n    });\n\n    for (let i = 0; i < keys.length; i += 1) {\n      const key = keys[i];\n      const testFunction = Rule.TEST_FUNCTIONS[type][key];\n\n      if (testFunction(val, this.rule[key], obj) === false && testFunction !== OPTIONAL) {\n        this.errorCollector.collect(this.getError(path, val, key));\n        return false;\n      }\n    }\n    return true;\n  }\n\n  /**\n   * Tests the validity of the constructor object\n   * thows an error if the object is invalid\n   */\n\n  testEntryObject() {\n    if (!this.rule.type) {\n      throw Error('`type` is required');\n    }\n    const types = this.getTypes();\n    types.forEach((type) => {\n      this.testEntryObjectOneType(type);\n    });\n  }\n\n  /**\n   * Tests the validity of the constructor object\n   * thows an error if the object is invalid\n   * tests if all the keys are valid\n   */\n\n  testEntryObjectOneType(type) {\n    const keys = Object.keys(this.rule);\n    for (let i = 0; i < keys.length; i += 1) {\n      const key = keys[i];\n      if (!Rule.TEST_FUNCTIONS[type]) {\n        throw Error(`The \\`${type}\\` type doesn't exist`);\n      }\n      if (!Rule.TEST_FUNCTIONS[type][key]) {\n        throw new Error(`\\`${type}\\` doesn't have \"${key}\" test!`);\n      }\n    }\n  }\n\n  /**\n   * returns a list of errors if they are present\n   * @return {[String]}\n   */\n\n  getError(path, value, key) {\n    if (isObject(this.error)) {\n      return getErrorFromObject(this.error, path, value, key);\n    }\n    return getErrorFromFunctionOrString(this.error, path, value);\n  }\n\n  /**\n   * Add custom rule to the Rule class\n   * @param {String} name the name of the rule\n   * @param {Function} rule the validation function\n   */\n  static addCustom(name, rule) {\n    Rule.TEST_FUNCTIONS[name] = rule;\n    Rule.TEST_FUNCTIONS[name].optional = OPTIONAL;\n  }\n}\n\nRule.TEST_FUNCTIONS = TEST_FUNCTIONS;\n\nmodule.exports = Rule;\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/src/Rule/index.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/src/Rule/index.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
@@ -1105,9 +1125,9 @@
     "__docId__": 72,
     "kind": "file",
     "name": "src/Rule/util.js",
-    "content": "const { isFunction } = require('./../util');\n\nconst getErrorFromFunctionOrString = (error, path, value) => {\n  if (isFunction(error)) {\n    return error(path, value);\n  }\n  return error;\n};\n\nconst getErrorFromObject = (error, path, value, key) => {\n  if (!Object.prototype.hasOwnProperty.call(error, key)) {\n    return null; // Here should be the default error message.\n  }\n  return getErrorFromFunctionOrString(error[key], path, value);\n};\n\nmodule.exports = { getErrorFromObject, getErrorFromFunctionOrString };\n",
+    "content": "const { isFunction } = require('./../util');\n\n/**\n * If the error is function, calls this function with two arguments: path and value\n * and returns the result. If error is string, just returns it.\n *\n * @param {Function|String} error representation of error\n * @param {any} path\n * @param {any} value\n * @returns {String}\n */\nconst getErrorFromFunctionOrString = (error, path, value) => {\n  if (isFunction(error)) {\n    return error(path, value);\n  }\n  return error;\n};\n\n/**\n * Returns error message for error. If error does not have any property\n * named key, returns default error message.\n *\n * @param {Object} error object error\n * @param {any} path\n * @param {any} value\n * @param {String} key name of error's property which value is error message\n * @returns {String}\n */\nconst getErrorFromObject = (error, path, value, key) => {\n  if (!Object.prototype.hasOwnProperty.call(error, key)) {\n    return null; // Here should be the default error message.\n  }\n  return getErrorFromFunctionOrString(error[key], path, value);\n};\n\nmodule.exports = { getErrorFromObject, getErrorFromFunctionOrString };\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/src/Rule/util.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/src/Rule/util.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
@@ -1125,39 +1145,63 @@
     "export": true,
     "importPath": "@cesium133/forgjs/src/Rule/util.js",
     "importStyle": "{getErrorFromObject}",
-    "description": null,
-    "lineNumber": 10,
-    "undocument": true,
+    "description": "Returns error message for error. If error does not have any property\nnamed key, returns default error message.",
+    "lineNumber": 29,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{String}"
+      }
+    ],
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "error",
-        "types": [
-          "*"
-        ]
+        "description": "object error"
       },
       {
+        "nullable": null,
+        "types": [
+          "any"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "path",
-        "types": [
-          "*"
-        ]
+        "description": ""
       },
       {
+        "nullable": null,
+        "types": [
+          "any"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "value",
-        "types": [
-          "*"
-        ]
+        "description": ""
       },
       {
-        "name": "key",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "key",
+        "description": "name of error's property which value is error message"
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "String"
+      ],
+      "spread": false,
+      "description": ""
     }
   },
   {
@@ -1173,33 +1217,54 @@
     "export": true,
     "importPath": "@cesium133/forgjs/src/Rule/util.js",
     "importStyle": "{getErrorFromFunctionOrString}",
-    "description": null,
-    "lineNumber": 3,
-    "undocument": true,
+    "description": "If the error is function, calls this function with two arguments: path and value\nand returns the result. If error is string, just returns it.",
+    "lineNumber": 12,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{String}"
+      }
+    ],
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "Function",
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "error",
-        "types": [
-          "*"
-        ]
+        "description": "representation of error"
       },
       {
+        "nullable": null,
+        "types": [
+          "any"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "path",
-        "types": [
-          "*"
-        ]
+        "description": ""
       },
       {
-        "name": "value",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "any"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": ""
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "String"
+      ],
+      "spread": false,
+      "description": ""
     }
   },
   {
@@ -1208,7 +1273,7 @@
     "name": "src/Validator/index.js",
     "content": "const {\n  traverse, getValFromPath,\n} = require('./util');\n\nconst { unexpectedFiled } = require('../const');\nconst {\n  flattenObject, arrayContainsAll,\n} = require('../util');\n\nclass Validator {\n  constructor(o) {\n    this.rules = o;\n  }\n\n  test(o) {\n    let ret = true;\n    const keysOfRules = Object.keys(flattenObject(this.rules));\n    const keysOfObject = Object.keys(flattenObject(o));\n\n    if (!arrayContainsAll(keysOfObject, keysOfRules)) {\n      return false;\n    }\n\n    traverse(this.rules, (rule, path) => {\n      if (rule.test(getValFromPath(path, o), o) === false) {\n        ret = false;\n      }\n    });\n    return ret;\n  }\n\n  testAll(arr) {\n    for (let i = 0; i < arr.length; i += 1) {\n      if (this.test(arr[i]) === false) {\n        return i;\n      }\n    }\n    return -1;\n  }\n\n  getErrors(o) {\n    let errors = [];\n    const keysOfRules = Object.keys(flattenObject(this.rules));\n    const keysOfObject = Object.keys(flattenObject(o));\n\n    if (!arrayContainsAll(keysOfObject, keysOfRules)) {\n      let undeclaredFiledes = keysOfObject.filter(i => keysOfRules.indexOf(i) < 0);\n      undeclaredFiledes = undeclaredFiledes.map(unexpectedFiled);\n      errors = [...errors, ...undeclaredFiledes];\n    }\n\n    traverse(this.rules, (rule, path) => {\n      if (rule.test(getValFromPath(path, o), o, path) === false) {\n        errors = [\n          ...errors,\n          ...rule.errorCollector.get(),\n        ];\n      }\n    });\n    return errors;\n  }\n}\n\nmodule.exports = Validator;\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/src/Validator/index.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/src/Validator/index.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
@@ -1347,7 +1412,7 @@
     "name": "src/Validator/util.js",
     "content": "const Rule = require('../Rule');\n\nfunction traverse(o, fn, p) {\n  let path = p || '';\n\n  Object.keys(o).forEach((i) => {\n    if (o[i] !== null && typeof (o[i]) === 'object' && !(o[i] instanceof Rule)) {\n      traverse(o[i], fn, `${path}.${i}`);\n    } else {\n      fn.apply(null, [o[i], `${path}.${i}`.substr(1)]);\n      path = '';\n    }\n  });\n}\n\n\nfunction getValFromPath(p, obj) {\n  const path = p.split('.');\n  if (path.length === 1) {\n    return obj[path[0]];\n  }\n\n  const key = path.shift();\n  return getValFromPath(path.join('.'), obj[key]);\n}\n\nmodule.exports = { getValFromPath, traverse };\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/src/Validator/util.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/src/Validator/util.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
@@ -1432,7 +1497,7 @@
     "name": "src/const.js",
     "content": "const unexpectedFiled = filed => `${filed} is unexpcted`;\nmodule.exports = {\n  unexpectedFiled,\n};\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/src/const.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/src/const.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
@@ -1469,7 +1534,7 @@
     "name": "src/index.js",
     "content": "const Validator = require('./Validator');\nconst Rule = require('./Rule');\n\nmodule.exports = { Validator, Rule };\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/src/index.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/src/index.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
@@ -1480,7 +1545,7 @@
     "name": "src/testFunctions/index.js",
     "content": "/**\n * This file contains all validation functions that are present in all the types\n */\n\nconst { looseEqual } = require('../util');\nconst types = require('./types');\n\n/**\n * The custom validation function\n * @param {*} val\n * @param {*} f\n * @param {*} obj\n */\n\nconst CUSTOM = (val, f, obj) => f(val, obj);\n\n/**\n * The optional validation function\n * @param  val the value to be tested\n * @param {boolean} state is the value optional\n */\nconst OPTIONAL = (val, state) => val === undefined && state === true;\n\n/**\n * This function validates that a value is part of an array\n * @param val the value\n * @param {Array} arr the array of alowed values\n */\nconst oneOf = (val, arr) => {\n  for (let i = 0; i < arr.length; i += 1) {\n    if (looseEqual(arr[i], val)) {\n      return true;\n    }\n  }\n  return false;\n};\n\nconst TEST_FUNCTIONS = {\n  ...types,\n};\nObject.keys(TEST_FUNCTIONS).forEach((key) => {\n  TEST_FUNCTIONS[key].custom = CUSTOM;\n  TEST_FUNCTIONS[key].optional = OPTIONAL;\n  TEST_FUNCTIONS[key].oneOf = oneOf;\n});\n\nmodule.exports = { TEST_FUNCTIONS, OPTIONAL };\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/src/testFunctions/index.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/index.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
@@ -1642,9 +1707,9 @@
     "__docId__": 93,
     "kind": "file",
     "name": "src/testFunctions/primitives.js",
-    "content": "/**\n * These are the basic validation functions that are common to multiple types\n */\n\nconst {\n  isString,\n} = require('../util');\n\n/**\n * This object combines all  validation functions related to numbers\n */\n\nconst NUMBER = {\n  min: (val, min) => val - min >= 0,\n  max: (val, max) => val - max <= 0,\n  equal: (val, equal) => val === equal,\n  type: val => Number(val) === val,\n};\n\n/**\n * This object combines all  validation functions related to strings\n */\nconst STRING = {\n  minLength: (val, min) => val.length - min >= 0,\n  maxLength: (val, max) => val.length - max <= 0,\n  equal: (val, equal) => val === equal,\n  match: (val, regex) => regex.test(val),\n  notEmpty: val => val !== '',\n  type: isString,\n};\n\n/**\n * This object combines all  validation functions related to booleans\n */\n\nconst BOOLEAN = {\n  type: val => val === true || val === false,\n  toBe: (val, bool) => val === bool,\n};\n\nmodule.exports = {\n  BOOLEAN,\n  STRING,\n  NUMBER,\n};\n",
+    "content": "/**\n * These are the basic validation functions that are common to multiple types\n */\n\nconst {\n  isString,\n} = require('../util');\n\n/**\n * This object combines all  validation functions related to numbers\n */\n\nconst NUMBER = {\n  min: (val, min) => val - min >= 0,\n  max: (val, max) => val - max <= 0,\n  equal: (val, equal) => val === equal,\n  type: val => Number(val) === val,\n};\n\n/**\n * This object combines all  validation functions related to strings\n */\nconst STRING = {\n  minLength: (val, min) => val.length - min >= 0,\n  maxLength: (val, max) => val.length - max <= 0,\n  equal: (val, equal) => val === equal,\n  match: (val, regex) => regex.test(val),\n  notEmpty: (val, itShouldNotBeEmpty) => (val !== '') === itShouldNotBeEmpty,\n  isEmpty: (val, itShouldBeEmpty) => (val === '') === itShouldBeEmpty,\n  type: isString,\n};\n\n/**\n * This object combines all  validation functions related to booleans\n */\n\nconst BOOLEAN = {\n  type: val => val === true || val === false,\n  toBe: (val, bool) => val === bool,\n};\n\nmodule.exports = {\n  BOOLEAN,\n  STRING,\n  NUMBER,\n};\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/src/testFunctions/primitives.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/primitives.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
@@ -1661,7 +1726,7 @@
     "importPath": "@cesium133/forgjs/src/testFunctions/primitives.js",
     "importStyle": "{BOOLEAN}",
     "description": "This object combines all  validation functions related to booleans",
-    "lineNumber": 36,
+    "lineNumber": 37,
     "type": {
       "types": [
         "{\"type\": *, \"toBe\": *}"
@@ -1683,7 +1748,7 @@
     "lineNumber": 23,
     "type": {
       "types": [
-        "{\"minLength\": *, \"maxLength\": *, \"equal\": *, \"match\": *, \"notEmpty\": *, \"type\": *}"
+        "{\"minLength\": *, \"maxLength\": *, \"equal\": *, \"match\": *, \"notEmpty\": *, \"isEmpty\": *, \"type\": *}"
       ]
     }
   },
@@ -1710,9 +1775,9 @@
     "__docId__": 97,
     "kind": "file",
     "name": "src/testFunctions/types/array.js",
-    "content": "const { isArray } = require('../../util');\n\nconst array = {\n  of: (arr, rule) => {\n    let ret = true;\n    arr.forEach((el) => {\n      if (rule.test(el) === false) {\n        ret = false;\n      }\n    });\n    return ret;\n  },\n  notEmpty: val => val.length !== 0,\n  length: (val, len) => val.length === len,\n  type: isArray,\n};\n\nmodule.exports = array;\n",
+    "content": "const { isArray } = require('../../util');\n\nconst array = {\n  of: (arr, rule) => {\n    let ret = true;\n    arr.forEach((el) => {\n      if (rule.test(el) === false) {\n        ret = false;\n      }\n    });\n    return ret;\n  },\n  notEmpty: (val, itShouldNotBeEmpty) => (val.length !== 0) === itShouldNotBeEmpty,\n  isEmpty: (val, itShouldBeEmpty) => (val. length === 0) === itShouldBeEmpty,\n  length: (val, len) => val.length === len,\n  type: isArray,\n};\n\nmodule.exports = array;\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/src/testFunctions/types/array.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/array.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
@@ -1733,7 +1798,7 @@
     "undocument": true,
     "type": {
       "types": [
-        "{\"of\": *, \"notEmpty\": *, \"length\": *, \"type\": *}"
+        "{\"of\": *, \"notEmpty\": *, \"isEmpty\": *, \"length\": *, \"type\": *}"
       ]
     }
   },
@@ -1743,7 +1808,7 @@
     "name": "src/testFunctions/types/boolean.js",
     "content": "const { BOOLEAN } = require('../primitives');\n\nconst boolean = {\n  ...BOOLEAN,\n};\n\nmodule.exports = boolean;\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/src/testFunctions/types/boolean.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/boolean.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
@@ -1774,7 +1839,7 @@
     "name": "src/testFunctions/types/date.js",
     "content": "const date = {\n  after: (val, min) => val - min > 0,\n  before: (val, max) => val - max < 0,\n  between: (val, range) => val - range[0] > 0 && val - range[1] < 0,\n  equal: (val, equal) => val - equal === 0,\n  type: val => val instanceof Date,\n};\n\nmodule.exports = date;\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/src/testFunctions/types/date.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/date.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
@@ -1805,7 +1870,7 @@
     "name": "src/testFunctions/types/email.js",
     "content": "const { STRING } = require('../primitives');\nconst { isString } = require('../../util');\n\nconst email = {\n  ...STRING,\n  type: val => isString(val) && /\\S+@\\S+\\.\\S+/.test(val),\n  user: (val, f) => f(val.match(/(\\S+)@\\S+\\.\\S+/)[1]),\n  domain: (val, f) => f(val.match(/\\S+@(\\S+)\\.\\S+/)[1]),\n\n};\nmodule.exports = email;\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/src/testFunctions/types/email.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/email.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
@@ -1836,7 +1901,7 @@
     "name": "src/testFunctions/types/float.js",
     "content": "const { NUMBER } = require('../primitives');\n\nconst float = {\n  ...NUMBER,\n  type: val => Number(val) === val && val % 1 !== 0,\n};\nmodule.exports = float;\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/src/testFunctions/types/float.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/float.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
@@ -1867,7 +1932,7 @@
     "name": "src/testFunctions/types/function.js",
     "content": "const fn = {\n  type: val => val && {}.toString.call(val) === '[object Function]',\n  result: (val, obj) => obj.toBe.test(val(obj.of)),\n};\n\nmodule.exports = fn;\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/src/testFunctions/types/function.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/function.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
@@ -1898,7 +1963,7 @@
     "name": "src/testFunctions/types/int.js",
     "content": "const { NUMBER } = require('../primitives');\nconst { isInt } = require('../../util');\n\nconst int = {\n  ...NUMBER,\n  type: isInt,\n};\nmodule.exports = int;\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/src/testFunctions/types/int.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/int.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
@@ -1929,7 +1994,7 @@
     "name": "src/testFunctions/types/number.js",
     "content": "const { NUMBER } = require('../primitives');\n\nconst number = {\n  ...NUMBER,\n};\nmodule.exports = number;\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/src/testFunctions/types/number.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/number.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
@@ -1960,7 +2025,7 @@
     "name": "src/testFunctions/types/password.js",
     "content": "const { STRING } = require('../primitives');\n\nconst password = {\n  ...STRING,\n  numbers: (val, number) => !!val.match(/(\\d)/g) && val.match(/(\\d)/g).length >= number,\n  uppercase: (val, number) => !!val.match(/([A-Z])/g) && val.match(/([A-Z])/g).length >= number,\n  specialChars: (val, number) => !!val.match(/([^a-zA-Z])/g) && val.match(/([^a-zA-Z])/g).length >= number,\n  matchesOneOf: (val, arr) => {\n    for (let i = 0; i < arr.length; i += 1) {\n      if (val.indexOf(arr[i]) !== -1) {\n        return true;\n      }\n    }\n    return false;\n  },\n\n  matchesAllOf: (val, arr) => {\n    for (let i = 0; i < arr.length; i += 1) {\n      if (val.indexOf(arr[i]) === -1) {\n        return false;\n      }\n    }\n    return true;\n  },\n};\nmodule.exports = password;\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/src/testFunctions/types/password.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/password.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
@@ -1991,7 +2056,7 @@
     "name": "src/testFunctions/types/string-boolean.js",
     "content": "const { STRING } = require('../primitives');\nconst { mergeRule } = require('../../util');\nconst boolean = require('./boolean');\n\nconst castBoolean = (val) => {\n  if (val === 'true') return true;\n  if (val === 'false') return false;\n  return 'a';\n};\n\nmodule.exports = mergeRule(STRING, boolean, castBoolean);\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/src/testFunctions/types/string-boolean.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/string-boolean.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
@@ -2033,7 +2098,7 @@
     "name": "src/testFunctions/types/string-date.js",
     "content": "const { STRING } = require('../primitives');\nconst { mergeRule } = require('../../util');\nconst date = require('./date');\n\n\nmodule.exports = mergeRule(STRING, date, val => new Date(val));\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/src/testFunctions/types/string-date.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/string-date.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
@@ -2044,7 +2109,7 @@
     "name": "src/testFunctions/types/string-float.js",
     "content": "const { STRING } = require('../primitives');\nconst { mergeRule } = require('../../util');\nconst float = require('./float');\n\n\nmodule.exports = mergeRule(STRING, float, val => Number(val));\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/src/testFunctions/types/string-float.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/string-float.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
@@ -2055,7 +2120,7 @@
     "name": "src/testFunctions/types/string-int.js",
     "content": "const { STRING } = require('../primitives');\nconst { mergeRule } = require('../../util');\nconst int = require('./int');\n\n\nmodule.exports = mergeRule(STRING, int, val => Number(val));\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/src/testFunctions/types/string-int.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/string-int.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
@@ -2066,7 +2131,7 @@
     "name": "src/testFunctions/types/string.js",
     "content": "const { STRING } = require('../primitives');\n\nconst string = {\n  ...STRING,\n};\nmodule.exports = string;\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/src/testFunctions/types/string.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/string.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
@@ -2097,7 +2162,7 @@
     "name": "src/testFunctions/types/url.js",
     "content": "const { STRING } = require('../primitives');\nconst { isString, URL_REGEX } = require('../../util');\n\n\nconst url = {\n  ...STRING,\n  type: val => isString(val) && URL_REGEX.test(val),\n  domain: (val, f) => f(val.match(URL_REGEX)[3]),\n  protocol: (val, f) => f(val.match(URL_REGEX)[1]),\n};\n\nmodule.exports = url;\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/src/testFunctions/types/url.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/url.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
@@ -2128,7 +2193,7 @@
     "name": "src/util.js",
     "content": "const isArray = arr => Array.isArray(arr);\n\nconst isString = str => typeof str === 'string' || str instanceof String;\n\nconst isInt = val => Number.isInteger(val);\n\nconst isFunction = func => func !== null && typeof func === 'function';\n\n/**\n * Regex that validates if a string is a valid url\n */\nconst URL_REGEX = /^\\(?(?:(http|https|ftp):\\/\\/)?(?:((?:[^\\W\\s]|\\.|-|[:]{1})+)@{1})?((?:www.)?(?:[^\\W\\s]|\\.|-)+[\\.][^\\W\\s]{2,4}|localhost(?=\\/)|\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})(?::(\\d*))?([\\/]?[^\\s\\?]*[\\/]{1})*(?:\\/?([^\\s\\n\\?\\[\\]\\{\\}\\#]*(?:(?=\\.)){1}|[^\\s\\n\\?\\[\\]\\{\\}\\.\\#]*)?([\\.]{1}[^\\s\\?\\#]*)?)?(?:\\?{1}([^\\s\\n\\#\\[\\]]*))?([\\#][^\\s\\n]*)?\\)?/; // eslint-disable-line\n\nconst isObject = obj => obj !== null && typeof obj === 'object';\n\nconst AND = (v1, v2) => v1 && v2;\nconst OR = (v1, v2) => v1 || v2;\n\n/**\n * Checks if two bojects are loosly equal\n * @param {any} a first object\n * @param {any} b second object\n *\n * @return {boolean}\n */\nconst looseEqual = (a, b) => {\n  if (a === b) return true;\n\n  const isObjectA = isObject(a);\n  const isObjectB = isObject(b);\n  const isArrayA = isArray(a);\n  const isArrayB = isArray(b);\n  let ret = false;\n\n  if (isArrayA && isArrayB) {\n    ret = a.length === b.length && a.every((e, i) => looseEqual(e, b[i]));\n  }\n\n  if (a instanceof Date && b instanceof Date) {\n    ret = a.getTime() === b.getTime();\n  }\n\n  if (isObjectA && isObjectB) {\n    const keysA = Object.keys(a);\n    const keysB = Object.keys(b);\n    ret = keysA.length === keysB.length && keysA.every(key => looseEqual(a[key], b[key]));\n  }\n\n  return ret;\n};\n\n\nfunction mapFirstArgument(f, map) {\n  return (...args) => {\n    const arg = args;\n    arg[0] = map(arg[0]);\n    return f(...arg);\n  };\n}\n\nfunction mergeRule(rule1, rule2, mapFunction) {\n  const keys = Object.keys(rule2);\n  const mappedCopy = {};\n  keys.forEach((key) => {\n    mappedCopy[key] = mapFirstArgument(rule2[key], mapFunction);\n  });\n  return {\n    ...rule1,\n    ...mappedCopy,\n    type: val => rule1.type(val) && rule2.type(mapFunction(val)),\n  };\n}\n\nfunction flattenObject(ob) {\n  const toReturn = {};\n  /* eslint-disable */\n  for (const i in ob) {\n    if (ob[i] && ob[i].constructor === Object) {\n      const flatObject = flattenObject(ob[i]);\n      for (const x in flatObject) {\n        toReturn[`${i}.${x}`] = flatObject[x];\n      }\n    } else {\n      toReturn[i] = ob[i];\n    }\n  }\n  /* eslint-enable */\n  return toReturn;\n}\n\nfunction arrayContainsAll(a, b) {\n  for (let i = 0; i < a.length; i += 1) {\n    let contains = false;\n    for (let j = 0; j < b.length; j += 1) {\n      if (a[i] === b[j]) {\n        contains = true;\n      }\n    }\n    if (contains === false) {\n      return false;\n    }\n  }\n  return true;\n}\n\nmodule.exports = {\n  isArray,\n  isString,\n  isFunction,\n  isObject,\n  URL_REGEX,\n  looseEqual,\n  AND,\n  OR,\n  isInt,\n  mapFirstArgument,\n  mergeRule,\n  flattenObject,\n  arrayContainsAll,\n};\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/src/util.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/src/util.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
@@ -2538,16 +2603,16 @@
   },
   {
     "kind": "index",
-    "content": "# ![forgJs logo](./media/logo.png?raw=true)\n\n[![GitHub version](https://badge.fury.io/gh/oussamahamdaoui%2Fforgjs.svg)](https://badge.fury.io/gh/oussamahamdaoui%2Fforgjs)\n[![npm](https://img.shields.io/npm/v/@cesium133/forgjs.svg)]( https://www.npmjs.com/package/@cesium133/forgjs)\n![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)\n[![CircleCI (all branches)](https://img.shields.io/circleci/project/github/oussamahamdaoui/forgJs.svg)](https://circleci.com/gh/oussamahamdaoui/forgJs)\n[![codecov](https://codecov.io/gh/oussamahamdaoui/forgJs/branch/master/graph/badge.svg)](https://codecov.io/gh/oussamahamdaoui/forgJs)\n[![Maintainability](https://api.codeclimate.com/v1/badges/7bb3657e4e4111f22f2f/maintainability)](https://codeclimate.com/github/oussamahamdaoui/forgJs/maintainability)\n\n[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social?style=flat-square)](https://twitter.com/forg_js)\n\nForgJs is a JavaScript lightweight object validator. Go check the Quick start section and start coding with love :heart:\n\n![email](./media/email.gif?raw=true)\n\n![password](./media/password.gif?raw=true)\n\n![number](./media/number.gif?raw=true)\n\n![url](./media/url.gif?raw=true)\n\nSee more live examples [here](https://oussamahamdaoui.github.io/forgjs-examples/)\n\n# Quick start\n\nInstall it via npm by running `npm i @cesium133/forgjs`\n\n## Your first validator\n\n```javascript\n  const { Validator, Rule } = require('@cesium133/forgjs');\n\nconst emailRule = new Rule({\n    type: 'email',\n    user: user => user === 'dedede',\n    domain: domain => ['outlook', 'gmail', 'yahoo'].indexOf(domain) !== -1,\n}, null);\n\nconst passwordRule = new Rule({\n    type: 'password',\n    minLength: 8,\n    uppercase: 1,\n    numbers: 1,\n    matchesOneOf: ['@', '_', '-', '.', '!'],\n}, null);\n\nconst vComplex = new Validator({\n    age: new Rule({ type: 'int', min: 18, max: 99 }),\n    dateOfBirth: new Rule({ type: 'date' }),\n    array: new Rule({ type: 'array', of: new Rule({ type: 'string' }) }),\n    email: emailRule,\n    password: passwordRule\n});\n\nvComplex.test({\n    age: 26,\n    dateOfBirth: new Date(1995, 10, 3),\n    array: ['1'],\n    email: 'dedede@yahoo.fr;',\n    password: 'ad1_A@@Axs',\n}); /// returns true\n  ```\n\n## Error handling\n\nYou can get custom error messages by doing this:\n\n```javascript\nconst vComplexe = new Validator({\n    age: new Rule({\n      type: 'int', min: 18, max: 99,\n    }, 'age must be integer and between 18 and 99'),\n    dateOfBirth: new Rule({ type: 'date' }, 'date must be a date'),\n  });\n\n  vComplexe.getErrors({\n    age: 16,\n    dateOfBirth: 123,\n  }); // ['age must be integer and between 18 and 99', 'date must be a date']\n\n```\n## Test over an array\n\nYou can test over multiple arrays using this method:\n\n```javascript\nconst vComplexe = new Validator({\n    age: new Rule({\n      type: 'int', min: 18, max: 99,\n    }),\n  });\n\n  vComplexe.testAll([{\n    age: 19,\n  }, {\n    age: 16,\n  }]);  // returns 1\n```\n\n# Rules\n\nA `Rule` object validates a single value, it can be used like this: \n\n```javascript\n  const { Validator, Rule } = require('@cesium133/forgjs');\n  const floatRule = new Rule({\n    type: 'float',\n    min: 100,\n  }, null);\n\n  floatRule.test(2.001); /// returns true;\n```\n\n**The only required value is `type`!**\n\n> You can make a rule by simply passing a string if you only need to check the type : `new Rule('int');`\n\n## int\n\n* min (int)\n* max (int)\n* equal (int)\n\n## boolean\n\n* toBe (boolean)\n\n## string\n\n* minLength (int)\n* maxLength (int)\n* equal (string)\n* match: (regex)\n* notEmpty (bool)\n\n## email\n\n* minLength (int)\n* maxLength (int)\n* equal (string)\n* match: (regex)\n* notEmpty (bool)\n* user (`function(user)`)\n* domain (`function(domain)`)\n\n```javascript\n  const emailRule = new Rule({\n    type: 'email',\n    user: user => user === 'dedede',\n    domain: domain => ['outlook', 'gmail', 'yahoo'].indexOf(domain) !== -1,\n  }, null);\n\n  emailRule.test('dedede@gmail.fr'); // returns true\n```\n\n## password\n\n* minLength (int)\n* maxLength (int)\n* equal (string)\n* match: (regex)\n* notEmpty (bool)\n* uppercase (int)\n* number (int)\n* mathesOneOf (Array)\n* matchesAllOf (Array)\n\n```javascript\n  const passwordRule = new Rule({\n    type: 'password',\n    minLength: 8,\n    uppercase: 1,\n    numbers: 1,\n    matchesOneOf: ['@', '_', '-', '.', '!'],\n  }, null);\n\n  passwordRule.test('@_-bddcd6A'); // returns true\n```\n\n## url\n\n* minLength (int)\n* maxLength (int)\n* equal (string)\n* match: (regex)\n* notEmpty (bool)\n* protocol (`function(protocol)`)\n* domain (`function(domain)`)\n\n```javascript\n  const urlRule = new Rule({\n    type: 'url',\n    protocol: prot => prot === 'https',\n    domain: domain => domain === 'google.fr',\n  }, null);\n\n  urlRule.test('https://google.fr'); // returns true\n```\n\n## date\n\n* after (date)\n* before (date)\n* between (Array of dates like this [date, date])\n* equal (date)\n\n## float\n\n* min (Number)\n* max (Number)\n* equal (float)\n\n## array\n\n* of (Rule or Validator object)\n* notEmpty (bool)\n* length (int)\n\nThe `of` rule checks every element of the array against the rule.\n\n## function\n\n* result\n\nTo explain result, what's better than an example:\n\n```javascript\n  const { Validator, Rule } = require('@cesium133/forgjs');\n\n  function someFunctionThatReturnsAnInt(int) {\n    return int * 5;\n  }\n\n  const functionTest = new Rule({\n    type: 'function',\n    result: {\n      of: 5,\n      toBe: new Rule('int'),\n    },\n  }, null);\n\n  functionTest.test(someFunctionThatReturnsAnInt); /// returns true;\n\n  ```\n## string-int, string-float, string-date, string-boolean\n\nThese types 'inherit' from string, they have both the properties, here are some examples:\n\n### string-int\n\n```javascript\nconst stringInt = new Rule({\n  type: 'string-int',\n  minLength: 2,\n  min: 5,\n}, null);\n\nstringInt.test(2) // returns false 2 is not a string\nstringInt.test('2a') // returns false '2a' is not a int\nstringInt.test('2.1') // returns false '2.1' is not a int\nstringInt.test('5') // returns false length of '5' is smaller than 2\nstringInt.test('50') // returns true\n```\n### string-boolean\n\n```javascript\nconst stringBoolean = new Rule({\n  type: 'string-boolean',\n  toBe: true\n}, null);\n\nstringBoolean.test(true) // returns false true is not a boolean\nstringBoolean.test('false') // returns false 'false' is not true\nstringBoolean.test('true') // returns true\n\n```\n\n```javascript\nconst stringDate = new Rule({\n  type: 'string-date',\n  after: new Date(2019, 11, 1),\n}, null);\n\nstringDate.test(new Date(2018, 11, 1)) // returns false new Date(2018, 11, 1) is not a string\nstringDate.test('some string') // returns false 'some string' is not a valid date\nstringDate.test('2018-12-17') // returns false '2018-12-17' is not after new Date(2019, 11, 1)\nstringDate.test('2020-01-01') // returns true\n```\n\n**Forgjs tries to cast the value to the right type before passing it to the validation function please be careful!**\n\nHere is an example where Javascript behaviour makes the test wrong:\n\n```javascript\nconst stringDate = new Rule({\n  type: 'string-date',\n  equal: new Date(2019, 10, 1), // month in js strart at 0\n}, null);\n\nstringDate.test('2019-11-01') // returns false\nstringDate.test('2019-11-01T00:00') // returns true\n\n\n// this is because:\n\nnew Date(2019, 10, 1) - new Date('2019-11-01') // equals  3600000 thats exactly 1 hour\n\nnew Date(2019, 10, 1) - new Date('2019-11-01T00:00') // equals 0\n\n```\n\n## Multiple types\n\nYou can check for multiple types with `OR` or `AND` operators like this:\n\n```javascript\n  const intRule = new Rule({\n    type: 'int|float|number',\n  }, null);\n\n  intRule.test(2) // returns true\n```\n\nThis means the test should verify the `int`, `float` or `number` rule\n\n```javascript\n  const intRule = new Rule({\n    type: 'int&number',\n  }, null);\n  intRule.test(2.1); // returns false\n```\n\nThe result doesn't match the `int` rule\n\n## Common properties\n\nEvery type has these properties:\n\n* optional\n* custom\n* oneOf\n\n### optional\n\nIf optional is set to `true` the element is optional and an `undefined` value is considered correct.\nExample:\n\n```javascript\nconst { Validator, Rule } = require('@cesium133/forgjs');\n\nconst intRule = new Rule({\n    type: 'int',\n    optional: true,\n  }, null);\nintRule.test(); // returns true\n```\n\n### custom\n\nCustom allows you to write your own rule, an example is better than a long explanation:\n\n```javascript\n  const { Validator, Rule } = require('@cesium133/forgjs');\n  \n  function isCorrectAge(age, object) {\n    if (age === Math.floor((new Date() - object.dateOfBirth) / 1000 / 60 / 60 / 24 / 30 / 12)) {\n      return true;\n    }\n    return false;\n  }\n  const vComplexe = new Validator({\n    age: new Rule({\n      type: 'int', min: 18, max: 99, custom: isCorrectAge,\n    }),\n    dateOfBirth: new Rule({ type: 'date' }),\n  });\n\n  vComplexe.test({\n    age: 23,\n    dateOfBirth: new Date(1995, 10, 3),\n    array: ['1'],\n  }); // returns true\n\n```\n### oneOf\n\nOne of checks if the element is in a array\n```javascript\n  const floatRule = new Rule({\n    type: 'float',\n    oneOf: [3.5, 100.1, 7.2, 0.1],\n  }, null);\n  floatRule.test(100.1); // returns true\n```\n\n# Make a new type\n\nCreating a new type is done using the Rule class like this:\n\n```javascript\n  const { Validator, Rule } = require('@cesium133/forgjs'); \n  \n  Rule.addCustom('customInteger', {\n    min: (val, min) => val - min > 0,\n    max: (val, max) => val - max < 0,\n    equal: (val, equal) => val === equal,\n    type: val => Number.isInteger(val) && val > 0 && val < 100,\n  });\n\n  const customInteger = new Rule({\n    type: 'customInteger',\n    min: 10,\n  }, null);\n\n  customInteger.test(11) // returns true\n\n  customInteger.test(200) // returns false\n\n```\n\n# How to contribute\n\nThank you everyone for contributing to make this code better, if you have suggestions or ideas to improve the code please feel free to leave a comment here #29.\nRules:\n\n### 1 Please use this template which will help developers to test and better understand your request\n\n```javascript\nconst someRule= new Rule({\n    type: 'yourType',\n    prop1: val1,\n    prop2: val2, ...\n  }, null);\n\n  someRule.test(validValue) // returns true\n  someRule.test(invalidValue) // returns false\n```\n\n## 2 Please if you think a comment is a good feature to be added like the comment instead of creating a new one.\n\n## 3 Before submitting a new comment check if the same comment is not already present\n\n## 4 If you submit a PR (pull request) and you only change the Readme please add `[ci skip]` to your commit message\n\n## 5 If you have any questions ask them in the FAQ\n\n## 6 Please have fun, and if you feel like not following the rules then don't follow them\n\ncode with love ❤️\n\n# Left TO DO for next release\n\n# Contact\n\nFollow me on twitter at [@forg_js](https://twitter.com/forg_js \"@forg_js\")\n",
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/README.md",
+    "content": "# Hey every one im really happy that this repo reached this many stars 🎉,but this repo needs your contibution\n\nI started to better document the code there is an open issue on that, the main goal is to make it more accessible to other developpers who want to contribute, i'm still the main maintainer of this project and i'm calling for your help to make this code better so if any of you want to contribute and you have a good idea of how to make this better please feel free to open an issue or a pull request.\nhere is the full documentation (work in preogress): [https://oussamahamdaoui.github.io/forgJs/](https://oussamahamdaoui.github.io/forgJs/)\n\nThank you! and dont forget code with love ❤️\n\n--------------\n\n\n# ![forgJs logo](./media/logo.png?raw=true)\n\n[![GitHub version](https://badge.fury.io/gh/oussamahamdaoui%2Fforgjs.svg)](https://badge.fury.io/gh/oussamahamdaoui%2Fforgjs)\n[![npm](https://img.shields.io/npm/v/@cesium133/forgjs.svg)]( https://www.npmjs.com/package/@cesium133/forgjs)\n![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)\n[![CircleCI (all branches)](https://img.shields.io/circleci/project/github/oussamahamdaoui/forgJs.svg)](https://circleci.com/gh/oussamahamdaoui/forgJs)\n[![codecov](https://codecov.io/gh/oussamahamdaoui/forgJs/branch/master/graph/badge.svg)](https://codecov.io/gh/oussamahamdaoui/forgJs)\n[![Maintainability](https://api.codeclimate.com/v1/badges/7bb3657e4e4111f22f2f/maintainability)](https://codeclimate.com/github/oussamahamdaoui/forgJs/maintainability)\n\n[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social?style=flat-square)](https://twitter.com/forg_js)\n\nForgJs is a JavaScript lightweight object validator. Go check the Quick start section and start coding with love :heart:\n\n![email](./media/email.gif?raw=true)\n\n![password](./media/password.gif?raw=true)\n\n![number](./media/number.gif?raw=true)\n\n![url](./media/url.gif?raw=true)\n\nSee more live examples [here](https://oussamahamdaoui.github.io/forgjs-examples/)\n\n# Quick start\n\nInstall it via npm by running `npm i @cesium133/forgjs`\n\n## Your first validator\n\n```javascript\n  const { Validator, Rule } = require('@cesium133/forgjs');\n\nconst emailRule = new Rule({\n    type: 'email',\n    user: user => user === 'dedede',\n    domain: domain => ['outlook', 'gmail', 'yahoo'].indexOf(domain) !== -1,\n}, null);\n\nconst passwordRule = new Rule({\n    type: 'password',\n    minLength: 8,\n    uppercase: 1,\n    numbers: 1,\n    matchesOneOf: ['@', '_', '-', '.', '!'],\n}, null);\n\nconst vComplex = new Validator({\n    age: new Rule({ type: 'int', min: 18, max: 99 }),\n    dateOfBirth: new Rule({ type: 'date' }),\n    array: new Rule({ type: 'array', of: new Rule({ type: 'string' }) }),\n    email: emailRule,\n    password: passwordRule\n});\n\nvComplex.test({\n    age: 26,\n    dateOfBirth: new Date(1995, 10, 3),\n    array: ['1'],\n    email: 'dedede@yahoo.fr;',\n    password: 'ad1_A@@Axs',\n}); /// returns true\n  ```\n\n## Error handling\n\nYou can get custom error messages by doing this:\n\n```javascript\nconst vComplexe = new Validator({\n    age: new Rule({\n      type: 'int', min: 18, max: 99,\n    }, 'age must be integer and between 18 and 99'),\n    dateOfBirth: new Rule({ type: 'date' }, 'date must be a date'),\n  });\n\n  vComplexe.getErrors({\n    age: 16,\n    dateOfBirth: 123,\n  }); // ['age must be integer and between 18 and 99', 'date must be a date']\n\n```\n## Test over an array\n\nYou can test over multiple arrays using this method:\n\n```javascript\nconst vComplexe = new Validator({\n    age: new Rule({\n      type: 'int', min: 18, max: 99,\n    }),\n  });\n\n  vComplexe.testAll([{\n    age: 19,\n  }, {\n    age: 16,\n  }]);  // returns 1\n```\n\n# Rules\n\nA `Rule` object validates a single value, it can be used like this: \n\n```javascript\n  const { Validator, Rule } = require('@cesium133/forgjs');\n  const floatRule = new Rule({\n    type: 'float',\n    min: 100,\n  }, null);\n\n  floatRule.test(2.001); /// returns true;\n```\n\n**The only required value is `type`!**\n\n> You can make a rule by simply passing a string if you only need to check the type : `new Rule('int');`\n\n## int\n\n* min (int)\n* max (int)\n* equal (int)\n\n## boolean\n\n* toBe (boolean)\n\n## string\n\n* minLength (int)\n* maxLength (int)\n* equal (string)\n* match: (regex)\n* notEmpty (bool)\n* isEmpty (bool)\n\n## email\n\n* minLength (int)\n* maxLength (int)\n* equal (string)\n* match: (regex)\n* notEmpty (bool)\n* isEmpty (bool)\n* user (`function(user)`)\n* domain (`function(domain)`)\n\n```javascript\n  const emailRule = new Rule({\n    type: 'email',\n    user: user => user === 'dedede',\n    domain: domain => ['outlook', 'gmail', 'yahoo'].indexOf(domain) !== -1,\n  }, null);\n\n  emailRule.test('dedede@gmail.fr'); // returns true\n```\n\n## password\n\n* minLength (int)\n* maxLength (int)\n* equal (string)\n* match: (regex)\n* notEmpty (bool)\n* isEmpty (bool)\n* uppercase (int)\n* number (int)\n* mathesOneOf (Array)\n* matchesAllOf (Array)\n\n```javascript\n  const passwordRule = new Rule({\n    type: 'password',\n    minLength: 8,\n    uppercase: 1,\n    numbers: 1,\n    matchesOneOf: ['@', '_', '-', '.', '!'],\n  }, null);\n\n  passwordRule.test('@_-bddcd6A'); // returns true\n```\n\n## url\n\n* minLength (int)\n* maxLength (int)\n* equal (string)\n* match: (regex)\n* notEmpty (bool)\n* isEmpty (bool)\n* protocol (`function(protocol)`)\n* domain (`function(domain)`)\n\n```javascript\n  const urlRule = new Rule({\n    type: 'url',\n    protocol: prot => prot === 'https',\n    domain: domain => domain === 'google.fr',\n  }, null);\n\n  urlRule.test('https://google.fr'); // returns true\n```\n\n## date\n\n* after (date)\n* before (date)\n* between (Array of dates like this [date, date])\n* equal (date)\n\n## float\n\n* min (Number)\n* max (Number)\n* equal (float)\n\n## array\n\n* of (Rule or Validator object)\n* notEmpty (bool)\n* isEmpty (bool)\n* length (int)\n\nThe `of` rule checks every element of the array against the rule.\n\n## function\n\n* result\n\nTo explain result, what's better than an example:\n\n```javascript\n  const { Validator, Rule } = require('@cesium133/forgjs');\n\n  function someFunctionThatReturnsAnInt(int) {\n    return int * 5;\n  }\n\n  const functionTest = new Rule({\n    type: 'function',\n    result: {\n      of: 5,\n      toBe: new Rule('int'),\n    },\n  }, null);\n\n  functionTest.test(someFunctionThatReturnsAnInt); /// returns true;\n\n  ```\n## string-int, string-float, string-date, string-boolean\n\nThese types 'inherit' from string, they have both the properties, here are some examples:\n\n### string-int\n\n```javascript\nconst stringInt = new Rule({\n  type: 'string-int',\n  minLength: 2,\n  min: 5,\n}, null);\n\nstringInt.test(2) // returns false 2 is not a string\nstringInt.test('2a') // returns false '2a' is not a int\nstringInt.test('2.1') // returns false '2.1' is not a int\nstringInt.test('5') // returns false length of '5' is smaller than 2\nstringInt.test('50') // returns true\n```\n### string-boolean\n\n```javascript\nconst stringBoolean = new Rule({\n  type: 'string-boolean',\n  toBe: true\n}, null);\n\nstringBoolean.test(true) // returns false true is not a boolean\nstringBoolean.test('false') // returns false 'false' is not true\nstringBoolean.test('true') // returns true\n\n```\n\n```javascript\nconst stringDate = new Rule({\n  type: 'string-date',\n  after: new Date(2019, 11, 1),\n}, null);\n\nstringDate.test(new Date(2018, 11, 1)) // returns false new Date(2018, 11, 1) is not a string\nstringDate.test('some string') // returns false 'some string' is not a valid date\nstringDate.test('2018-12-17') // returns false '2018-12-17' is not after new Date(2019, 11, 1)\nstringDate.test('2020-01-01') // returns true\n```\n\n**Forgjs tries to cast the value to the right type before passing it to the validation function please be careful!**\n\nHere is an example where Javascript behaviour makes the test wrong:\n\n```javascript\nconst stringDate = new Rule({\n  type: 'string-date',\n  equal: new Date(2019, 10, 1), // month in js strart at 0\n}, null);\n\nstringDate.test('2019-11-01') // returns false\nstringDate.test('2019-11-01T00:00') // returns true\n\n\n// this is because:\n\nnew Date(2019, 10, 1) - new Date('2019-11-01') // equals  3600000 thats exactly 1 hour\n\nnew Date(2019, 10, 1) - new Date('2019-11-01T00:00') // equals 0\n\n```\n\n## Multiple types\n\nYou can check for multiple types with `OR` or `AND` operators like this:\n\n```javascript\n  const intRule = new Rule({\n    type: 'int|float|number',\n  }, null);\n\n  intRule.test(2) // returns true\n```\n\nThis means the test should verify the `int`, `float` or `number` rule\n\n```javascript\n  const intRule = new Rule({\n    type: 'int&number',\n  }, null);\n  intRule.test(2.1); // returns false\n```\n\nThe result doesn't match the `int` rule\n\n## Common properties\n\nEvery type has these properties:\n\n* optional\n* custom\n* oneOf\n\n### optional\n\nIf optional is set to `true` the element is optional and an `undefined` value is considered correct.\nExample:\n\n```javascript\nconst { Validator, Rule } = require('@cesium133/forgjs');\n\nconst intRule = new Rule({\n    type: 'int',\n    optional: true,\n  }, null);\nintRule.test(); // returns true\n```\n\n### custom\n\nCustom allows you to write your own rule, an example is better than a long explanation:\n\n```javascript\n  const { Validator, Rule } = require('@cesium133/forgjs');\n  \n  function isCorrectAge(age, object) {\n    if (age === Math.floor((new Date() - object.dateOfBirth) / 1000 / 60 / 60 / 24 / 30 / 12)) {\n      return true;\n    }\n    return false;\n  }\n  const vComplexe = new Validator({\n    age: new Rule({\n      type: 'int', min: 18, max: 99, custom: isCorrectAge,\n    }),\n    dateOfBirth: new Rule({ type: 'date' }),\n  });\n\n  vComplexe.test({\n    age: 23,\n    dateOfBirth: new Date(1995, 10, 3),\n    array: ['1'],\n  }); // returns true\n\n```\n### oneOf\n\nOne of checks if the element is in a array\n```javascript\n  const floatRule = new Rule({\n    type: 'float',\n    oneOf: [3.5, 100.1, 7.2, 0.1],\n  }, null);\n  floatRule.test(100.1); // returns true\n```\n\n# Make a new type\n\nCreating a new type is done using the Rule class like this:\n\n```javascript\n  const { Validator, Rule } = require('@cesium133/forgjs'); \n  \n  Rule.addCustom('customInteger', {\n    min: (val, min) => val - min > 0,\n    max: (val, max) => val - max < 0,\n    equal: (val, equal) => val === equal,\n    type: val => Number.isInteger(val) && val > 0 && val < 100,\n  });\n\n  const customInteger = new Rule({\n    type: 'customInteger',\n    min: 10,\n  }, null);\n\n  customInteger.test(11) // returns true\n\n  customInteger.test(200) // returns false\n\n```\n\n# How to contribute\n\nThank you everyone for contributing to make this code better, if you have suggestions or ideas to improve the code please feel free to leave a comment here #29.\nRules:\n\n### 1 Please use this template which will help developers to test and better understand your request\n\n```javascript\nconst someRule= new Rule({\n    type: 'yourType',\n    prop1: val1,\n    prop2: val2, ...\n  }, null);\n\n  someRule.test(validValue) // returns true\n  someRule.test(invalidValue) // returns false\n```\n\n## 2 Please if you think a comment is a good feature to be added like the comment instead of creating a new one.\n\n## 3 Before submitting a new comment check if the same comment is not already present\n\n## 4 If you submit a PR (pull request) and you only change the Readme please add `[ci skip]` to your commit message\n\n## 5 If you have any questions ask them in the FAQ\n\n## 6 Please have fun, and if you feel like not following the rules then don't follow them\n\ncode with love ❤️\n\n# Left TO DO for next release\n\n# Contact\n\nFollow me on twitter at [@forg_js](https://twitter.com/forg_js \"@forg_js\")\n",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/README.md",
     "name": "README.md",
     "static": true,
     "access": "public"
   },
   {
     "kind": "packageJSON",
-    "content": "{\n  \"name\": \"@cesium133/forgjs\",\n  \"version\": \"1.1.10\",\n  \"description\": \"forgJs is a javascript lightweight object validator. Go check the Quick start section and start coding with love\",\n  \"main\": \"index.js\",\n  \"typings\": \"./index.d.ts\",\n  \"directories\": {\n    \"test\": \"test\"\n  },\n  \"dependencies\": {\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-ecmascript-proposal-plugin\": \"^1.0.0\",\n    \"esdoc-node\": \"^1.0.4\",\n    \"esdoc-standard-plugin\": \"^1.0.0\"\n  },\n  \"devDependencies\": {\n    \"codecov\": \"^3.1.0\",\n    \"esdoc-node-require\": \"^1.0.4\",\n    \"eslint\": \"^5.9.0\",\n    \"eslint-config-airbnb-base\": \"^13.1.0\",\n    \"eslint-plugin-import\": \"^2.14.0\",\n    \"eslint-plugin-jest\": \"^22.1.0\",\n    \"jest\": \"^24.8.0\",\n    \"jest-junit\": \"^6.4.0\",\n    \"twit\": \"^2.2.11\"\n  },\n  \"scripts\": {\n    \"test\": \"jest\",\n    \"lint\": \"./node_modules/.bin/eslint src/** test/** --format junit -o reports/junit/js-lint-results.xml\",\n    \"codecov\": \"codecov\",\n    \"tweet\": \"node twiterBotTaskRunner\",\n    \"build-doc\": \"esdoc\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/oussamahamdaoui/forgJs.git\"\n  },\n  \"keywords\": [\n    \"javascript\",\n    \"object\",\n    \"validator\",\n    \"light\"\n  ],\n  \"author\": \"Oussama Hamdaoui <oussamahamdaoui@live.fr>\",\n  \"license\": \"MIT\",\n  \"bugs\": {\n    \"url\": \"https://github.com/oussamahamdaoui/forgJs/issues\"\n  },\n  \"homepage\": \"https://github.com/oussamahamdaoui/forgJs#readme\"\n}\n",
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/package.json",
+    "content": "{\n  \"name\": \"@cesium133/forgjs\",\n  \"version\": \"1.1.10\",\n  \"description\": \"forgJs is a javascript lightweight object validator. Go check the Quick start section and start coding with love\",\n  \"main\": \"index.js\",\n  \"typings\": \"./index.d.ts\",\n  \"directories\": {\n    \"test\": \"test\"\n  },\n  \"dependencies\": {},\n  \"devDependencies\": {\n    \"codecov\": \"^3.1.0\",\n    \"esdoc-node-require\": \"^1.0.4\",\n    \"eslint\": \"^5.9.0\",\n    \"eslint-config-airbnb-base\": \"^13.1.0\",\n    \"eslint-plugin-import\": \"^2.14.0\",\n    \"eslint-plugin-jest\": \"^22.1.0\",\n    \"jest\": \"^24.8.0\",\n    \"jest-junit\": \"^6.4.0\",\n    \"twit\": \"^2.2.11\",\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-ecmascript-proposal-plugin\": \"^1.0.0\",\n    \"esdoc-node\": \"^1.0.4\",\n    \"esdoc-standard-plugin\": \"^1.0.0\"\n  },\n  \"scripts\": {\n    \"test\": \"jest\",\n    \"lint\": \"./node_modules/.bin/eslint src/** test/** --format junit -o reports/junit/js-lint-results.xml\",\n    \"codecov\": \"codecov\",\n    \"tweet\": \"node twiterBotTaskRunner\",\n    \"build-doc\": \"esdoc\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/oussamahamdaoui/forgJs.git\"\n  },\n  \"keywords\": [\n    \"javascript\",\n    \"object\",\n    \"validator\",\n    \"light\"\n  ],\n  \"author\": \"Oussama Hamdaoui <oussamahamdaoui@live.fr>\",\n  \"license\": \"MIT\",\n  \"bugs\": {\n    \"url\": \"https://github.com/oussamahamdaoui/forgJs/issues\"\n  },\n  \"homepage\": \"https://github.com/oussamahamdaoui/forgJs#readme\"\n}\n",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/package.json",
     "name": "package.json",
     "static": true,
     "access": "public"
@@ -2556,9 +2621,9 @@
     "__docId__": 138,
     "kind": "testFile",
     "name": "test/Rule/array.test.js",
-    "content": "const { Rule, Validator } = require('../../src');\n\ntest('returns true when its an array', () => {\n  const arrayRule = new Rule({\n    type: 'array',\n  }, null);\n  expect(arrayRule.test([])).toBe(true);\n\n  // eslint-disable-next-line\n  expect(arrayRule.test(new Array())).toBe(true);\n});\n\ntest('returns true when aray is not empty', () => {\n  const elemntsRule = new Rule({\n    type: 'int',\n  });\n\n  const arrayRule = new Rule({\n    type: 'array',\n    of: elemntsRule,\n    notEmpty: true,\n  }, null);\n  expect(arrayRule.test([])).toBe(false);\n});\n\ntest('returns true when all elems verify the rule', () => {\n  const elemntsRule = new Rule({\n    type: 'string',\n    maxLength: 2,\n  });\n\n  const arrayRule = new Rule({\n    type: 'array',\n    of: elemntsRule,\n  }, null);\n  expect(arrayRule.test(['1', '2', '1'])).toBe(true);\n});\n\n\ntest('returns true when array contains 3 elems', () => {\n  const arrayRule = new Rule({\n    type: 'array',\n    length: 3,\n  }, null);\n  expect(arrayRule.test(['1', '2', '1'])).toBe(true);\n});\n\ntest('returns false when array contains elements that dont match', () => {\n  const arrayRule = new Rule({\n    type: 'array',\n    of: new Rule('int'),\n  }, null);\n  expect(arrayRule.test(['1', '2', '1'])).toBe(false);\n});\n\ntest('returns true when elements verify the validator', () => {\n  const users = new Validator({\n    name: new Rule('string'),\n    age: new Rule('int'),\n  });\n\n  const arrayRule = new Rule({\n    type: 'array',\n    of: users,\n  });\n  expect(arrayRule.test([{ name: 'Meee', age: 23 }])).toBe(true);\n});\n\ntest('returns true when array is one of validator', () => {\n  const arrayRule = new Rule({\n    type: 'array',\n    oneOf: [[{ name: 'Meee', age: 23 }], [{ name: 'haaa', age: 27 }]],\n  });\n  expect(arrayRule.test([{ name: 'Meee', age: 23 }])).toBe(true);\n});\n",
+    "content": "const { Rule, Validator } = require('../../src');\n\ntest('returns true when its an array', () => {\n  const arrayRule = new Rule({\n    type: 'array',\n  }, null);\n  expect(arrayRule.test([])).toBe(true);\n\n  // eslint-disable-next-line\n  expect(arrayRule.test(new Array())).toBe(true);\n});\n\ntest('returns true when array is not empty', () => {\n  const elemntsRule = new Rule({\n    type: 'int',\n  });\n\n  const arrayRule = new Rule({\n    type: 'array',\n    of: elemntsRule,\n    notEmpty: true,\n    isEmpty: false,\n  }, null);\n  expect(arrayRule.test([])).toBe(false);\n});\n\ntest('returns true when all elems verify the rule', () => {\n  const elemntsRule = new Rule({\n    type: 'string',\n    maxLength: 2,\n  });\n\n  const arrayRule = new Rule({\n    type: 'array',\n    of: elemntsRule,\n  }, null);\n  expect(arrayRule.test(['1', '2', '1'])).toBe(true);\n});\n\n\ntest('returns true when array contains 3 elems', () => {\n  const arrayRule = new Rule({\n    type: 'array',\n    length: 3,\n  }, null);\n  expect(arrayRule.test(['1', '2', '1'])).toBe(true);\n});\n\ntest('returns false when array contains elements that dont match', () => {\n  const arrayRule = new Rule({\n    type: 'array',\n    of: new Rule('int'),\n  }, null);\n  expect(arrayRule.test(['1', '2', '1'])).toBe(false);\n});\n\ntest('returns true when elements verify the validator', () => {\n  const users = new Validator({\n    name: new Rule('string'),\n    age: new Rule('int'),\n  });\n\n  const arrayRule = new Rule({\n    type: 'array',\n    of: users,\n  });\n  expect(arrayRule.test([{ name: 'Meee', age: 23 }])).toBe(true);\n});\n\ntest('returns true when array is one of validator', () => {\n  const arrayRule = new Rule({\n    type: 'array',\n    oneOf: [[{ name: 'Meee', age: 23 }], [{ name: 'haaa', age: 27 }]],\n  });\n  expect(arrayRule.test([{ name: 'Meee', age: 23 }])).toBe(true);\n});\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/test/Rule/array.test.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/test/Rule/array.test.js",
     "access": null,
     "description": null,
     "lineNumber": 1
@@ -2586,7 +2651,7 @@
     "static": true,
     "longname": "test/Rule/array.test.js~test1",
     "access": null,
-    "description": "returns true when aray is not empty",
+    "description": "returns true when array is not empty",
     "lineNumber": 13
   },
   {
@@ -2600,7 +2665,7 @@
     "longname": "test/Rule/array.test.js~test2",
     "access": null,
     "description": "returns true when all elems verify the rule",
-    "lineNumber": 26
+    "lineNumber": 27
   },
   {
     "__docId__": 142,
@@ -2613,7 +2678,7 @@
     "longname": "test/Rule/array.test.js~test3",
     "access": null,
     "description": "returns true when array contains 3 elems",
-    "lineNumber": 40
+    "lineNumber": 41
   },
   {
     "__docId__": 143,
@@ -2626,7 +2691,7 @@
     "longname": "test/Rule/array.test.js~test4",
     "access": null,
     "description": "returns false when array contains elements that dont match",
-    "lineNumber": 48
+    "lineNumber": 49
   },
   {
     "__docId__": 144,
@@ -2639,7 +2704,7 @@
     "longname": "test/Rule/array.test.js~test5",
     "access": null,
     "description": "returns true when elements verify the validator",
-    "lineNumber": 56
+    "lineNumber": 57
   },
   {
     "__docId__": 145,
@@ -2652,7 +2717,7 @@
     "longname": "test/Rule/array.test.js~test6",
     "access": null,
     "description": "returns true when array is one of validator",
-    "lineNumber": 69
+    "lineNumber": 70
   },
   {
     "__docId__": 146,
@@ -2660,7 +2725,7 @@
     "name": "test/Rule/boolean.test.js",
     "content": "const { Rule } = require('../../src');\n\ntest('boolean returns true if true tested', () => {\n  const rule = new Rule({\n    type: 'boolean',\n  }, null);\n\n  expect(rule.test(true)).toBe(true);\n});\n\ntest('boolean returns true if false tested', () => {\n  const rule = new Rule({\n    type: 'boolean',\n    toBe: false,\n  }, null);\n\n  expect(rule.test(false)).toBe(true);\n});\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/test/Rule/boolean.test.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/test/Rule/boolean.test.js",
     "access": null,
     "description": null,
     "lineNumber": 1
@@ -2697,7 +2762,7 @@
     "name": "test/Rule/date.test.js",
     "content": "const { Rule } = require('../../src');\n\ntest('throws error when test doesn\\'t exist', () => {\n  expect(() => {\n    const rule = new Rule({\n      type: 'date',\n      dummyTest: /^The/g,\n    }, null);\n    rule.test();\n  }).toThrow();\n});\n\n\ntest('returns false when not date', () => {\n  const dateRule = new Rule({\n    type: 'date',\n  }, null);\n  expect(dateRule.test('the quick brown fox')).toBe(false);\n});\n\ntest('returns true when date is after a specific date', () => {\n  const date = new Date(2018, 11, 1);\n  const test = new Date(2018, 11, 2);\n  const dateRule = new Rule({\n    type: 'date',\n    after: date,\n  }, null);\n\n  expect(dateRule.test(test)).toBe(true);\n});\n\n\ntest('returns true when date is before a specific date', () => {\n  const date = new Date(2018, 11, 3);\n  const test = new Date(2018, 11, 2);\n  const dateRule = new Rule({\n    type: 'date',\n    before: date,\n  }, null);\n\n  expect(dateRule.test(test)).toBe(true);\n});\n\ntest('returns true when date is between two dates', () => {\n  const date1 = new Date(2018, 11, 3);\n  const date2 = new Date(2018, 11, 7);\n  const test = new Date(2018, 11, 5);\n  const dateRule = new Rule({\n    type: 'date',\n    between: [date1, date2],\n  }, null);\n\n  expect(dateRule.test(test)).toBe(true);\n});\n\n\ntest('returns true when two dates are equal', () => {\n  const date1 = new Date(2018, 11, 3);\n  const dateRule = new Rule({\n    type: 'date',\n    equal: date1,\n  }, null);\n\n  expect(dateRule.test(date1)).toBe(true);\n});\n\ntest('returns true when date is one of array', () => {\n  const date1 = new Date(2018, 11, 3);\n  const dateRule = new Rule({\n    type: 'date',\n    oneOf: [new Date(2018, 11, 3), new Date()],\n  }, null);\n\n  expect(dateRule.test(date1)).toBe(true);\n});\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/test/Rule/date.test.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/test/Rule/date.test.js",
     "access": null,
     "description": null,
     "lineNumber": 1
@@ -2799,7 +2864,7 @@
     "name": "test/Rule/email.test.js",
     "content": "const { Rule } = require('../../src');\n\ntest('type email false', () => {\n  const emailRule = new Rule({\n    type: 'email',\n  }, null);\n\n  expect(emailRule.test([])).toBe(false);\n});\n\ntest('type email', () => {\n  const emailRule = new Rule({\n    type: 'email',\n  }, null);\n\n  expect(emailRule.test('frfrfr')).toBe(false);\n});\n\ntest('type email true', () => {\n  const emailRule = new Rule({\n    type: 'email',\n  }, null);\n\n  expect(emailRule.test('dedede@afe.fr')).toBe(true);\n});\n\ntest('type user and domain true', () => {\n  const emailRule = new Rule({\n    type: 'email',\n    user: user => user === 'dedede',\n    domain: domain => ['outlook', 'gmail'].indexOf(domain) !== -1,\n  }, null);\n\n  expect(emailRule.test('dedede@gmail.fr')).toBe(true);\n});\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/test/Rule/email.test.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/test/Rule/email.test.js",
     "access": null,
     "description": null,
     "lineNumber": 1
@@ -2862,7 +2927,7 @@
     "name": "test/Rule/float.test.js",
     "content": "const { Rule } = require('../../src');\n\ntest('type float returns true when float', () => {\n  const floatRule = new Rule({\n    type: 'float',\n  }, null);\n  expect(floatRule.test(2.001)).toBe(true);\n});\n\ntest('type float returns false when int', () => {\n  const floatRule = new Rule({\n    type: 'float',\n  }, null);\n  expect(floatRule.test(2)).toBe(false);\n});\n\ntest('type float returns true when bigger than 100', () => {\n  const floatRule = new Rule({\n    type: 'float',\n    min: 100,\n  }, null);\n  expect(floatRule.test(100.3)).toBe(true);\n});\n\ntest('type float returns true when smaller than 100', () => {\n  const floatRule = new Rule({\n    type: 'float',\n    max: 100,\n  }, null);\n  expect(floatRule.test(99.3)).toBe(true);\n});\n\ntest('type float returns true when two floats are equal', () => {\n  const floatRule = new Rule({\n    type: 'float',\n    equal: 100.1,\n  }, null);\n  expect(floatRule.test(100.1)).toBe(true);\n});\n\ntest('type float returns true when is one of array', () => {\n  const floatRule = new Rule({\n    type: 'float',\n    oneOf: [3.5, 100.1, 7.2, 0.1],\n  }, null);\n  expect(floatRule.test(100.1)).toBe(true);\n});\n\ntest('type float returns false when is not one of array', () => {\n  const floatRule = new Rule({\n    type: 'float',\n    oneOf: [100.01, 7.2, 0.1],\n  }, null);\n  expect(floatRule.test(100.1)).toBe(false);\n});\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/test/Rule/float.test.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/test/Rule/float.test.js",
     "access": null,
     "description": null,
     "lineNumber": 1
@@ -2964,7 +3029,7 @@
     "name": "test/Rule/function.test.js",
     "content": "const { Rule } = require('../../src');\n\ntest('returns true if function', () => {\n  const functionRule = new Rule({\n    type: 'function',\n  }, null);\n\n  expect(functionRule.test(() => {})).toBe(true);\n});\n\ntest('returns true if function result matches a Rule', () => {\n  function someFunctionThatReturnsAnInt(int) {\n    return int * 5;\n  }\n\n  const functionTest = new Rule({\n    type: 'function',\n    result: {\n      of: 5,\n      toBe: new Rule('int'),\n    },\n  }, null);\n\n  expect(functionTest.test(someFunctionThatReturnsAnInt)).toBe(true);\n});\n\ntest('returns false if function result doesn\\'t match a Rule', () => {\n  const functionRule = new Rule({\n    type: 'function',\n    result: {\n      of: 5,\n      toBe: new Rule('int'),\n    },\n  }, null);\n\n  expect(functionRule.test(() => 'val - 10')).toBe(false);\n});\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/test/Rule/function.test.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/test/Rule/function.test.js",
     "access": null,
     "description": null,
     "lineNumber": 1
@@ -3014,7 +3079,7 @@
     "name": "test/Rule/getErrors.test.js",
     "content": "const { Rule } = require('../../src');\n\ntest('type rule.getError() returns array of errors when input is wrong', () => {\n  const strRule = new Rule({\n    type: 'string',\n  }, 'strRule must be string');\n\n  expect(strRule.getError(1)).toBe('strRule must be string');\n});\n\ntest('type rule.getError() call error function (if the error of the rule is function)', () => {\n  const strRule = new Rule({\n    type: 'string',\n  }, (key, value) => `${key} must be a string, ${value} is not a string`);\n\n  expect(strRule.getError('something', 1)).toBe('something must be a string, 1 is not a string');\n});\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/test/Rule/getErrors.test.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/test/Rule/getErrors.test.js",
     "access": null,
     "description": null,
     "lineNumber": 1
@@ -3051,7 +3116,7 @@
     "name": "test/Rule/int.test.js",
     "content": "const { Rule } = require('../../src');\n\ntest('type test not int is false', () => {\n  const intRule = new Rule({\n    type: 'int',\n  }, null);\n\n  expect(intRule.test([])).toBe(false);\n});\n\ntest('type test', () => {\n  const intRule = new Rule({\n    type: 'int',\n  }, null);\n\n  expect(intRule.test(2)).toBe(true);\n});\n\ntest('max is true if < 100', () => {\n  const intRule = new Rule({\n    type: 'int',\n    max: 100,\n  }, null);\n\n  expect(intRule.test(99)).toBe(true);\n});\n\ntest('max is false if  > 100', () => {\n  const intRule = new Rule({\n    type: 'int',\n    max: 100,\n  }, null);\n\n  expect(intRule.test(101)).toBe(false);\n});\n\ntest('equal returns true if 100', () => {\n  const intRule = new Rule({\n    type: 'int',\n    equal: 100,\n  }, null);\n\n  expect(intRule.test(100)).toBe(true);\n});\n\n\ntest('custom rulle should return true', () => {\n  const intRule = new Rule({\n    type: 'int',\n    custom: val => val % 2 === 0,\n  }, null);\n\n  expect(intRule.test(4)).toBe(true);\n});\n\ntest('custom rulle should return false', () => {\n  const intRule = new Rule({\n    type: 'int',\n    custom: val => val % 2 === 0,\n  }, null);\n\n  expect(intRule.test(3)).toBe(false);\n});\n\ntest('mixng rulles returns true', () => {\n  const intRule = new Rule({\n    type: 'int',\n    max: 50,\n    min: 5,\n    custom: val => val % 2 === 0,\n  }, null);\n\n  expect(intRule.test(6)).toBe(true);\n});\n\ntest('mixng rulles returns false', () => {\n  const intRule = new Rule({\n    type: 'int',\n    max: 50,\n    min: 5,\n    custom: val => val % 2 === 0,\n  }, null);\n\n  expect(intRule.test(1)).toBe(false);\n});\n\ntest('throws error when test doesn\\'t exist', () => {\n  expect(() => {\n    const intRule = new Rule({\n      type: 'int',\n      test: false,\n    }, null);\n    intRule.test(3);\n  }).toThrow();\n});\n\ntest('returns true if optional set to true and patram undefined', () => {\n  const intRule = new Rule({\n    type: 'int',\n    optional: true,\n  }, null);\n  expect(intRule.test()).toBe(true);\n});\n\ntest('returns false if optional set to true and patram dont match', () => {\n  const intRule = new Rule({\n    type: 'int',\n    optional: true,\n  }, null);\n  expect(intRule.test('hello')).toBe(false);\n});\n\ntest('returns true if optional set to true and patram match', () => {\n  const intRule = new Rule({\n    type: 'int',\n    optional: true,\n  }, null);\n  expect(intRule.test(150)).toBe(true);\n});\n\ntest('returns true if optional set to false and patram match', () => {\n  const intRule = new Rule({\n    type: 'int',\n    optional: false,\n  }, null);\n  expect(intRule.test(150)).toBe(true);\n});\n\ntest('returns false if optional set to false and patram dont match', () => {\n  const intRule = new Rule({\n    type: 'int',\n    optional: false,\n  }, null);\n  expect(intRule.test('150')).toBe(false);\n});\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/test/Rule/int.test.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/test/Rule/int.test.js",
     "access": null,
     "description": null,
     "lineNumber": 1
@@ -3257,7 +3322,7 @@
     "name": "test/Rule/multileTypes.test.js",
     "content": "const { Rule } = require('../../src');\n\ntest('returns true if int or float or number', () => {\n  const intRule = new Rule({\n    type: 'int|float|number',\n  }, null);\n\n  expect(intRule.test(1.2)).toBe(true);\n});\n\ntest('reterns false if not int or float', () => {\n  const intRule = new Rule({\n    type: 'int|float|number',\n  }, null);\n\n  expect(intRule.test([])).toBe(false);\n});\n\ntest('reterns false if not (int and number)', () => {\n  const intRule = new Rule({\n    type: 'int&number',\n  }, null);\n\n  expect(intRule.test([])).toBe(false);\n});\n\ntest('reterns true if int and number', () => {\n  const intRule = new Rule({\n    type: 'int&number',\n  }, null);\n\n  expect(intRule.test(3)).toBe(true);\n});\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/test/Rule/multileTypes.test.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/test/Rule/multileTypes.test.js",
     "access": null,
     "description": null,
     "lineNumber": 1
@@ -3320,7 +3385,7 @@
     "name": "test/Rule/number.test.js",
     "content": "const { Rule } = require('../../src');\n\ntest('type test not number is false', () => {\n  const numberRule = new Rule({\n    type: 'number',\n  }, null);\n\n  expect(numberRule.test([])).toBe(false);\n});\n\ntest('type test', () => {\n  const numberRule = new Rule({\n    type: 'number',\n  }, null);\n\n  expect(numberRule.test(2)).toBe(true);\n});\n\ntest('max is true if < 100', () => {\n  const numberRule = new Rule({\n    type: 'number',\n    max: 100,\n  }, null);\n\n  expect(numberRule.test(99)).toBe(true);\n});\n\ntest('max is false if  > 100', () => {\n  const numberRule = new Rule({\n    type: 'number',\n    max: 100,\n  }, null);\n\n  expect(numberRule.test(101)).toBe(false);\n});\n\ntest('equal returns true if 100', () => {\n  const numberRule = new Rule({\n    type: 'number',\n    equal: 100,\n  }, null);\n\n  expect(numberRule.test(100)).toBe(true);\n});\n\n\ntest('custom rulle should return true', () => {\n  const numberRule = new Rule({\n    type: 'number',\n    custom: val => val % 2 === 0,\n  }, null);\n\n  expect(numberRule.test(4)).toBe(true);\n});\n\ntest('custom rulle should return false', () => {\n  const numberRule = new Rule({\n    type: 'number',\n    custom: val => val % 2 === 0,\n  }, null);\n\n  expect(numberRule.test(3)).toBe(false);\n});\n\ntest('mixng rulles returns true', () => {\n  const numberRule = new Rule({\n    type: 'number',\n    max: 50,\n    min: 5,\n    custom: val => val % 2 === 0,\n  }, null);\n\n  expect(numberRule.test(6)).toBe(true);\n});\n\ntest('mixng rulles returns false', () => {\n  const numberRule = new Rule({\n    type: 'number',\n    max: 50,\n    min: 5,\n    custom: val => val % 2 === 0,\n  }, null);\n\n  expect(numberRule.test(1)).toBe(false);\n});\n\ntest('throws error when test doesn\\'t exist', () => {\n  expect(() => {\n    const numberRule = new Rule({\n      type: 'number',\n      test: false,\n    }, null);\n    numberRule.test(3);\n  }).toThrow();\n});\n\ntest('returns true if optional set to true and patram undefined', () => {\n  const numberRule = new Rule({\n    type: 'number',\n    optional: true,\n  }, null);\n  expect(numberRule.test()).toBe(true);\n});\n\ntest('returns false if optional set to true and patram dont match', () => {\n  const numberRule = new Rule({\n    type: 'number',\n    optional: true,\n  }, null);\n  expect(numberRule.test('hello')).toBe(false);\n});\n\ntest('returns true if optional set to true and patram match', () => {\n  const numberRule = new Rule({\n    type: 'number',\n    optional: true,\n  }, null);\n  expect(numberRule.test(150)).toBe(true);\n});\n\ntest('returns true if optional set to false and patram match', () => {\n  const numberRule = new Rule({\n    type: 'number',\n    optional: false,\n  }, null);\n  expect(numberRule.test(150)).toBe(true);\n});\n\ntest('returns false if optional set to false and patram dont match', () => {\n  const numberRule = new Rule({\n    type: 'number',\n    optional: false,\n  }, null);\n  expect(numberRule.test('150')).toBe(false);\n});\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/test/Rule/number.test.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/test/Rule/number.test.js",
     "access": null,
     "description": null,
     "lineNumber": 1
@@ -3526,7 +3591,7 @@
     "name": "test/Rule/password.test.js",
     "content": "const { Rule } = require('../../src');\n\ntest('type test not password is false', () => {\n  const passwordRule = new Rule({\n    type: 'password',\n  }, null);\n\n  expect(passwordRule.test([])).toBe(false);\n});\n\n\ntest('number', () => {\n  const passwordRule = new Rule({\n    type: 'password',\n    numbers: 5,\n  }, null);\n\n  expect(passwordRule.test('Aa6z6666')).toBe(true);\n});\n\ntest('uppercase', () => {\n  const passwordRule = new Rule({\n    type: 'password',\n    uppercase: 5,\n  }, null);\n\n  expect(passwordRule.test('@_6b6ddcdA')).toBe(false);\n});\n\n\ntest('matcesOneOf', () => {\n  const passwordRule = new Rule({\n    type: 'password',\n    matchesOneOf: ['@', '_', '-'],\n  }, null);\n\n  expect(passwordRule.test('AAbd_AdcdAA')).toBe(true);\n});\n\ntest('matcesOneOf without mach', () => {\n  const passwordRule = new Rule({\n    type: 'password',\n    matchesOneOf: ['@', '_', '-'],\n  }, null);\n\n  expect(passwordRule.test('AAbdAdcdAA')).toBe(false);\n});\n\ntest('matchesAllOf', () => {\n  const passwordRule = new Rule({\n    type: 'password',\n    matchesAllOf: ['@', '_', '-'],\n  }, null);\n\n  expect(passwordRule.test('A@_-AbdAdcdAA')).toBe(true);\n});\n\ntest('matchesAllOf false', () => {\n  const passwordRule = new Rule({\n    type: 'password',\n    matchesAllOf: ['@', '_', '-'],\n  }, null);\n\n  expect(passwordRule.test('A@-AbdAdcdAA')).toBe(false);\n});\n\ntest('specialChars false', () => {\n  const passwordRule = new Rule({\n    type: 'password',\n    specialChars: 2,\n  }, null);\n\n  expect(passwordRule.test('A@AbdAdcdAA')).toBe(false);\n});\n\ntest('good password', () => {\n  const passwordRule = new Rule({\n    type: 'password',\n    minLength: 8,\n    uppercase: 1,\n    numbers: 1,\n    matchesOneOf: ['@', '_', '-', '.', '!'],\n  }, null);\n\n  expect(passwordRule.test('@_-bddcd6A')).toBe(true);\n});\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/test/Rule/password.test.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/test/Rule/password.test.js",
     "access": null,
     "description": null,
     "lineNumber": 1
@@ -3654,7 +3719,7 @@
     "name": "test/Rule/rule.test.js",
     "content": "const { Rule } = require('../../src');\n\ntest('adding a custom rule', () => {\n  Rule.addCustom('customInteger', {\n    min: (val, min) => val - min > 0,\n    max: (val, max) => val - max < 0,\n    equal: (val, equal) => val === equal,\n    type: val => Number.isInteger(val) && val > 0 && val < 100,\n  });\n\n  const customInteger = new Rule({\n    type: 'customInteger',\n    min: 10,\n  }, null);\n\n  expect(customInteger.test(11)).toBe(true);\n\n  expect(customInteger.test(200)).toBe(false);\n});\n\ntest('throwing when type not exist', () => {\n  expect(() => {\n    const customInteger = new Rule({\n      type: 'something',\n      min: 10,\n    }, null);\n\n    customInteger.test(11);\n  }).toThrow();\n});\n\ntest('throwing when type is undefined', () => {\n  expect(() => {\n    const customInteger = new Rule({\n      min: 10,\n    }, null);\n\n    customInteger.test(11);\n  }).toThrow();\n});\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/test/Rule/rule.test.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/test/Rule/rule.test.js",
     "access": null,
     "description": null,
     "lineNumber": 1
@@ -3704,7 +3769,7 @@
     "name": "test/Rule/string-boolean.test.js",
     "content": "const { Rule } = require('../../src');\n\ntest('non valid string boolean', () => {\n  const stringBoolean = new Rule({\n    type: 'string-boolean',\n  }, null);\n\n  expect(stringBoolean.test('hello')).toBe(false);\n});\n\ntest('valid string boolean', () => {\n  const stringBoolean = new Rule({\n    type: 'string-boolean',\n  }, null);\n\n  expect(stringBoolean.test('true')).toBe(true);\n  expect(stringBoolean.test('false')).toBe(true);\n});\n\ntest('string boolean is true', () => {\n  const stringBoolean = new Rule({\n    type: 'string-boolean',\n    toBe: true,\n  }, null);\n\n  expect(stringBoolean.test('true')).toBe(true);\n  expect(stringBoolean.test('false')).toBe(false);\n});\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/test/Rule/string-boolean.test.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/test/Rule/string-boolean.test.js",
     "access": null,
     "description": null,
     "lineNumber": 1
@@ -3754,7 +3819,7 @@
     "name": "test/Rule/string-date.test.js",
     "content": "const { Rule } = require('../../src');\n\ntest('type test not valid string is false', () => {\n  const stringDate = new Rule({\n    type: 'string-date',\n  }, null);\n\n  expect(stringDate.test(new Date(2018, 11, 1))).toBe(false);\n});\n\n\ntest('valid date', () => {\n  const numberRule = new Rule({\n    type: 'string-date',\n  }, null);\n\n  expect(numberRule.test('1995-12-17T03:24:00')).toBe(true);\n});\n\n\ntest('date is after', () => {\n  const numberRule = new Rule({\n    type: 'string-date',\n    after: new Date(2018, 11, 1),\n  }, null);\n\n  expect(numberRule.test('2019-12-17')).toBe(true);\n});\n\ntest('date is before', () => {\n  const numberRule = new Rule({\n    type: 'string-date',\n    before: new Date(2018, 11, 1),\n  });\n\n  expect(numberRule.test('2019-12-17')).toBe(false);\n});\n\n\ntest('date is equal', () => {\n  const numberRule = new Rule({\n    type: 'string-date',\n    equal: new Date(2018, 10, 1), // javascript moth start from 0\n  });\n  expect(numberRule.test('2018-11-01T00:00')).toBe(true); // You need to specify time otherise default time is set to 01:00\n});\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/test/Rule/string-date.test.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/test/Rule/string-date.test.js",
     "access": null,
     "description": null,
     "lineNumber": 1
@@ -3830,7 +3895,7 @@
     "name": "test/Rule/string-float.test.js",
     "content": "const { Rule } = require('../../src');\n\ntest('type test not number is false', () => {\n  const numberRule = new Rule({\n    type: 'string-float',\n  }, null);\n\n  expect(numberRule.test([])).toBe(false);\n});\n\ntest('type test float number is false', () => {\n  const numberRule = new Rule({\n    type: 'string-float',\n  }, null);\n\n  expect(numberRule.test(2.01)).toBe(false);\n});\n\ntest('type test float number is true', () => {\n  const numberRule = new Rule({\n    type: 'string-float',\n  }, null);\n\n  expect(numberRule.test('2.01')).toBe(true);\n});\n\n\ntest('type test max string-number is true', () => {\n  const numberRule = new Rule({\n    type: 'string-float',\n    max: 5,\n  }, null);\n\n  expect(numberRule.test('2.01')).toBe(true);\n});\n\ntest('type test max string-number is false', () => {\n  const numberRule = new Rule({\n    type: 'string-float',\n    max: 5,\n  }, null);\n\n  expect(numberRule.test('7.1')).toBe(false);\n});\n\n\ntest('type test min string-number is false', () => {\n  const numberRule = new Rule({\n    type: 'string-float',\n    min: 5,\n  }, null);\n\n  expect(numberRule.test('2.1')).toBe(false);\n});\n\ntest('type test min string-number is true', () => {\n  const numberRule = new Rule({\n    type: 'string-float',\n    min: 5,\n  }, null);\n\n  expect(numberRule.test('7.1')).toBe(true);\n});\n\n\ntest('type test string-number is equal to 5', () => {\n  const numberRule = new Rule({\n    type: 'string-float',\n    equal: 5.1,\n  }, null);\n\n  expect(numberRule.test('5.1')).toBe(true);\n});\n\n\ntest('type test string-number is not equal to 5', () => {\n  const numberRule = new Rule({\n    type: 'string-float',\n    equal: 5,\n  }, null);\n\n  expect(numberRule.test('7.1')).toBe(false);\n});\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/test/Rule/string-float.test.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/test/Rule/string-float.test.js",
     "access": null,
     "description": null,
     "lineNumber": 1
@@ -3958,7 +4023,7 @@
     "name": "test/Rule/string-int.test.js",
     "content": "const { Rule } = require('../../src');\n\ntest('type test not number is false', () => {\n  const numberRule = new Rule({\n    type: 'string-int',\n  }, null);\n\n  expect(numberRule.test([])).toBe(false);\n});\n\ntest('type test int number is false', () => {\n  const numberRule = new Rule({\n    type: 'string-int',\n  }, null);\n\n  expect(numberRule.test(2)).toBe(false);\n});\n\ntest('type test int number is true', () => {\n  const numberRule = new Rule({\n    type: 'string-int',\n  }, null);\n\n  expect(numberRule.test('2')).toBe(true);\n});\n\n\ntest('type test max string-number is true', () => {\n  const numberRule = new Rule({\n    type: 'string-int',\n    max: 5,\n  }, null);\n\n  expect(numberRule.test('2')).toBe(true);\n});\n\ntest('type test max string-number is false', () => {\n  const numberRule = new Rule({\n    type: 'string-int',\n    max: 5,\n  }, null);\n\n  expect(numberRule.test('7')).toBe(false);\n});\n\n\ntest('type test min string-number is false', () => {\n  const numberRule = new Rule({\n    type: 'string-int',\n    min: 5,\n  }, null);\n\n  expect(numberRule.test('2')).toBe(false);\n});\n\ntest('type test min string-number is true', () => {\n  const numberRule = new Rule({\n    type: 'string-int',\n    min: 5,\n  }, null);\n\n  expect(numberRule.test('7')).toBe(true);\n});\n\n\ntest('type test string-number is equal to 5', () => {\n  const numberRule = new Rule({\n    type: 'string-int',\n    equal: 5,\n  }, null);\n\n  expect(numberRule.test('5')).toBe(true);\n});\n\n\ntest('type test string-number is not equal to 5', () => {\n  const numberRule = new Rule({\n    type: 'string-int',\n    equal: 5,\n  }, null);\n\n  expect(numberRule.test('7')).toBe(false);\n});\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/test/Rule/string-int.test.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/test/Rule/string-int.test.js",
     "access": null,
     "description": null,
     "lineNumber": 1
@@ -4084,9 +4149,9 @@
     "__docId__": 258,
     "kind": "testFile",
     "name": "test/Rule/string.test.js",
-    "content": "const { Rule } = require('../../src');\n\ntest('type string returns true when a string', () => {\n  const strRule = new Rule({\n    type: 'string',\n  }, null);\n\n  expect(strRule.test('dqsdqsd')).toBe(true);\n  expect(strRule.test(String('dqsdqsd'))).toBe(true);\n});\n\n\ntest('type string returns false when not string', () => {\n  const strRule = new Rule({\n    type: 'string',\n  }, null);\n  expect(strRule.test({})).toBe(false);\n});\n\ntest('type string returns true when matches a REGEX', () => {\n  const strRule = new Rule({\n    type: 'string',\n    match: /^The/g,\n  }, null);\n  expect(strRule.test('The quick brown fox')).toBe(true);\n});\n\ntest('type string returns false when doesen\\'t matches a REGEX', () => {\n  const strRule = new Rule({\n    type: 'string',\n    match: /^The/g,\n  }, null);\n  expect(strRule.test('the quick brown fox')).toBe(false);\n});\n\ntest('throws error when test doesn\\'t exist', () => {\n  expect(() => {\n    const strRule = new Rule({\n      type: 'string',\n      dummyTest: /^The/g,\n    }, null);\n    strRule.test('the quick brown fox');\n  }).toThrow();\n});\n\ntest('type string returns true when string not empty', () => {\n  const strRule = new Rule({\n    type: 'string',\n    notEmpty: true,\n  }, null);\n  expect(strRule.test('the quick brown fox')).toBe(true);\n});\n\ntest('type string returns false when string empty', () => {\n  const strRule = new Rule({\n    type: 'string',\n    notEmpty: true,\n  }, null);\n  expect(strRule.test('')).toBe(false);\n});\n\ntest('type string returns true when two strings are equal', () => {\n  const strRule = new Rule({\n    type: 'string',\n    notEmpty: true,\n    equal: 'hello',\n  }, null);\n  expect(strRule.test('hello')).toBe(true);\n});\n\ntest('type string returns true when string minLength', () => {\n  const strRule = new Rule({\n    type: 'string',\n    notEmpty: true,\n    minLength: 2,\n  }, null);\n  expect(strRule.test('hello')).toBe(true);\n});\n",
+    "content": "const { Rule } = require('../../src');\n\ntest('type string returns true when a string', () => {\n  const strRule = new Rule({\n    type: 'string',\n  }, null);\n\n  expect(strRule.test('dqsdqsd')).toBe(true);\n  expect(strRule.test(String('dqsdqsd'))).toBe(true);\n});\n\n\ntest('type string returns false when not string', () => {\n  const strRule = new Rule({\n    type: 'string',\n  }, null);\n  expect(strRule.test({})).toBe(false);\n});\n\ntest('type string returns true when matches a REGEX', () => {\n  const strRule = new Rule({\n    type: 'string',\n    match: /^The/g,\n  }, null);\n  expect(strRule.test('The quick brown fox')).toBe(true);\n});\n\ntest('type string returns false when doesen\\'t matches a REGEX', () => {\n  const strRule = new Rule({\n    type: 'string',\n    match: /^The/g,\n  }, null);\n  expect(strRule.test('the quick brown fox')).toBe(false);\n});\n\ntest('throws error when test doesn\\'t exist', () => {\n  expect(() => {\n    const strRule = new Rule({\n      type: 'string',\n      dummyTest: /^The/g,\n    }, null);\n    strRule.test('the quick brown fox');\n  }).toThrow();\n});\n\ntest('type string returns true when string not empty', () => {\n  const strRule = new Rule({\n    type: 'string',\n    notEmpty: true,\n    isEmpty: false,\n  }, null);\n  expect(strRule.test('the quick brown fox')).toBe(true);\n});\n\ntest('type string returns false when string empty', () => {\n  const strRule = new Rule({\n    type: 'string',\n    notEmpty: true,\n    isEmpty: false,\n  }, null);\n  expect(strRule.test('')).toBe(false);\n});\n\ntest('type string returns true when two strings are equal', () => {\n  const strRule = new Rule({\n    type: 'string',\n    notEmpty: true,\n    isEmpty: false,\n    equal: 'hello',\n  }, null);\n  expect(strRule.test('hello')).toBe(true);\n});\n\ntest('type string returns true when string minLength', () => {\n  const strRule = new Rule({\n    type: 'string',\n    notEmpty: true,\n    isEmpty: false,\n    minLength: 2,\n  }, null);\n  expect(strRule.test('hello')).toBe(true);\n});\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/test/Rule/string.test.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/test/Rule/string.test.js",
     "access": null,
     "description": null,
     "lineNumber": 1
@@ -4180,7 +4245,7 @@
     "longname": "test/Rule/string.test.js~test110",
     "access": null,
     "description": "type string returns false when string empty",
-    "lineNumber": 54
+    "lineNumber": 55
   },
   {
     "__docId__": 266,
@@ -4193,7 +4258,7 @@
     "longname": "test/Rule/string.test.js~test111",
     "access": null,
     "description": "type string returns true when two strings are equal",
-    "lineNumber": 62
+    "lineNumber": 64
   },
   {
     "__docId__": 267,
@@ -4206,7 +4271,7 @@
     "longname": "test/Rule/string.test.js~test112",
     "access": null,
     "description": "type string returns true when string minLength",
-    "lineNumber": 71
+    "lineNumber": 74
   },
   {
     "__docId__": 268,
@@ -4214,7 +4279,7 @@
     "name": "test/Rule/url.test.js",
     "content": "const { Rule } = require('../../src');\n\ntest('type email false', () => {\n  const urlRule = new Rule({\n    type: 'url',\n  }, null);\n\n  expect(urlRule.test([])).toBe(false);\n});\n\ntest('type url false', () => {\n  const urlRule = new Rule({\n    type: 'url',\n  }, null);\n\n  expect(urlRule.test('frfrfr')).toBe(false);\n});\n\n\ntest('type url true', () => {\n  const urlRule = new Rule({\n    type: 'url',\n  }, null);\n\n  expect(urlRule.test('https://google.fr')).toBe(true);\n});\n\n\ntest('type domain true', () => {\n  const urlRule = new Rule({\n    type: 'url',\n    domain: domain => domain === 'google.fr',\n  }, null);\n\n  expect(urlRule.test('https://google.fr')).toBe(true);\n});\n\ntest('type protocol true', () => {\n  const urlRule = new Rule({\n    type: 'url',\n    protocol: prot => prot === 'https',\n  }, null);\n\n  expect(urlRule.test('https://google.fr')).toBe(true);\n});\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/test/Rule/url.test.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/test/Rule/url.test.js",
     "access": null,
     "description": null,
     "lineNumber": 1
@@ -4290,7 +4355,7 @@
     "name": "test/Rule/util.test.js",
     "content": "const { looseEqual, flattenObject } = require('../../src/util');\n\ntest('looseEqual object false', () => {\n  const a = {\n    a: 'hello',\n    b: 'cccc',\n  };\n\n  const b = {\n    a: 'cd',\n    b: 'cc',\n  };\n\n  expect(looseEqual(a, b)).toBe(false);\n});\n\ntest('looseEqual object true', () => {\n  const a = {\n    a: 'hello',\n    b: 'cccc',\n  };\n\n  const b = {\n    a: 'hello',\n    b: 'cccc',\n  };\n\n  expect(looseEqual(a, b)).toBe(true);\n});\n\ntest('looseEqual object and array fals', () => {\n  const a = {\n    a: 'hello',\n    b: 'cccc',\n  };\n\n  const b = [\n    'hello',\n    'cccc',\n  ];\n\n  expect(looseEqual(a, b)).toBe(false);\n});\n\n\ntest('flatten Object', () => {\n  const a = {\n    a: 'hello',\n    b: {\n      d: 'dazda',\n    },\n  };\n  expect(flattenObject(a)).toEqual({ a: 'hello', 'b.d': 'dazda' });\n});\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/test/Rule/util.test.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/test/Rule/util.test.js",
     "access": null,
     "description": null,
     "lineNumber": 1
@@ -4353,7 +4418,7 @@
     "name": "test/Validator/Validator.test.js",
     "content": "const { Rule, Validator } = require('../../src');\n\ntest('test the hole object to be true', () => {\n  const vComplexe = new Validator({\n    age: new Rule({ type: 'int', min: 18, max: 99 }),\n    dateOfBirth: new Rule({ type: 'date' }),\n    array: new Rule({ type: 'array', of: new Rule({ type: 'string' }) }),\n  });\n\n  expect(vComplexe.test({\n    age: 26,\n    dateOfBirth: new Date(1995, 10, 3),\n    array: ['1'],\n  })).toBe(true);\n});\n\ntest('test the hole object to be false extra values', () => {\n  const vComplexe = new Validator({\n    age: new Rule({ type: 'int', min: 18, max: 99 }),\n    dateOfBirth: new Rule({ type: 'date' }),\n    array: new Rule({ type: 'array', of: new Rule({ type: 'string' }) }),\n  });\n\n  expect(vComplexe.test({\n    age: 26,\n    dateOfBirth: new Date(1995, 10, 3),\n    array: ['1'],\n    extraValue: '',\n  })).toBe(false);\n});\n\ntest('test the hole object to be false', () => {\n  const vComplexe = new Validator({\n    age: new Rule({ type: 'int', min: 18, max: 99 }),\n    dateOfBirth: new Rule({ type: 'date' }),\n    array: new Rule({ type: 'array', of: new Rule({ type: 'string' }) }),\n  });\n\n  expect(vComplexe.test({\n    age: 26,\n    dateOfBirth: new Date(1995, 10, 3),\n    array: [1],\n  })).toBe(false);\n});\n\ntest('test custom', () => {\n  function f(age, object) {\n    const expectedAge = Math.floor((new Date() - object.dateOfBirth) / 3.154e+10);\n    if (age === expectedAge) {\n      return true;\n    }\n    return false;\n  }\n  const vComplexe = new Validator({\n    age: new Rule({\n      type: 'int', min: 18, max: 99, custom: f,\n    }),\n    dateOfBirth: new Rule({ type: 'date' }),\n  });\n\n  const age = Math.floor((new Date() - new Date(1995, 10, 3)) / 3.154e+10);\n\n  expect(vComplexe.test({\n    age,\n    dateOfBirth: new Date(1995, 10, 3),\n  })).toBe(true);\n});\n\n\ntest('test getErrors must return an array of errors', () => {\n  const vComplexe = new Validator({\n    age: new Rule({\n      type: 'int', min: 18, max: 99,\n    }, 'age must be integer and between 18 and 99'),\n    dateOfBirth: new Rule({ type: 'date' }, 'date must be a date'),\n    name: new Rule({ type: 'string' }, (key, value) => `${key} must be a string, ${value} is not a string`),\n  });\n\n  expect(vComplexe.getErrors({\n    age: 16,\n    dateOfBirth: new Date(),\n    name: 1,\n  })).toEqual(['age must be integer and between 18 and 99', 'name must be a string, 1 is not a string']);\n});\n\ntest('test getErrors return array of errors even with object as rule error', () => {\n  const vComplexe = new Validator({\n    age: new Rule({\n      type: 'int', min: 18, max: 99,\n    }, {\n      type: 'age must be an integer.',\n      min: (key, value) => `age must be greater then 18, ${value} is not enough.`,\n    }),\n    dataOfBirth: new Rule({ type: 'date' }, 'date must be a date'),\n  });\n\n  expect(vComplexe.getErrors({\n    age: 16,\n    dateOfBirth: 1,\n  })).toEqual([\n    'dateOfBirth is unexpcted',\n    'age must be greater then 18, 16 is not enough.',\n    'date must be a date',\n  ]);\n\n  expect(vComplexe.getErrors({\n    age: '16',\n    dateOfBirth: 1,\n  })).toEqual([\n    'dateOfBirth is unexpcted',\n    'age must be an integer.',\n    'date must be a date',\n  ]);\n\n  expect(vComplexe.getErrors({\n    age: 102, // there is no error definition for this key\n    dateOfBirth: 1,\n  })).toEqual([\n    'dateOfBirth is unexpcted',\n    'date must be a date',\n  ]);\n});\n\ntest('test test over an array of values', () => {\n  const vComplexe = new Validator({\n    age: new Rule({\n      type: 'int', min: 18, max: 99,\n    }),\n  });\n\n  expect(vComplexe.testAll([{\n    age: 19,\n  }, {\n    age: 16,\n  }])).toBe(1);\n});\n\ntest('test over multiple values and return -1', () => {\n  const vComplexe = new Validator({\n    age: new Rule({\n      type: 'int', min: 18, max: 99,\n    }),\n  });\n\n  expect(vComplexe.testAll([{\n    age: 19,\n  }, {\n    age: 20,\n  }])).toBe(-1);\n});\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/test/Validator/Validator.test.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/test/Validator/Validator.test.js",
     "access": null,
     "description": null,
     "lineNumber": 1
@@ -4468,7 +4533,7 @@
     "name": "test/Validator/validator.util.test.js",
     "content": "const { traverse, getValFromPath } = require('../../src/Validator/util');\n\ntest('test getValFromPath returns 5 path is correct', () => {\n  const obj = {\n    a: {\n      b: 5,\n    },\n  };\n  expect(getValFromPath('a.b', obj)).toBe(5);\n});\n\n\ntest('test travers', (done) => {\n  const obj = {\n    a: {\n      b: 5,\n    },\n  };\n  traverse(obj, (val, path) => {\n    expect(val).toBe(5);\n    expect(path).toBe('a.b');\n    done();\n  });\n});\n",
     "static": true,
-    "longname": "/Users/oussamahamdaoui/Documents/forgJs/test/Validator/validator.util.test.js",
+    "longname": "/Users/gjakic/Code/OSS/forgJsv2/test/Validator/validator.util.test.js",
     "access": null,
     "description": null,
     "lineNumber": 1
