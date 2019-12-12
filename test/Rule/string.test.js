@@ -47,6 +47,7 @@ test('type string returns true when string not empty', () => {
   const strRule = new Rule({
     type: 'string',
     notEmpty: true,
+    isEmpty: false,
   }, null);
   expect(strRule.test('the quick brown fox')).toBe(true);
 });
@@ -55,6 +56,7 @@ test('type string returns false when string empty', () => {
   const strRule = new Rule({
     type: 'string',
     notEmpty: true,
+    isEmpty: false,
   }, null);
   expect(strRule.test('')).toBe(false);
 });
@@ -63,6 +65,7 @@ test('type string returns true when two strings are equal', () => {
   const strRule = new Rule({
     type: 'string',
     notEmpty: true,
+    isEmpty: false,
     equal: 'hello',
   }, null);
   expect(strRule.test('hello')).toBe(true);
@@ -72,6 +75,7 @@ test('type string returns true when string minLength', () => {
   const strRule = new Rule({
     type: 'string',
     notEmpty: true,
+    isEmpty: false,
     minLength: 2,
   }, null);
   expect(strRule.test('hello')).toBe(true);

@@ -142,6 +142,7 @@ A `Rule` object validates a single value, it can be used like this:
 * equal (string)
 * match: (regex)
 * notEmpty (bool)
+* isEmpty (bool)
 
 ## email
 
@@ -150,6 +151,7 @@ A `Rule` object validates a single value, it can be used like this:
 * equal (string)
 * match: (regex)
 * notEmpty (bool)
+* isEmpty (bool)
 * user (`function(user)`)
 * domain (`function(domain)`)
 
@@ -170,6 +172,7 @@ A `Rule` object validates a single value, it can be used like this:
 * equal (string)
 * match: (regex)
 * notEmpty (bool)
+* isEmpty (bool)
 * uppercase (int)
 * number (int)
 * mathesOneOf (Array)
@@ -194,6 +197,7 @@ A `Rule` object validates a single value, it can be used like this:
 * equal (string)
 * match: (regex)
 * notEmpty (bool)
+* isEmpty (bool)
 * protocol (`function(protocol)`)
 * domain (`function(domain)`)
 
@@ -224,6 +228,7 @@ A `Rule` object validates a single value, it can be used like this:
 
 * of (Rule or Validator object)
 * notEmpty (bool)
+* isEmpty (bool)
 * length (int)
 
 The `of` rule checks every element of the array against the rule.

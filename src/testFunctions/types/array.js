@@ -10,7 +10,8 @@ const array = {
     });
     return ret;
   },
-  notEmpty: val => val.length !== 0,
+  notEmpty: (val, itShouldNotBeEmpty) => (val.length !== 0) === itShouldNotBeEmpty,
+  isEmpty: (val, itShouldBeEmpty) => (val. length === 0) === itShouldBeEmpty,
   length: (val, len) => val.length === len,
   type: isArray,
 };
