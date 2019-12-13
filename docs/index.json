@@ -1775,7 +1775,7 @@
     "__docId__": 97,
     "kind": "file",
     "name": "src/testFunctions/types/array.js",
-    "content": "const { isArray } = require('../../util');\n\nconst array = {\n  of: (arr, rule) => {\n    let ret = true;\n    arr.forEach((el) => {\n      if (rule.test(el) === false) {\n        ret = false;\n      }\n    });\n    return ret;\n  },\n  notEmpty: (val, itShouldNotBeEmpty) => (val.length !== 0) === itShouldNotBeEmpty,\n  isEmpty: (val, itShouldBeEmpty) => (val. length === 0) === itShouldBeEmpty,\n  length: (val, len) => val.length === len,\n  type: isArray,\n};\n\nmodule.exports = array;\n",
+    "content": "const { isArray } = require('../../util');\n\nconst array = {\n  of: (arr, rule) => {\n    let ret = true;\n    arr.forEach((el) => {\n      if (rule.test(el) === false) {\n        ret = false;\n      }\n    });\n    return ret;\n  },\n  notEmpty: (val, itShouldNotBeEmpty) => (val.length !== 0) === itShouldNotBeEmpty,\n  isEmpty: (val, itShouldBeEmpty) => (val.length === 0) === itShouldBeEmpty,\n  length: (val, len) => val.length === len,\n  type: isArray,\n};\n\nmodule.exports = array;\n",
     "static": true,
     "longname": "/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/array.js",
     "access": "public",

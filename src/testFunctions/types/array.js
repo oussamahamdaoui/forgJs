@@ -11,7 +11,7 @@ const array = {
     return ret;
   },
   notEmpty: (val, itShouldNotBeEmpty) => (val.length !== 0) === itShouldNotBeEmpty,
-  isEmpty: (val, itShouldBeEmpty) => (val. length === 0) === itShouldBeEmpty,
+  isEmpty: (val, itShouldBeEmpty) => (val.length === 0) === itShouldBeEmpty,
   length: (val, len) => val.length === len,
   type: isArray,
 };

@@ -1,114 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
 <testsuites>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\src\index.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\src\index.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/Rule/ErrorCollector.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/Rule/ErrorCollector.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\src\Rule\index.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\src\Rule\index.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/Rule/index.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/Rule/index.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\src\testFunctions\index.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\src\testFunctions\index.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/Rule/util.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/Rule/util.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\src\testFunctions\primitives.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\src\testFunctions\primitives.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/Validator/index.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/Validator/index.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\src\testFunctions\types\array.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\src\testFunctions\types\array.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/Validator/util.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/Validator/util.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\src\testFunctions\types\boolean.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\src\testFunctions\types\boolean.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/const.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/const.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\src\testFunctions\types\date.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\src\testFunctions\types\date.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/index.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/index.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\src\testFunctions\types\email.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\src\testFunctions\types\email.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/index.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/index.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\src\testFunctions\types\float.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\src\testFunctions\types\float.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/primitives.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/primitives.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\src\testFunctions\types\function.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\src\testFunctions\types\function.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="1" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/array.js">
+<testcase time="0" name="org.eslint.no-whitespace-before-property"><failure message="Unexpected whitespace before property length."><![CDATA[line 14, col 39, Error - Unexpected whitespace before property length. (no-whitespace-before-property)]]></failure></testcase>
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\src\testFunctions\types\int.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\src\testFunctions\types\int.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/boolean.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/boolean.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\src\testFunctions\types\number.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\src\testFunctions\types\number.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/date.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/date.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\src\testFunctions\types\password.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\src\testFunctions\types\password.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/email.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/email.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\src\testFunctions\types\string-int.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\src\testFunctions\types\string-int.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/float.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/float.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\src\testFunctions\types\string.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\src\testFunctions\types\string.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/function.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/function.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\src\testFunctions\types\url.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\src\testFunctions\types\url.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/index.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/index.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\src\util.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\src\util.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/int.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/int.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\src\Validator\index.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\src\Validator\index.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/number.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/number.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\src\Validator\util.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\src\Validator\util.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/password.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/password.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\test\Rule\array.test.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\test\Rule\array.test.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/string-boolean.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/string-boolean.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\test\Rule\boolean.test.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\test\Rule\boolean.test.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/string-date.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/string-date.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\test\Rule\date.test.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\test\Rule\date.test.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/string-float.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/string-float.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\test\Rule\email.test.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\test\Rule\email.test.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/string-int.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/string-int.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\test\Rule\float.test.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\test\Rule\float.test.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/string.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/string.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\test\Rule\function.test.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\test\Rule\function.test.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/url.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/testFunctions/types/url.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\test\Rule\getErrors.test.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\test\Rule\getErrors.test.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/util.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/src/util.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\test\Rule\int.test.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\test\Rule\int.test.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/array.test.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/array.test.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\test\Rule\multileTypes.test.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\test\Rule\multileTypes.test.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/boolean.test.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/boolean.test.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\test\Rule\nuberString.test.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\test\Rule\nuberString.test.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/date.test.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/date.test.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\test\Rule\number.test.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\test\Rule\number.test.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/email.test.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/email.test.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\test\Rule\password.test.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\test\Rule\password.test.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/float.test.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/float.test.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\test\Rule\rule.test.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\test\Rule\rule.test.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/function.test.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/function.test.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\test\Rule\string.test.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\test\Rule\string.test.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/getErrors.test.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/getErrors.test.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\test\Rule\url.test.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\test\Rule\url.test.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/int.test.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/int.test.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\test\Rule\util.test.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\test\Rule\util.test.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/multileTypes.test.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/multileTypes.test.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\test\Validator\Validator.test.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\test\Validator\Validator.test.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/number.test.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/number.test.js" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\oussama\Documents\forgJs\test\Validator\validator.util.test.js">
-<testcase time="0" name="C:\Users\oussama\Documents\forgJs\test\Validator\validator.util.test.js" />
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/password.test.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/password.test.js" />
+</testsuite>
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/rule.test.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/rule.test.js" />
+</testsuite>
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/string-boolean.test.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/string-boolean.test.js" />
+</testsuite>
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/string-date.test.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/string-date.test.js" />
+</testsuite>
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/string-float.test.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/string-float.test.js" />
+</testsuite>
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/string-int.test.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/string-int.test.js" />
+</testsuite>
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/string.test.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/string.test.js" />
+</testsuite>
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/url.test.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/url.test.js" />
+</testsuite>
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/util.test.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Rule/util.test.js" />
+</testsuite>
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Validator/Validator.test.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Validator/Validator.test.js" />
+</testsuite>
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Validator/validator.util.test.js">
+<testcase time="0" name="/Users/gjakic/Code/OSS/forgJsv2/test/Validator/validator.util.test.js" />
 </testsuite>
 </testsuites>
