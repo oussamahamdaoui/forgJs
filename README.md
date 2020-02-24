@@ -1,9 +1,9 @@
-# Hey every one im really happy that this repo reached this many stars 🎉,but this repo needs your contibution
+# Hey everyone! I'm really happy that this project reached so many stars 🎉, but it needs your contribution...
 
-I started to better document the code there is an open issue on that, the main goal is to make it more accessible to other developpers who want to contribute, i'm still the main maintainer of this project and i'm calling for your help to make this code better so if any of you want to contribute and you have a good idea of how to make this better please feel free to open an issue or a pull request.
-here is the full documentation (work in preogress): [https://oussamahamdaoui.github.io/forgJs/](https://oussamahamdaoui.github.io/forgJs/)
+I started to better document the code, the main goal is to make it more accessible to other developers who want to contribute. I'm still the main maintainer of this project and I'm calling for your help to bring this code to perfection so if any of you want to contribute and you have a good idea of how to make this project better, please feel free to open an issue or a pull request.
+Here is the full documentation (work in progress): [https://oussamahamdaoui.github.io/forgJs/](https://oussamahamdaoui.github.io/forgJs/)
 
-Thank you! and dont forget code with love ❤️
+Thank you! And don't forget to code with love ❤️
 
 --------------
 
@@ -19,7 +19,7 @@ Thank you! and dont forget code with love ❤️
 
 [![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social?style=flat-square)](https://twitter.com/forg_js)
 
-ForgJs is a JavaScript lightweight object validator. Go check the Quick start section and start coding with love :heart:
+ForgJS is a JavaScript lightweight object validator. Go check the 'Quick start' section and begin coding with love :heart:
 
 ![email](./media/email.gif?raw=true)
 
@@ -33,7 +33,7 @@ See more live examples [here](https://oussamahamdaoui.github.io/forgjs-examples/
 
 # Quick start
 
-Install it via npm by running `npm i @cesium133/forgjs`
+Install ForgJS using npm by running `npm i @cesium133/forgjs`
 
 ## Your first validator
 
@@ -123,19 +123,19 @@ A `Rule` object validates a single value, it can be used like this:
 
 **The only required value is `type`!**
 
-> You can make a rule by simply passing a string if you only need to check the type : `new Rule('int');`
+> If you only need to check the type, you can make a rule by simply passing a string: `new Rule('int');`
 
-## int
+## Int
 
 * min (int)
 * max (int)
 * equal (int)
 
-## boolean
+## Boolean
 
 * toBe (boolean)
 
-## string
+## String
 
 * minLength (int)
 * maxLength (int)
@@ -143,7 +143,7 @@ A `Rule` object validates a single value, it can be used like this:
 * match: (regex)
 * notEmpty (bool)
 
-## email
+## Email
 
 * minLength (int)
 * maxLength (int)
@@ -163,7 +163,7 @@ A `Rule` object validates a single value, it can be used like this:
   emailRule.test('dedede@gmail.fr'); // returns true
 ```
 
-## password
+## Password
 
 * minLength (int)
 * maxLength (int)
@@ -187,7 +187,7 @@ A `Rule` object validates a single value, it can be used like this:
   passwordRule.test('@_-bddcd6A'); // returns true
 ```
 
-## url
+## URL
 
 * minLength (int)
 * maxLength (int)
@@ -207,20 +207,20 @@ A `Rule` object validates a single value, it can be used like this:
   urlRule.test('https://google.fr'); // returns true
 ```
 
-## date
+## Date
 
 * after (date)
 * before (date)
 * between (Array of dates like this [date, date])
 * equal (date)
 
-## float
+## Float
 
 * min (Number)
 * max (Number)
 * equal (float)
 
-## array
+## Array
 
 * of (Rule or Validator object)
 * notEmpty (bool)
@@ -228,11 +228,11 @@ A `Rule` object validates a single value, it can be used like this:
 
 The `of` rule checks every element of the array against the rule.
 
-## function
+## Function
 
 * result
 
-To explain result, what's better than an example:
+An example is the best way to explain result:
 
 ```javascript
   const { Validator, Rule } = require('@cesium133/forgjs');
@@ -297,9 +297,9 @@ stringDate.test('2018-12-17') // returns false '2018-12-17' is not after new Dat
 stringDate.test('2020-01-01') // returns true
 ```
 
-**Forgjs tries to cast the value to the right type before passing it to the validation function please be careful!**
+**ForgJS tries to cast the value to the right type before passing it to the validation function so please be careful!**
 
-Here is an example where Javascript behaviour makes the test wrong:
+Here is an example where Javascript behaviour makes the test go wrong:
 
 ```javascript
 const stringDate = new Rule({
@@ -321,7 +321,7 @@ new Date(2019, 10, 1) - new Date('2019-11-01T00:00') // equals 0
 
 ## Multiple types
 
-You can check for multiple types with `OR` or `AND` operators like this:
+You can check for multiple types with `OR` or `AND` operators:
 
 ```javascript
   const intRule = new Rule({
@@ -331,7 +331,7 @@ You can check for multiple types with `OR` or `AND` operators like this:
   intRule.test(2) // returns true
 ```
 
-This means the test should verify the `int`, `float` or `number` rule
+This means the test should verify the `int`, `float` or `number` rule:
 
 ```javascript
   const intRule = new Rule({
@@ -350,10 +350,9 @@ Every type has these properties:
 * custom
 * oneOf
 
-### optional
+### Optional
 
-If optional is set to `true` the element is optional and an `undefined` value is considered correct.
-Example:
+If optional is set to `true` the element is optional and an `undefined` value is considered correct:
 
 ```javascript
 const { Validator, Rule } = require('@cesium133/forgjs');
@@ -365,9 +364,9 @@ const intRule = new Rule({
 intRule.test(); // returns true
 ```
 
-### custom
+### Custom
 
-Custom allows you to write your own rule, an example is better than a long explanation:
+Custom allows you to write your own rules:
 
 ```javascript
   const { Validator, Rule } = require('@cesium133/forgjs');
@@ -392,9 +391,9 @@ Custom allows you to write your own rule, an example is better than a long expla
   }); // returns true
 
 ```
-### oneOf
+### OneOf
 
-One of checks if the element is in a array
+OneOf checks if the element is in a array
 ```javascript
   const floatRule = new Rule({
     type: 'float',
@@ -403,7 +402,7 @@ One of checks if the element is in a array
   floatRule.test(100.1); // returns true
 ```
 
-# Make a new type
+# Make a New Type
 
 Creating a new type is done using the Rule class like this:
 
@@ -430,10 +429,10 @@ Creating a new type is done using the Rule class like this:
 
 # How to contribute
 
-Thank you everyone for contributing to make this code better, if you have suggestions or ideas to improve the code please feel free to leave a comment here #29.
+Thank you for contributing to make this code better, if you have suggestions or ideas how to improve the code please feel free to leave a comment here.
 Rules:
 
-### 1 Please use this template which will help developers to test and better understand your request
+### 1. Please use this template which will help developers to test and better understand your request
 
 ```javascript
 const someRule= new Rule({
@@ -446,20 +445,17 @@ const someRule= new Rule({
   someRule.test(invalidValue) // returns false
 ```
 
-## 2 Please if you think a comment is a good feature to be added like the comment instead of creating a new one.
+## 2. Please if you think a comment is a good feature to be added like the comment instead of creating a new one.
 
-## 3 Before submitting a new comment check if the same comment is not already present
+## 3. Before submitting a new comment check if the same comment is not already present
 
-## 4 If you submit a PR (pull request) and you only change the Readme please add `[ci skip]` to your commit message
+## 4. If you submit a PR (pull request) and you only change the Readme please add `[ci skip]` to your commit message
 
-## 5 If you have any questions ask them in the FAQ
-
-## 6 Please have fun, and if you feel like not following the rules then don't follow them
-
-code with love ❤️
-
-# Left TO DO for next release
+## 5. If you have any questions ask them in the FAQ
 
 # Contact
 
 Follow me on twitter at [@forg_js](https://twitter.com/forg_js "@forg_js")
+
+# To-Do
+(Work in progress)
