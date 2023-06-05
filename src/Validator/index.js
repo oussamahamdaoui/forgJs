@@ -2,7 +2,7 @@ const {
   traverse, getValFromPath,
 } = require('./util');
 
-const { unexpectedFiled } = require('../const');
+const unexpectedFiled = filed => `${filed} is unexpcted`;
 const {
   flattenObject, arrayContainsAll,
 } = require('../util');
@@ -22,7 +22,7 @@ class Validator {
     }
 
     traverse(this.rules, (rule, path) => {
-      if (rule.test(getValFromPath(path, o), o) === false) {
+      if (rule.test(getValFromPath(path, o), path, o) === false) {
         ret = false;
       }
     });
@@ -53,7 +53,7 @@ class Validator {
       if (rule.test(getValFromPath(path, o), o, path) === false) {
         errors = [
           ...errors,
-          ...rule.errorCollector.get(),
+          ...rule.getError(path, getValFromPath(path, o)),
         ];
       }
     });

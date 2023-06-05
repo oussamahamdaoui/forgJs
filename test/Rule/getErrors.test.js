@@ -5,7 +5,7 @@ test('type rule.getError() returns array of errors when input is wrong', () => {
     type: 'string',
   }, 'strRule must be string');
 
-  expect(strRule.getError(1)).toBe('strRule must be string');
+  expect(strRule.getError(1)).toEqual(['strRule must be string']);
 });
 
 test('type rule.getError() call error function (if the error of the rule is function)', () => {
@@ -13,5 +13,5 @@ test('type rule.getError() call error function (if the error of the rule is func
     type: 'string',
   }, (key, value) => `${key} must be a string, ${value} is not a string`);
 
-  expect(strRule.getError('something', 1)).toBe('something must be a string, 1 is not a string');
+  expect(strRule.getError('something', 1)).toEqual(['something must be a string, 1 is not a string']);
 });

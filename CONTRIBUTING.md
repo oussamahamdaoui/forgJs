@@ -24,6 +24,4 @@ const someRule= new Rule({
 
 ### 5 If you have any questions ask them in the FAQ
 
-# 6 Please have fun, and if you feel like not following the rules then don't follow them
-
-code with love :heart:
+### 6 Please have fun, and if you feel like not following the rules then don't follow them

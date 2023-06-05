@@ -1,34 +1,21 @@
 {
   "name": "@cesium133/forgjs",
-  "version": "1.1.10",
-  "description": "forgJs is a javascript lightweight object validator. Go check the Quick start section and start coding with love",
+  "version": "1.1.12",
+  "description": "forgJs is a javascript lightweight object validator.",
   "main": "index.js",
   "typings": "./index.d.ts",
   "directories": {
     "test": "test"
   },
-  "dependencies": {},
   "devDependencies": {
-    "codecov": "^3.1.0",
-    "esdoc-node-require": "^1.0.4",
     "eslint": "^5.9.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jest": "^22.1.0",
-    "jest": "^24.8.0",
-    "jest-junit": "^6.4.0",
-    "twit": "^2.2.11",
-    "esdoc": "^1.1.0",
-    "esdoc-ecmascript-proposal-plugin": "^1.0.0",
-    "esdoc-node": "^1.0.4",
-    "esdoc-standard-plugin": "^1.0.0"
+    "jest": "^29.3.1"
   },
   "scripts": {
-    "test": "jest",
-    "lint": "./node_modules/.bin/eslint src/** test/** --format junit -o reports/junit/js-lint-results.xml",
-    "codecov": "codecov",
-    "tweet": "node twiterBotTaskRunner",
-    "build-doc": "esdoc"
+    "test": "jest"
   },
   "repository": {
     "type": "git",

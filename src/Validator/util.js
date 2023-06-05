@@ -7,7 +7,7 @@ function traverse(o, fn, p) {
     if (o[i] !== null && typeof (o[i]) === 'object' && !(o[i] instanceof Rule)) {
       traverse(o[i], fn, `${path}.${i}`);
     } else {
-      fn.apply(null, [o[i], `${path}.${i}`.substr(1)]);
+      fn.apply(null, [o[i], `${path}.${i}`.substring(1)]);
       path = '';
     }
   });

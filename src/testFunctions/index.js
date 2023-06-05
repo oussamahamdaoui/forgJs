@@ -12,7 +12,7 @@ const types = require('./types');
  * @param {*} obj
  */
 
-const CUSTOM = (val, f, obj) => f(val, obj);
+const CUSTOM = (val, f, path, obj) => f(val, path, obj);
 
 /**
  * The optional validation function

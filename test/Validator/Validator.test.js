@@ -44,7 +44,7 @@ test('test the hole object to be false', () => {
 });
 
 test('test custom', () => {
-  function f(age, object) {
+  function f(age, _, object) {
     const expectedAge = Math.floor((new Date() - object.dateOfBirth) / 3.154e+10);
     if (age === expectedAge) {
       return true;
@@ -117,6 +117,7 @@ test('test getErrors return array of errors even with object as rule error', () 
     dateOfBirth: 1,
   })).toEqual([
     'dateOfBirth is unexpcted',
+    "age doesn't satisfy the max rule",
     'date must be a date',
   ]);
 });

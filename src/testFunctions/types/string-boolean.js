@@ -1,6 +1,5 @@
-const { STRING } = require('../primitives');
+const { STRING, BOOLEAN } = require('../primitives');
 const { mergeRule } = require('../../util');
-const boolean = require('./boolean');
 
 const castBoolean = (val) => {
   if (val === 'true') return true;
@@ -8,4 +7,4 @@ const castBoolean = (val) => {
   return 'a';
 };
 
-module.exports = mergeRule(STRING, boolean, castBoolean);
+module.exports = mergeRule(STRING, BOOLEAN, castBoolean);

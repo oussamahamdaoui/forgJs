@@ -4,8 +4,8 @@ const { isFunction } = require('./../util');
  * If the error is function, calls this function with two arguments: path and value
  * and returns the result. If error is string, just returns it.
  *
- * @param {Function|String} error representation of error
- * @param {any} path
+ * @param {Function|string} error representation of error
+ * @param {string} path
  * @param {any} value
  * @returns {String}
  */
@@ -27,8 +27,8 @@ const getErrorFromFunctionOrString = (error, path, value) => {
  * @returns {String}
  */
 const getErrorFromObject = (error, path, value, key) => {
-  if (!Object.prototype.hasOwnProperty.call(error, key)) {
-    return null; // Here should be the default error message.
+  if (!error[key]) {
+    return `${path} doesn't satisfy the ${key} rule`; // Here should be the default error message.
   }
   return getErrorFromFunctionOrString(error[key], path, value);
 };
